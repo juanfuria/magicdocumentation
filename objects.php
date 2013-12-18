@@ -53,10 +53,10 @@ class Documentation
             if($section->getFilesSize() > 1){
                 $badge = '<span class="badge">' . $section->getFilesSize() . '</span>';
             }
-            echo '<li class="list-group-item alert-info">' . $badge . '<a href="' . $baseUrl . '/section/' . htmlentities($section->name) . '/">' . $section->name . '</a></li>';
+            echo '<li class="list-group-item alert-info">' . $badge . '<a href="#section_' . htmlentities($section->getNameId()) . '">' . $section->name . '</a></li>';
             if($section->getFilesSize() > 1){
                 foreach ($section->files as $file) {
-                    echo '<li class="list-group-item list-group-subitem">' . '<a href="#' . $file->getNameId() . '">' . $file->name . '</a></li>';   
+                    echo '<li class="list-group-item list-group-subitem">' . '<a href="' . $baseUrl . '/section/' . htmlentities($section->name) . '/#elem_' . $file->getNameId() . '">' . $file->name . '</a></li>';
                 }
             }
         }
@@ -71,6 +71,13 @@ class Documentation
     
     function hasSection($sectionName){
         return array_key_exists($sectionName, $this->sections);
+    }
+
+    function printAll(){
+        foreach ($this->sections as $section) {
+            $section->printContent();
+        }
+
     }
 }
 
@@ -96,7 +103,7 @@ class Section
         return count($this->files);
     }
     
-    private function getNameId(){
+    function getNameId(){
         $finalName = html_entity_decode($this->name);
         $finalName = str_ireplace(" ", "_", $finalName);
         $finalName = strtolower($finalName);
@@ -104,9 +111,10 @@ class Section
     }
     
     function printContent(){
-        echo '<section id="' . $this->getNameId() . '">';
+        echo '<section id="section_' . $this->getNameId() . '">';
+        echo '<h2>' . $this->name . '</h2>';
         foreach ($this->files as $file){
-            echo '<div id="' . $file->getNameId() . '">';
+            echo '<div id="elem_' . $file->getNameId() . '">';
             echo file_get_contents ($file->path);
             echo '</div>';
         }

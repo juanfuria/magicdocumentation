@@ -1,0 +1,46 @@
+<h3>Status</h3>
+<p>Status events are events that the integrator can implement to get transaction and connection status events.</p>
+<h4>connectionStatusChanged</h4>
+<p>connectionStatusChanged event gets called when the state of a card reader connection changes.</p>
+<table class="table-condensed table-responsive table-bordered">
+    <thead>
+    <tr>
+        <th>Parameter</th><th>Type</th><th>Notes</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>status</td><td>ConnectionStatus</td><td>An enum contaning the status code for the connection</td>
+    </tr>
+    <tr>
+        <td>device</td><td>Device</td><td>The device that is invoking the event</td>
+    </tr>
+    </tbody>
+</table>
+<br />
+<pre><code class="java">@Override
+public void connectionStatusChanged(ConnectionStatus connectionStatus, Device device) {
+Log.d(App, connectionStatus.name());
+}</code></pre>
+<h4>currentTransactionStatus</h4>
+<p>currentTransactionStatus event gets called when when the state of an ongoing transaction changes.</p>
+<table class="table-condensed table-responsive table-bordered">
+    <thead>
+    <tr>
+        <th>Parameter</th><th>Type</th><th>Notes</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>info</td><td>StatusInfo</td><td>An enum contaning the status code for the transaction</td>
+    </tr>
+    <tr>
+        <td>device</td><td>Device</td><td>The device that is invoking the event</td>
+    </tr>
+    </tbody>
+</table>
+<br />
+<pre><code class="java">@Override
+public void currentTransactionStatus(StatusInfo statusInfo, Device device) {
+
+}</code></pre>

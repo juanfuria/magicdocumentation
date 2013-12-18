@@ -29,4 +29,5 @@ RewriteEngine On
 
 # remove www on main
 RewriteRule ^platform/(.*)/section/(.*)/$ ./index.php?platform=$1&section=$2 [NE,L]
+RewriteRule ^platform/(.*)/$ ./index.php?platform=$1 [NE,L]
 RewriteRule ^platform/(.*)$ ./index.php?platform=$1 [NE,L]

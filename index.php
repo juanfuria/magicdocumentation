@@ -33,25 +33,34 @@ $selectedSection  = (isset($requestedSection)) ? $requestedSection : "Introducti
 <html>
     <head>
         <meta charset="UTF-8">
-        <!-- <meta http-equiv="refresh" content="5; URL="> -->
-        <!-- Latest compiled and minified CSS -->
+<!--        <meta http-equiv="refresh" content="5; URL=">-->
+
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-
-        <!-- Optional theme -->
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-
-        <!-- Latest compiled and minified JavaScript -->
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-        <title></title>
+        <link rel="stylesheet" href="<?php echo $BASE_URL . "/"; ?>css/solarized_light.css">
+        <script src="<?php echo $BASE_URL . "/"; ?>js/highlight.pack.js"></script>
+        <title>coso</title>
         <style>
             body{padding-top: 80px;}
+            .badge {
+                color: #428bca;
+                background-color: #fff;
+            }
+            section{
+                padding-top: 40px;
+                border-bottom: 1px solid #eee8d5;
+                padding-bottom: 40px;
+            }
         </style>
     </head>
     <body>
+        <script>hljs.initHighlightingOnLoad();</script>
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">Handpoint SDK</a>
+                    <a class="navbar-brand" href="#">SDK</a>
                     <ul class="nav navbar-nav">
 <?php
 foreach ($platforms as $value) {
@@ -61,7 +70,7 @@ foreach ($platforms as $value) {
         $addon = '';
     }
 
-    echo '<li' . $addon . '><a href="' . $BASE_URL . '/platform/' . $value . '">' . $value . '</a></li>';
+    echo '<li' . $addon . '><a href="' . $BASE_URL . '/platform/' . $value . '/">' . $value . '</a></li>';
 }
 ?>      
                     </ul>
@@ -70,16 +79,16 @@ foreach ($platforms as $value) {
         </div>
         <div class="container-fluid">
             <div class="row-fluid">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <ul class="list-group">
                         <?php 
                         $documentation->printMenu($BASE_URL . "/platform/" . $selectedPlatform);
                         ?>
                     </ul>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <?php
-                        $documentation->printSectionContent($selectedSection);
+                        $documentation->printall();
                     ?>
                 </div>
             </div>
