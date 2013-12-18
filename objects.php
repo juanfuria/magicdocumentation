@@ -106,8 +106,9 @@ class Section
     function printContent(){
         echo '<section id="' . $this->getNameId() . '">';
         foreach ($this->files as $file){
-            echo '<a name="' . $file->getNameId() . '"></a>';
+            echo '<div id="' . $file->getNameId() . '">';
             echo file_get_contents ($file->path);
+            echo '</div>';
         }
         
         echo '</section>';
