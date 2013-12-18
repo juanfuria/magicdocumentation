@@ -1,0 +1,30 @@
+<h3>addListener</h3>
+<p>Registers a listener to hapi events.</p>
+</br>
+<h4>Parameters</h4>
+<table class="table-condensed table-responsive table-bordered">
+    <thead>
+    <tr>
+        <th>Parameter</th><th>Type</th><th>Validation</th><th>Notes</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>listener</td><td>Log, Required, Status</td><td>Required</td><td>Only listeners of the type "Required" are required for the simplest integraton</td>
+    </tr>
+    </tbody>
+</table>
+</br>
+<h4>Events invoked</h4>
+none
+<h4>Returns</h4>
+<dl>
+    <dt>Boolean</dt>
+    <dd>true if the operation was successfull.</dd>
+</dl>
+
+
+<h4>Code examples</h4>
+<pre><code class="java">//Register a listener for required events
+    this.api.addListener(this);
+</code></pre>

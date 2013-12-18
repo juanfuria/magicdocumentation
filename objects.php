@@ -53,7 +53,7 @@ class Documentation
             if($section->getFilesSize() > 1){
                 $badge = '<span class="badge">' . $section->getFilesSize() . '</span>';
             }
-            echo '<li class="list-group-item">' . $badge . '<a href="' . $baseUrl . '/section/' . htmlentities($section->name) . '/">' . $section->name . '</a></li>';
+            echo '<li class="list-group-item alert-info">' . $badge . '<a href="' . $baseUrl . '/section/' . htmlentities($section->name) . '/">' . $section->name . '</a></li>';
             if($section->getFilesSize() > 1){
                 foreach ($section->files as $file) {
                     echo '<li class="list-group-item list-group-subitem">' . '<a href="#' . $file->getNameId() . '">' . $file->name . '</a></li>';   
