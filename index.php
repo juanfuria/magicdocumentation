@@ -41,6 +41,9 @@ $selectedSection  = (isset($requestedSection)) ? $requestedSection : "Introducti
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="<?php echo $BASE_URL . "/"; ?>css/solarized_light.css">
         <script src="<?php echo $BASE_URL . "/"; ?>js/highlight.pack.js"></script>
+
+        <!--Custom Handpoint Styles-->
+        <link rel="stylesheet" href="<?php echo $BASE_URL . "/"; ?>css/handpoint_custom.css">
         <title>coso</title>
         <style>
             body{padding-top: 80px;}
