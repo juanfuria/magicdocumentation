@@ -1,5 +1,24 @@
 /* This is a custom css with handpoint styles */
-.navbar {
-    background: blue;
 
+.navbar {
+    background: rgba(245, 245, 245, 1.00);
+    border-bottom-color: #b58900;
+}
+li.alert-info {
+    font-weight: bold;
+}
+
+.list-group-item {
+
+    background: none !important;
+    border:none;
+
+}
+
+.list-group-subitem {
+    padding-left: 20px;
+}
+
+li a {
+    color: #333233;
 }
