@@ -12,11 +12,13 @@ li.alert-info {
 
     background: none !important;
     border:none;
+    line-height: 1.5pt;
 
 }
 
 .list-group-subitem {
     padding-left: 20px;
+    font-style: oblique;
 }
 
 li a {
