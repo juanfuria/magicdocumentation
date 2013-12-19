@@ -56,7 +56,8 @@ class Documentation
             echo '<li class="list-group-item alert-info">' . $badge . '<a href="#section_' . htmlentities($section->getNameId()) . '">' . $section->name . '</a></li>';
             if($section->getFilesSize() > 1){
                 foreach ($section->files as $file) {
-                    echo '<li class="list-group-item list-group-subitem">' . '<a href="' . $baseUrl . '/section/' . htmlentities($section->name) . '/#elem_' . $file->getNameId() . '">' . $file->name . '</a></li>';
+                    /*echo '<li class="list-group-item list-group-subitem">' . '<a href="' . $baseUrl . '/section/' . htmlentities($section->name) . '/#elem_' . $file->getNameId() . '">' . $file->name . '</a></li>';*/
+                    echo '<li class="list-group-item list-group-subitem">' . '<a href="' .'#elem_' . $file->getNameId() . '">' . $file->name . '</a></li>';
                 }
             }
         }
