@@ -70,7 +70,7 @@ foreach ($platforms as $value) {
         $addon = '';
     }
 
-    echo '<li' . $addon . '><a href="' . $BASE_URL . '?platform=' . $value.' >' . $value.'</a></li>';
+    echo '<li' . $addon . '><a href="' . $BASE_URL . '?platform=' . $value . '">' . $value . '</a></li>';
 }
 ?>      
                     </ul>
