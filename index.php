@@ -41,6 +41,9 @@ $selectedSection  = (isset($requestedSection)) ? $requestedSection : "Introducti
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="<?php echo $BASE_URL . "/"; ?>css/solarized_light.css">
         <script src="<?php echo $BASE_URL . "/"; ?>js/highlight.pack.js"></script>
+
+        <!--Custom Handpoint Styles-->
+        <link rel="stylesheet" href="<?php echo $BASE_URL . "/"; ?>css/handpoint_custom.css">
         <title>coso</title>
         <style>
             body{padding-top: 80px;}
@@ -57,10 +60,10 @@ $selectedSection  = (isset($requestedSection)) ? $requestedSection : "Introducti
     </head>
     <body>
         <script>hljs.initHighlightingOnLoad();</script>
-        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">SDK</a>
+                    <a class="navbar-brand" href="#">Handpoint SDK</a>
                     <ul class="nav navbar-nav">
 <?php
 foreach ($platforms as $value) {
@@ -70,7 +73,7 @@ foreach ($platforms as $value) {
         $addon = '';
     }
 
-    echo '<li' . $addon . '><a href="' . $BASE_URL . '?platform=' . $value . '/">' . $value . '</a></li>';
+    echo '<li' . $addon . '><a href="' . $BASE_URL . '?platform=' . $value . '">' . $value . '</a></li>';
 }
 ?>      
                     </ul>
