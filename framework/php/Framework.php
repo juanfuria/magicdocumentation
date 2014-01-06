@@ -1,6 +1,6 @@
 <?php
 
-include_once('Utils.php');
+set_include_path(realpath(dirname(__FILE__)));
 
 function __autoload($classname) {
     $filename = $classname .".php";

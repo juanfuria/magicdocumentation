@@ -11,6 +11,7 @@ class Settings {
     public $jsDir;
     public $pageTitle;
     public $urlStyle;
+    public $navBarTitle;
 
     function Settings(){
         $this->filesDir     = "files";

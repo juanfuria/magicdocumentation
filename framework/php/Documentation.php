@@ -50,6 +50,7 @@ class Documentation
 
     function printMenu($baseUrl){
         /** @var $section Section */
+        echo '<ul class="list-group">';
         foreach ($this->sections as $section) {
             $badge = "";
             if($section->getFilesSize() > 1){
@@ -64,6 +65,7 @@ class Documentation
                 }
             }
         }
+        echo '</ul>';
     }
 
     function printSectionContent($sectionName){

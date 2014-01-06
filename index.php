@@ -7,56 +7,45 @@ $framework = new Framework();
 /** @var $settings Settings */
 $settings = $framework->settings;
 
-/** @var $documentation Documentation */
-$documentation = $framework->getDocumentation($framework->getSelectedPlatform());
 ?>
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
-<!--        <meta http-equiv="refresh" content="5; URL=">-->
-
         <?php
-
         echo $framework->getFormattedCSSList();
 
         echo $framework->getFormattedJavaScriptList();
 
         ?>
         <title><?php echo $settings->pageTitle; ?></title>
-        <style>
-            body{padding-top: 80px;}
-            .badge {
-                color: #428bca;
-                background-color: #fff;
-            }
-            section{
-                padding-top: 40px;
-                border-bottom: 1px solid #eee8d5;
-                padding-bottom: 40px;
-            }
-        </style>
     </head>
     <body>
-        <script>hljs.initHighlightingOnLoad();</script>
+    <div class="jumbotron">
+        <div class="container">
+            <h1><?php echo $settings->pageTitle; ?></h1>
+            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+            <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+        </div>
+    </div>
 
-<?php
-    $framework->printNavBar();
-?>
-        <div class="container-fluid">
-            <div class="row-fluid">
-                <div class="col-md-2">
-                    <ul class="list-group">
-                        <?php 
-                        $documentation->printMenu($framework->settings->baseUrl . "/platform/" . $framework->getSelectedPlatform());
-                        ?>
-                    </ul>
-                </div>
-                <div class="col-md-9">
-                    <?php
-                        $documentation->printall();
-                    ?>
-                </div>
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Heading</h2>
+                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Heading</h2>
+                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div>
         </div>
     </body>
