@@ -28,4 +28,9 @@ class Utils {
         return $sentVars;
     }
 
+    static function isValid($string)
+    {
+        return (($string != null) && ($string != '')) ? true : false;
+    }
+
 } 

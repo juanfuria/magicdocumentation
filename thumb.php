@@ -2,6 +2,14 @@
 if((!isset ($_GET["file"])) || (!isset($_GET["size"])) || (!isset($_GET["ext"])))
     die;
 //var_dump($_GET);
+include_once('framework/php/Framework.php');
+
+
+$framework = new Framework();
+
+/** @var $settings Settings */
+$settings = $framework->settings;
+
 $mimeTypes = array(
     'pdf' => 'application/pdf',
     'txt' => 'text/plain',
@@ -18,11 +26,13 @@ $mimeTypes = array(
     'php' => 'text/plain'
 );
 
-header('Content-Type: ' . $mimeTypes[$_GET["ext"]]);
-@require_once('framework/inc/SimpleImage.php');
+
+
+header('Content-Type: ' . $mimeTypes[$framework->sentVars["ext"]]);
+//@require_once('framework/inc/SimpleImage.php');
 $image = new SimpleImage();
-$image->load("img/" .$_GET["file"] . "." . $_GET["ext"]);//http://pickr.me/i/pickr_d672ccf8.jpg');
-$image->resizeToWidth($_GET["size"]);
+$image->load($settings->imgDir . "/" .$framework->sentVars["file"] . "." . $framework->sentVars["ext"]);//http://pickr.me/i/pickr_d672ccf8.jpg');
+$image->resizeToWidth($framework->sentVars["size"]);
 $image->output();
 
 ?>

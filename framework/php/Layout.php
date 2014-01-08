@@ -4,16 +4,21 @@ class Layout {
 
 
     static function printNavBar($navBarItems, $selectedItem, $settings){
-        echo '
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 
-
-
+        echo '<header class="navbar navbar-default navbar-fixed-top docs-nav" role="banner">
+              <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">'.$settings->pageTitle.'</a>
-
+                  <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="view.php"><span class="glyphicon glyphicon-cloud"></span>&nbsp;'.$settings->pageTitle.'</a>
                 </div>
-                    <ul class="nav navbar-nav">';
+                <nav class="collapse navbar-collapse navbar-collapse" role="navigation">
+                  <ul class="nav navbar-nav">';
+
         foreach ($navBarItems as $platform) {
             $addon = '';
             if ($platform == $selectedItem) {
@@ -33,8 +38,10 @@ class Layout {
 
         }
 
-        echo '    </ul>
-        </nav>';
+               echo '</ul>
+                </nav>
+              </div>
+            </header>';
     }
 
     static function printNavButtons($navBarItems, $selectedItem, $settings){

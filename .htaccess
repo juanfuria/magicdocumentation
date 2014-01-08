@@ -17,9 +17,9 @@ AddOutputFilterByType DEFLATE application/x-javascript
 AddOutputFilterByType DEFLATE application/x-httpd-php
 
 ## cache images for 1 month, do not require revalidation
-<FilesMatch "\.(gif|jpe?g|png|flv|swf|ico|mp3|mp4)$">
-Header set Cache-Control: "max-age=1296000"
-</FilesMatch>
+#<FilesMatch "\.(gif|jpe?g|png|flv|swf|ico|mp3|mp4)$">
+#Header set Cache-Control: "max-age=1296000"
+#</FilesMatch>
 
 Options +FollowSymLinks
 RewriteEngine On
@@ -28,6 +28,8 @@ RewriteEngine On
 #####
 
 # remove www on main
+
+RewriteRule ^t/(.*)_(.*)\.(.*)$ ./thumb.php?file=$1&size=$2&ext=$3 [L]
 RewriteRule ^platform/(.*)/section/(.*)/$ ./index.php?platform=$1&section=$2 [NE,L]
 RewriteRule ^platform/(.*)/$ ./index.php?platform=$1 [NE,L]
 RewriteRule ^platform/(.*)$ ./index.php?platform=$1 [NE,L]

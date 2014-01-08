@@ -68,11 +68,64 @@ $documentation = $framework->getDocumentation($framework->getSelectedPlatform())
             top: 1px;
             transform: rotate(1.4deg);
         }
+        .docs-nav {
+            border-color: #a2a0a6;
+            box-shadow: 0 1px 0 rgba(255,255,255,.1);
+        }
+        /*
+        .docs-nav {
+            text-shadow: 0 -1px 0 rgba(0,0,0,.15);
+            background-color: #55bdae;
+            border-color: #56545A;
+            box-shadow: 0 1px 0 rgba(255,255,255,.1);
+        }
+
+        .docs-nav .navbar-collapse {
+            border-color: #fff;
+        }
+        .navbar-brand{
+            padding-right: 60px;
+        }
+        .navbar-brand:hover{
+            color: #fff;
+        }
+
+        .docs-nav .navbar-brand {
+            color: #fff;
+        }
+        .docs-nav .navbar-nav > li > a {
+            color: #fff;
+        }
+        .docs-nav .navbar-nav > li > a:hover {
+            color: #fff;
+        }
+        .docs-nav .navbar-nav > .active > a,
+        .docs-nav .navbar-nav > .active > a:hover {
+            color: #55bdae;
+            background-color: #fff;
+        }
+        .docs-nav .navbar-toggle {
+            border-color: #fff;
+            border-width: 2px;
+        }
+        .docs-nav .navbar-toggle:hover {
+            background-color: #fff;
+            border-color:  #fff;
+        }
+        .docs-nav .navbar-toggle .icon-bar {
+            background-color: #fff;
+            border-color:  #fff;
+        }
+        */
+        .docs-nav .container{
+            padding: 0 15px 0 25px;
+            margin-left: 0px;
+        }
+
     </style>
 </head>
 <body>
 <script>hljs.initHighlightingOnLoad();</script>
-
 <?php
 $framework->printNavBar();
 ?>
