@@ -34,9 +34,9 @@ class Section
 
         /** @var $file File */
         foreach ($this->files as $file){
-            echo '<div class="row-fluid" id="elem_' . $file->getNameId() . '">';
+            echo '<div class="row" id="elem_' . $file->getNameId() . '">';
             echo $file->getContent();
-            echo '<div style="clear:both;"></div></div>';
+            echo '</div>';
         }
 
         echo '</section>';
