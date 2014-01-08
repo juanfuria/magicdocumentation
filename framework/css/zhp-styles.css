@@ -1,4 +1,10 @@
-.hp-example {
+/* Custom styling for content columns*/
+.hp-description {
     background: #f9f9f9;
+
+}
+
+.hp-example {
+    background: #797879;
 
 }
