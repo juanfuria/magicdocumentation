@@ -7,6 +7,7 @@ $framework = new Framework();
 /** @var $settings Settings */
 $settings = $framework->settings;
 
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,7 +22,7 @@ $settings = $framework->settings;
         <title><?php echo $settings->pageTitle; ?></title>
         <style>
             body{
-                background: url(<?php echo Layout::getImagePath($settings, "mpos-green-bg.jpg"); ?>) center -305px fixed no-repeat !important;
+                background: url(<?php echo Layout::getImagePath("mpos-green-bg.jpg", $settings); ?>) center -305px fixed no-repeat !important;
                 background-size: auto;
             }
             .jumbotron{
@@ -36,7 +37,7 @@ $settings = $framework->settings;
     <body>
         <div class="jumbotron">
             <div class="container">
-                <h1><span><img src="<?php echo Layout::getImagePath($settings, "box.png"); ?>" /> </span><?php echo $settings->pageTitle; ?></h1>
+                <h1><span><img src="<?php echo Layout::getImagePath("box.png", $settings); ?>" /> </span><?php echo $settings->pageTitle; ?></h1>
                 <p>
                     <?php
                     $filename = "Introduction.html";
@@ -47,20 +48,17 @@ $settings = $framework->settings;
                     }
                     ?>
                 </p>
-                <p><a class="btn btn-primary btn-lg" role="button" href="platformViewer.php">Learn more &raquo;</a></p>
+                <p><a class="btn btn-primary btn-lg" role="button" href="view.php">Learn more &raquo;</a></p>
+                <br />
             </div>
         </div>
 
         <div class="jumbotron">
             <div class="container ">
-                <h1><span><img src="<?php echo Layout::getImagePath($settings, "open-box.png"); ?>" /> </span>Available platforms</h1>
+                <h1><span><img src="<?php echo Layout::getImagePath("open-box.png", $settings); ?>" /> </span>Available platforms</h1>
                 <div style="text-align:center !important;">
                     <?php
-                    foreach($framework->platforms as $platform){
-                        echo '<a class="btn btn-success btn-lg ' . $platform .' platform-btn" href="platformViewer.php?platform='. $platform . '">';
-                        echo $platform;
-                        echo '</a>';
-                    }
+                    $framework->printNavButtons();
                     ?>
                 </div>
             </div>

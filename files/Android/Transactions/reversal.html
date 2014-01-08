@@ -1,4 +1,3 @@
-<div id="saleReversal-method" class="col-11 col-sm-11 col-lg-12">
     <h3>saleReversal</h3>
     <p>A saleReversal initiates a reversal operation for a previous sale operation to the card reader. This operation reverts (if possible) a specific sale identified with a transaction id. In it's simplest form you only have to pass the <strong>amount</strong>, <strong>currency</strong> and <strong>originalTransactionID</strong> but it also accepts a device object and a map with extra parameters. Note that transactions can only be reversed within 12 hours of the transaction??</p>
     <br />
@@ -46,4 +45,3 @@
                     <pre><code class="java">//Initiate a reversal for 10.00 in Great British Pounds
                         api.saleReversal(new BigInteger("1000"),Currency.GBP,"1234567")
                     </code></pre>
-</div>

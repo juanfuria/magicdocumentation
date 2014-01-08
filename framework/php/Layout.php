@@ -3,9 +3,9 @@
 class Layout {
 
 
-    static function printNavBar($navBarItems, $selectedItem, $baseUrl, $urlMode, $settings){
+    static function printNavBar($navBarItems, $selectedItem, $settings){
         echo '
-        <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 
 
 
@@ -21,11 +21,11 @@ class Layout {
             }
 
             $url = '';
-            if($urlMode == UrlType::URL_VARS){
-                $url = $baseUrl . Utils::getStringAfterLast($_SERVER["PHP_SELF"], "/") . '?platform=' . $platform . '';
+            if($settings->urlMode == UrlType::URL_VARS){
+                $url = $settings->baseUrl . Utils::getStringAfterLast($_SERVER["PHP_SELF"], "/") . '?platform=' . $platform . '';
             }
-            else if ($urlMode == UrlType::URL_READABLE){
-                $url = $baseUrl . 'platform/' . $platform . '/';
+            else if ($settings->urlMode == UrlType::URL_READABLE){
+                $url = $settings->baseUrl . 'platform/' . $platform . '/';
             }
 
 
@@ -36,13 +36,37 @@ class Layout {
         echo '    </ul>
         </nav>';
     }
+
+    static function printNavButtons($navBarItems, $selectedItem, $settings){
+        foreach($navBarItems as $platform){
+            echo '<a class="btn btn-success btn-lg ' . $platform .' platform-btn" href="';
+            $url = '';
+            if($settings->urlMode == UrlType::URL_VARS){
+                $url = $settings->baseUrl . 'view.php?platform=' . $platform . '';
+            }
+            else if ($settings->urlMode == UrlType::URL_READABLE){
+                $url = $settings->baseUrl . 'platform/' . $platform . '/';
+            }
+            //?platform='. $platform . '
+            echo $url;
+            echo '">';
+            echo $platform;
+            echo '</a>';
+        }
+    }
+
     static function printMenu($menuItems){}
     static function printAllSections(){}
     static function printSection(){}
     static function printSectionItem(){}
 
-    /** @var settings Settings */
-    public static function getImagePath($settings, $imgName){
+    /**
+     * @param $imgName
+     * @param $settings
+     * @return string
+     * @internal param \settings $ Settings
+     */
+    public static function getImagePath($imgName, $settings){
         return $settings->imgDir . "/" . $imgName;
     }
 } 
