@@ -18,4 +18,9 @@ class File{
         return $finalName;
     }
 
+    public function getContent()
+    {
+        return file_get_contents ($this->path);
+    }
+
 }

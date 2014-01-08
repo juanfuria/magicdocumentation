@@ -74,7 +74,7 @@ class Framework{
     }
 
     public function printNavBar(){
-        Layout::printNavBar($this->platforms, $this->getSelectedPlatform(), $this->settings->baseUrl, $this->settings->urlStyle);
+        Layout::printNavBar($this->platforms, $this->getSelectedPlatform(), $this->settings->baseUrl, $this->settings->urlStyle, $this->settings);
     }
 }
 

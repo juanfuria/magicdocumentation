@@ -35,7 +35,7 @@ class Section
         /** @var $file File */
         foreach ($this->files as $file){
             echo '<div id="elem_' . $file->getNameId() . '">';
-            echo file_get_contents ($file->path);
+            echo $file->getContent();
             echo '</div>';
         }
 

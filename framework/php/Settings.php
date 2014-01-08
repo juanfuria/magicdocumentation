@@ -9,6 +9,7 @@ class Settings {
     public $frameworkDir;
     public $cssDir;
     public $jsDir;
+    public $imgDir;
     public $pageTitle;
     public $urlStyle;
     public $navBarTitle;
@@ -22,7 +23,8 @@ class Settings {
         $this->frameworkDir = "framework/";
         $this->cssDir       = $this->frameworkDir . "css";
         $this->jsDir 		= $this->frameworkDir . "js";
-        $this->pageTitle    = "Doc generator";
+        $this->imgDir 		= $this->frameworkDir . "img";
+        $this->pageTitle    = "Handpoint API";
         $this->urlStyle     = UrlType::URL_VARS;
     }
 

@@ -25,7 +25,7 @@ $documentation = $framework->getDocumentation($framework->getSelectedPlatform())
     ?>
     <title><?php echo $settings->pageTitle; ?></title>
     <style>
-        body{padding-top: 80px;}
+        body{padding-top: 70px;}
         .badge {
             color: #428bca;
             background-color: #fff;
@@ -43,6 +43,7 @@ $documentation = $framework->getDocumentation($framework->getSelectedPlatform())
 <?php
 $framework->printNavBar();
 ?>
+
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="col-md-2">

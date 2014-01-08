@@ -19,33 +19,50 @@ $settings = $framework->settings;
 
         ?>
         <title><?php echo $settings->pageTitle; ?></title>
+        <style>
+            body{
+                background: url(<?php echo Layout::getImagePath($settings, "mpos-green-bg.jpg"); ?>) center -305px fixed no-repeat !important;
+                background-size: auto;
+            }
+            .jumbotron{
+                margin-top: 220px;
+                margin-bottom:-10px;
+            }
+            .platform-btn{
+                margin-right: 25px;
+            }
+        </style>
     </head>
     <body>
-    <div class="jumbotron">
-        <div class="container">
-            <h1><?php echo $settings->pageTitle; ?></h1>
-            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-            <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+        <div class="jumbotron">
+            <div class="container">
+                <h1><span><img src="<?php echo Layout::getImagePath($settings, "box.png"); ?>" /> </span><?php echo $settings->pageTitle; ?></h1>
+                <p>
+                    <?php
+                    $filename = "Introduction.html";
+                    $path = $settings->filesDir . "/" . $filename;
+                    if(file_exists($path)){
+                        $file = new File($path);
+                        echo $file->getContent();
+                    }
+                    ?>
+                </p>
+                <p><a class="btn btn-primary btn-lg" role="button" href="platformViewer.php">Learn more &raquo;</a></p>
+            </div>
         </div>
-    </div>
 
-    <div class="container">
-        <!-- Example row of columns -->
-        <div class="row">
-            <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-            </div>
-            <div class="col-md-4">
-                <h2>Heading</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        <div class="jumbotron">
+            <div class="container ">
+                <h1><span><img src="<?php echo Layout::getImagePath($settings, "open-box.png"); ?>" /> </span>Available platforms</h1>
+                <div style="text-align:center !important;">
+                    <?php
+                    foreach($framework->platforms as $platform){
+                        echo '<a class="btn btn-success btn-lg ' . $platform .' platform-btn" href="platformViewer.php?platform='. $platform . '">';
+                        echo $platform;
+                        echo '</a>';
+                    }
+                    ?>
+                </div>
             </div>
         </div>
     </body>

@@ -3,11 +3,16 @@
 class Layout {
 
 
-    static function printNavBar($navBarItems, $selectedItem, $baseUrl, $urlMode){
-        echo '<div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
+    static function printNavBar($navBarItems, $selectedItem, $baseUrl, $urlMode, $settings){
+        echo '
+        <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+
+
+
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">SDK</a><span class="glyphicon glyphicon-tree-conifer"></span>
+                    <a class="navbar-brand" href="#">'.$settings->pageTitle.'</a>
+
+                </div>
                     <ul class="nav navbar-nav">';
         foreach ($navBarItems as $platform) {
             $addon = '';
@@ -17,7 +22,7 @@ class Layout {
 
             $url = '';
             if($urlMode == UrlType::URL_VARS){
-                $url = $baseUrl . 'index.php?platform=' . $platform . '';
+                $url = $baseUrl . Utils::getStringAfterLast($_SERVER["PHP_SELF"], "/") . '?platform=' . $platform . '';
             }
             else if ($urlMode == UrlType::URL_READABLE){
                 $url = $baseUrl . 'platform/' . $platform . '/';
@@ -25,25 +30,19 @@ class Layout {
 
 
             echo '<li' . $addon . '><a href="' . $url . '">' . $platform . '</a></li>';
+
         }
 
-        /*
-         <ul class="nav navbar-nav navbar-right">
-
-    <li>
-        <a href="../about"> … </a>
-    </li>
-
-</ul>
-         * */
-
         echo '    </ul>
-                </div>
-            </div>
-        </div>';
+        </nav>';
     }
     static function printMenu($menuItems){}
     static function printAllSections(){}
     static function printSection(){}
     static function printSectionItem(){}
+
+    /** @var settings Settings */
+    public static function getImagePath($settings, $imgName){
+        return $settings->imgDir . "/" . $imgName;
+    }
 } 
