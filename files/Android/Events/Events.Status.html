@@ -1,3 +1,4 @@
+<div class="col-md-6 hp-description">
 <h3>Status</h3>
 <p>Status events are events that the integrator can implement to get transaction and connection status events.</p>
 <h4>connectionStatusChanged</h4>
@@ -18,10 +19,17 @@
     </tbody>
 </table>
 <br />
+
+</div>
+<div class="col-md-6 hp-example">
 <pre><code class="java">@Override
 public void connectionStatusChanged(ConnectionStatus connectionStatus, Device device) {
 Log.d(App, connectionStatus.name());
 }</code></pre>
+</div>
+</div> <!--close row -->
+<div class="row">
+<div class="col-md-6 hp-description">
 <h4>currentTransactionStatus</h4>
 <p>currentTransactionStatus event gets called when when the state of an ongoing transaction changes.</p>
 <table class="table-condensed table-responsive table-bordered">
@@ -40,7 +48,10 @@ Log.d(App, connectionStatus.name());
     </tbody>
 </table>
 <br />
+</div>
+<div class="col-md-6 hp-example">
 <pre><code class="java">@Override
 public void currentTransactionStatus(StatusInfo statusInfo, Device device) {
 
 }</code></pre>
+</div>
