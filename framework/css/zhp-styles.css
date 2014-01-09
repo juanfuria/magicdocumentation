@@ -7,13 +7,23 @@
 }
 /* Custom styling for content columns*/
 .hp-description {
-    background: #f9f9f9;
+
 
 }
 
 .hp-example {
-
+    padding-top: 20px;
+    background: rgba(186, 218, 228, 0.38);
+    padding-bottom: 1000px;
+    margin-bottom: -1000px;
 }
+
+.row {
+    overflow: hidden !important;
+}
+
+
+
 
 
 
