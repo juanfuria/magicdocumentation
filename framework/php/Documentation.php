@@ -56,7 +56,7 @@ class Documentation
             if($section->getFilesSize() > 1){
                 $badge = '<span class="badge">' . $section->getFilesSize() . '</span>';
             }
-            echo '<li class="list-group-item alert-info">' . $badge . '<a href="#section_' . htmlentities($section->getNameId()) . '">' . $section->name . '</a></li>';
+            echo '<li class="list-group-item active">' . $badge . '<a href="#section_' . htmlentities($section->getNameId()) . '">' . $section->name . '</a></li>';
             if($section->getFilesSize() > 1){
 
                 /** @var $file File */

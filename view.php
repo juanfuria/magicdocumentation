@@ -22,13 +22,12 @@ $documentation = $framework->getDocumentation($framework->getSelectedPlatform())
 
     echo $framework->getFormattedJavaScriptList();
 
-    echo $framework->getAjaxFunctions();
     ?>
     <title><?php echo $settings->pageTitle; ?></title>
     <style>
         body{
             padding-top: 70px;
-            background: #eee;
+            background: #dfdfdf;
         }
         .badge {
             color: #428bca;
@@ -39,7 +38,7 @@ $documentation = $framework->getDocumentation($framework->getSelectedPlatform())
             border-bottom: 1px solid #eee8d5;
             padding-bottom: 40px;
         }
-        .letter {
+        /*.letter {
             background: #fff;
             box-shadow: 0 0 10px rgba(0,0,0,0.3);
             margin: 26px auto 0;
@@ -68,6 +67,14 @@ $documentation = $framework->getDocumentation($framework->getSelectedPlatform())
             right: -3px;
             top: 1px;
             transform: rotate(1.4deg);
+        }*/
+        .letter{
+            background: #fff;
+            border: none;
+            border-right: 4px solid #99c;
+            border-bottom: 4px solid #99c;
+            padding: 35px;
+            box-shadow: .25em .25em .25em rgba(0,0,0,.1) !important;
         }
         .docs-nav {
             border-color: #a2a0a6;
@@ -122,6 +129,9 @@ $documentation = $framework->getDocumentation($framework->getSelectedPlatform())
             padding: 0 15px 0 25px;
             margin-left: 0px;
         }
+        .docs-nav {
+             max-height: 54px;
+         }
 
     </style>
 </head>
@@ -138,7 +148,7 @@ $framework->printNavBar();
             $documentation->printMenu($framework->settings->getBaseUrl() . "/platform/" . $framework->getSelectedPlatform());
             ?>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-10">
             <div class="letter">
             <?php
             $documentation->printall();

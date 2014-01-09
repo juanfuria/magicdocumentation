@@ -23,7 +23,7 @@ class Framework{
 
 
 
-        $this->settings     = Settings::Read('./settings.conf');
+        $this->settings     = Settings::Read('settings.conf');
         $this->platforms    = $this->getListOfPlatforms();
         $this->stylesheets  = Utils::listFiles($this->settings->cssDir, "css");
         $this->javascripts  = Utils::listFiles($this->settings->jsDir, "js");

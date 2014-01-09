@@ -43,17 +43,5 @@ class Entity
         return $ret;
     }
 
-    public static function Read($path){
-        $settingsContent    = file_get_contents($path);
-        $json               = json_decode($settingsContent, true);
-        $settings           = new Settings();
-        foreach($settings as $key => $value){
-            $settings->$key = $json[$key];
-        }
-        return $settings;
-    }
 
-    public static function Save($path, $settings){
-        file_put_contents($path, $settings);
-    }
 }

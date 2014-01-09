@@ -5,8 +5,15 @@ if (!isset($_POST['function'])){
 }
 else
 {
-    require_once('Framework.php');
-    $function = $GLOBALS['SENT_VARS']['function'];
+
+    $RESPONSE_FIELD = "html";
+
+    include_once('framework/php/Framework.php');
+    $framework = new Framework();
+    /** @var $settings Settings */
+    $settings = $framework->settings;
+
+    $function = $framework->sentVars['function'];
     $jsondata[] = array();
 
     switch($function)

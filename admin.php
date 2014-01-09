@@ -17,13 +17,15 @@ $settings = $framework->settings;
         echo $framework->getFormattedCSSList();
 
         echo $framework->getFormattedJavaScriptList();
+
+        echo $framework->getAjaxFunctions();
     ?>
     <title>Administration</title>
 </head>
 <body>
 <?php
 
-echo $settings->toEdit();
+echo $settings->toForm();
 
 ?>
 </body>
