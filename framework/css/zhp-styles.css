@@ -1,3 +1,11 @@
+
+.navbar {
+    background: rgba(245, 245, 245, 1.00) !important;
+    border-bottom-color: #b58900 !important;
+    border-bottom-width: 4px !important;
+
+
+}
 /* Custom styling for content columns*/
 .hp-description {
     background: #f9f9f9;
