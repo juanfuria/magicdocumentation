@@ -12,11 +12,12 @@
 }
 
 .hp-example {
-    padding-top: 20px;
+    padding-top: 15px;
     background: rgba(186, 218, 228, 0.38);
     padding-bottom: 1000px;
     margin-bottom: -1000px;
 }
+
 
 .row {
     overflow: hidden !important;
