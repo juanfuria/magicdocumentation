@@ -28,9 +28,20 @@ class Utils {
         return $sentVars;
     }
 
-    static function isValid($string)
-    {
+    static function isValid($string){
         return (($string != null) && ($string != '')) ? true : false;
+    }
+
+    public static function compress($buffer) {
+        // remove comments
+        $buffer = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $buffer);
+        // remove tabs, spaces, newlines, etc.
+        $buffer = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $buffer);
+        return $buffer;
+    }
+
+    public static function surroundWithtag($tag, $string){
+        return "<$tag>" . $string . "</$tag>";
     }
 
 } 

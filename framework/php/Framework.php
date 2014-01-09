@@ -20,7 +20,10 @@ class Framework{
 
     function Framework(){
         $this->sentVars     = Utils::getMergedInputArrays();
-        $this->settings     = new Settings();
+
+
+
+        $this->settings     = Settings::Read('./settings.conf');
         $this->platforms    = $this->getListOfPlatforms();
         $this->stylesheets  = Utils::listFiles($this->settings->cssDir, "css");
         $this->javascripts  = Utils::listFiles($this->settings->jsDir, "js");
@@ -60,7 +63,7 @@ class Framework{
     public function getFormattedCSSList(){
         $return = "";
         foreach($this->stylesheets as $css){
-            $return .= '<link rel="stylesheet" href="' . $this->settings->baseUrl . $css . '">' . "\n";
+            $return .= '    <link rel="stylesheet" href="' . $this->settings->getBaseUrl() . $css . '">' . "\n";
         }
         return $return;
     }
@@ -68,7 +71,7 @@ class Framework{
     public function getFormattedJavaScriptList(){
         $return = "";
         foreach($this->javascripts as $js){
-            $return .= '<script src="' . $this->settings->baseUrl . $js . '"></script>' . "\n";
+            $return .= '    <script src="' . $this->settings->getBaseUrl() . $js . '"></script>' . "\n";
         }
         return $return;
     }
@@ -79,6 +82,21 @@ class Framework{
 
     public function printNavButtons(){
         Layout::printNavButtons($this->platforms, $this->getSelectedPlatform(), $this->settings);
+    }
+
+    public function getAjaxFunctions(){
+        $return = '';
+        $return .= Ajax::Register("saveMethod", "Method", '$("#xplayers").append(data.html);');
+
+        $return .= 'function replaceData(data){
+            if (typeof(data.replace) != \'undefined\') {
+                $("#" + data.replace.id).replaceWith(data.replace.html);
+            }
+        }';
+
+        $return = Utils::compress($return);
+
+        echo "\t" . Utils::surroundWithtag("script", $return) . "\n";
 
     }
 }

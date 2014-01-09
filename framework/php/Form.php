@@ -39,11 +39,6 @@ class Form
         $this->fields[count($this->fields)] = new DropDown($name, $items, $placeholder);
     }
     
-//    public function addButton($id, $text, $class, $color, $image, $onclick)
-//    {
-//        $this->fields[count($this->fields)] = new Button($id, $text, $class, $color, $image, $onclick);
-//    }
-    
     public function header()
     {
         $ret = "<legend>Add " . $this->attributes['name'] . "</legend>\n";

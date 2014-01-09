@@ -22,6 +22,7 @@ $documentation = $framework->getDocumentation($framework->getSelectedPlatform())
 
     echo $framework->getFormattedJavaScriptList();
 
+    echo $framework->getAjaxFunctions();
     ?>
     <title><?php echo $settings->pageTitle; ?></title>
     <style>
@@ -134,7 +135,7 @@ $framework->printNavBar();
     <div class="row-fluid">
         <div class="col-md-2">
             <?php
-            $documentation->printMenu($framework->settings->baseUrl . "/platform/" . $framework->getSelectedPlatform());
+            $documentation->printMenu($framework->settings->getBaseUrl() . "/platform/" . $framework->getSelectedPlatform());
             ?>
         </div>
         <div class="col-md-9">

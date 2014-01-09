@@ -1,31 +1,42 @@
 <?php
 
-class Settings {
+class Settings extends Entity{
     public $baseUrl;
-    public $selfUrl;
     public $filesDir;
-    public $root;
-    public $app_root;
     public $frameworkDir;
     public $cssDir;
     public $jsDir;
     public $imgDir;
     public $pageTitle;
     public $urlStyle;
-    public $navBarTitle;
+
 
     function Settings(){
-        $this->filesDir     = "files";
-        $this->selfUrl      = filter_input(INPUT_SERVER, "SCRIPT_FILENAME");
-        $this->root         = filter_input(INPUT_SERVER,"DOCUMENT_ROOT");
-        $this->baseUrl      = Utils::getStringBeforeLast(str_ireplace($this->root , "", $this->selfUrl), "index.php");
-        $this->app_root     = str_ireplace($this->root, "", $this->baseUrl);
-        $this->frameworkDir = "framework/";
-        $this->cssDir       = $this->frameworkDir . "css";
-        $this->jsDir 		= $this->frameworkDir . "js";
-        $this->imgDir 		= $this->frameworkDir . "img";
-        $this->pageTitle    = "Handpoint API";
-        $this->urlStyle     = UrlType::URL_VARS;
+        /* $this->filesDir     = "files";
+         $this->frameworkDir = "framework/";
+         $this->cssDir       = $this->frameworkDir . "css";
+         $this->jsDir 		= $this->frameworkDir . "js";
+         $this->imgDir 		= $this->frameworkDir . "img";
+         $this->pageTitle    = "Handpoint API";
+         $this->urlStyle     = UrlType::URL_VARS;*/
     }
+
+    function getSelfUrl(){
+        return filter_input(INPUT_SERVER, "SCRIPT_FILENAME");
+    }
+
+    function getRoot(){
+        return filter_input(INPUT_SERVER,"DOCUMENT_ROOT");
+    }
+
+    function getBaseUrl(){
+        return Utils::getStringBeforeLast(str_ireplace($this->getRoot() , "", $this->getSelfUrl()), "index.php");
+    }
+
+    function getAppRoot(){
+        return str_ireplace($this->getRoot(), "", $this->getBaseUrl());
+    }
+
+
 
 } 
