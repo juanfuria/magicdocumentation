@@ -2,7 +2,7 @@
 /* File : Rest.php
  * Author : Arun Kumar Sekar
 */
-class REST {
+class Rest {
 
     public $_allow = array();
     public $_content_type = "application/json";

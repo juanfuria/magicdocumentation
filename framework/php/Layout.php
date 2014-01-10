@@ -76,4 +76,66 @@ class Layout {
     public static function getImagePath($imgName, $settings){
         return $settings->imgDir . "/" . $imgName;
     }
+
+    public static function printMethod($json){
+        $jsondata = json_decode($json, true);
+        $result = '';
+
+        $result .= '<div class="col-md-6 item-description">';
+        $result .= Utils::surroundWithtag("h3", $jsondata["name"]);
+        $result .= Utils::surroundWithtag("p", $jsondata["description"]);
+
+        $parameters = $jsondata["parameters"];
+        if(count($parameters) > 0){
+
+        $result .= Utils::surroundWithtag("h4", "Parameters");
+        $result .= '<table class="table-condensed table-responsive table-bordered">
+                <thead>
+                <tr class="active">
+                    <th>Parameter</th><th>Type</th><th>Validation</th><th>Notes</th>
+                </tr>
+                </thead>';
+
+
+        foreach($parameters as $param){
+        $td = '';
+        $td .= Utils::surroundWithtag("td", $param["name"]);
+        $td .= Utils::surroundWithtag("td", $param["type"]);
+        $td .= Utils::surroundWithtag("td", $param["validation"]);
+        $td .= Utils::surroundWithtag("td", $param["notes"]);
+
+        $result .= Utils::surroundWithtag("tr", $td);
+        }
+        $result .= '
+                </tbody>
+            </table>';
+        }
+
+        $lists = $jsondata["descriptionLists"];
+        if(count($lists) > 0){
+
+            foreach($lists as $list){
+                $result .= Utils::surroundWithtag("h4", $list["name"]);
+                $elements = '';
+                foreach($list["elements"] as $element){
+                    $elements .= Utils::surroundWithtag("dt", $element["name"]);
+                    $elements .= Utils::surroundWithtag("dd", $element["description"]);
+                }
+                $result .= Utils::surroundWithtag("dl", $elements);
+            }
+        }
+        $result .= '</div>';
+        $result .= '<div class="col-md-6 item-example">';
+
+        if(isset($jsondata["example"])){
+            $result .= Utils::surroundWithtag("h4", "Code examples");
+
+            $example = '<code class="java">' . $jsondata["example"] . '</code>';
+            $result .= Utils::surroundWithtag("pre", $example);
+        }
+
+        $result .= '</div>';
+
+        echo $result;
+    }
 } 

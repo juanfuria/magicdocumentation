@@ -1,4 +1,4 @@
-<div class="col-md-6 hp-description">
+<div class="col-md-6 item-description">
 <h3>Required</h3>
 <p>Required events are events that the integrator is required to implement to be able to conduct a successful transaction.</p>
 <h4>endOfTransaction</h4>
@@ -20,7 +20,7 @@
 </table>
 <br />
 </div>
-<div class="col-md-6 hp-example">
+<div class="col-md-6 item-example">
   <pre><code class="java">@Override
 public void endOfTransaction(TransactionResult transactionResult, Device device) {
 Log.d(App, transactionResult.getCustomerReceipt());
@@ -28,7 +28,7 @@ Log.d(App, transactionResult.getCustomerReceipt());
 </div>
 </div> <!-- Close Row -->
 <div class="row">
-<div class="col-md-6 hp-description">
+<div class="col-md-6 item-description">
 <br />
 <h4>signatureRequired</h4>
 <p>signatureRequired event gets called when a card requires a signature instead of PIN entry and has two parameters, request and device.</p>
@@ -49,7 +49,7 @@ Log.d(App, transactionResult.getCustomerReceipt());
 </table>
 <br />
 </div>
-<div class="col-md-6 hp-example">
+<div class="col-md-6 item-example">
   <pre><code class="java">@Override
 public void signatureRequired(SignatureRequest signatureRequest, Device device) {
 signatureRequest.getMerchantReceipt();
@@ -59,7 +59,7 @@ api.signatureResult(true);
 <br />
 </div>
 <div class="row">
-<div class="col-md-6 hp-description">
+<div class="col-md-6 item-description">
 
 <h4>deviceDiscoveryFinished</h4>
 <p>deviceDiscoveryFinished event gets called when a device discovery has finished and returns a list of devices.</p>
@@ -78,7 +78,7 @@ api.signatureResult(true);
 <br />
 
 </div>
-<div class="col-md-6 hp-example">
+<div class="col-md-6 item-example">
   <pre><code class="java">@Override
 public void deviceDiscoveryFinished(List&lt;Device&gt; devices) {
 Log.d(App, devices.toString());

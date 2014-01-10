@@ -28,6 +28,10 @@ $settings = $framework->settings;
 
 echo $settings->toForm();
 
+$file = new File("files/Android/Transactions/Refund.html");
+$json = $file->getContent();
+
+echo Layout::printMethod($json);
 ?>
 </div>
 </body>

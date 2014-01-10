@@ -12,7 +12,7 @@ include_once('framework/php/Framework.php');
 /** @var $documentation Documentation */
 //$documentation = $framework->getDocumentation($framework->getSelectedPlatform());
 
-class API extends REST
+class API extends Rest
 {
 
     private $framework;

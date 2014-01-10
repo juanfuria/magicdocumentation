@@ -1,6 +1,8 @@
 
-    <h3>refund</h3>
-    <p>A refund initiates a refund operation to the card reader. This operation moves funds from your account to the cardholders credit card. In it's simplest form you only have to pass the <strong>amount</strong> and <strong>currency</strong> but it also accepts a device object and a map with extra parameters.</p>
+    <h3>sale</h3>
+
+    <p>A sale initiates a payment operation to the card reader. In it's simplest form you only have to pass the <strong>amount</strong> and <strong>currency</strong> but it also accepts a device object and a map with extra parameters.</p>
+
     <br />
     <h4>Parameters</h4>
     <table class="table-condensed table-responsive table-bordered">
@@ -40,7 +42,8 @@
         <dd>true if the operation was successfully sent to device</dd>
     </dl>
 
+
     <h4>Code examples</h4>
-    <pre><code class="java">//Initiate a refund for 10.00 in Great British Pounds
-        api.refund(new BigInteger("1000"),Currency.GBP)
+    <pre><code class="java">//Initiate a sale for 10.00 in Great British Pounds
+        api.sale(new BigInteger("1000"),Currency.GBP)
     </code></pre>

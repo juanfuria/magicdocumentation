@@ -1,4 +1,4 @@
-<div class="col-md-6 hp-description">
+<div class="col-md-6 item-description">
 <h3>Log</h3>
 <p>Log events are events that the integrator can implement to gain access to API logs.</p>
 <h4>deviceLogsReady</h4>
@@ -20,7 +20,7 @@
 </table>
 <br />
 </div>
-<div class="col-md-6 hp-example">
+<div class="col-md-6 item-example">
 <pre><code class="java">@Override
 public void deviceLogsReady(String s, Device device) {
 Log.d(App, s);
@@ -28,7 +28,7 @@ Log.d(App, s);
 </div>
 </div> <!--Close row-->
 <div class="row">
-<div class="col-md-6 hp-description">
+<div class="col-md-6 item-description">
 <h4>onMessageLogged</h4>
 <p>onMessageLogged event gets called for all log messages that are being logged. This is only intended for debugging.</p>
 <table class="table-condensed table-responsive table-bordered">
@@ -48,7 +48,7 @@ Log.d(App, s);
 </table>
 <br />
 </div>
-<div class="col-md-6 hp-example">
+<div class="col-md-6 item-example">
 <pre><code class="java">@Override
 public void onMessageLogged(LogLevel logLevel, String s) {
 Log.d(SDK, s);

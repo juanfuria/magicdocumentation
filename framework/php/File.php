@@ -3,11 +3,13 @@
 class File{
     public $name;
     public $path;
+    public $ext;
 
     function File($path)
     {
         $fullFileName   = Utils::getStringAfterLast($path, "/");
         $this->name     = Utils::getStringBeforeLast($fullFileName, ".");
+        $this->ext      = Utils::getStringAfterLast($fullFileName, ".");
         $this->path     = $path;
     }
 

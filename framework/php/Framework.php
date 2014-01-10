@@ -29,7 +29,7 @@ class Framework{
         $this->javascripts  = Utils::listFiles($this->settings->jsDir, "js");
     }
 
-    private function getListOfPlatforms(){
+    public function getListOfPlatforms(){
 
         $dirs = Utils::listDirs($this->settings->filesDir);
         $platforms = array();

@@ -99,6 +99,8 @@ echo $m->toForm();
 
 
 echo $result;
+
+echo json_encode($jsondata);
 ?>
 
 

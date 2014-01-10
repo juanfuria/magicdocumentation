@@ -2,8 +2,10 @@
 
 class Documentation
 {
-    private $DEFAULT_INTRODUCTION = "Introduction";
-    private $DEFAULT_GETTING_STARTED = "Getting Started";
+    private $DEFAULT_ABOUT              = "About";
+    private $DEFAULT_INFO               = "Info";
+    private $DEFAULT_INTRODUCTION       = "Introduction";
+    private $DEFAULT_GETTING_STARTED    = "Getting Started";
 
     /* var $sections Section */
     public $sections = array();
@@ -23,6 +25,18 @@ class Documentation
 
     //Hacky dirty trick
     private function handleSpecialFiles($files){
+        foreach ($files as $file) {
+            $name = $this->DEFAULT_ABOUT;
+            if(stripos($file, $name)){
+                $this->sections[$name] = $this->getSectionFromFile($name, new File($file));
+            }
+        }
+        foreach ($files as $file) {
+            $name = $this->DEFAULT_INFO;
+            if(stripos($file, $name)){
+                $this->sections[$name] = $this->getSectionFromFile($name, new File($file));
+            }
+        }
         foreach ($files as $file) {
             $name = $this->DEFAULT_INTRODUCTION;
             if(stripos($file, $name)){

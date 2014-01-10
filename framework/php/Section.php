@@ -35,7 +35,13 @@ class Section
         /** @var $file File */
         foreach ($this->files as $file){
             echo '<div class="row" id="elem_' . $file->getNameId() . '">';
-            echo $file->getContent();
+            $content = $file->getContent();
+            if(Utils::isJson($content)){
+                Layout::printMethod($content);
+            }
+            else{
+                echo $content;
+            }
             echo '</div>';
         }
 
