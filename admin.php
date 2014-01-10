@@ -23,10 +23,12 @@ $settings = $framework->settings;
     <title>Administration</title>
 </head>
 <body>
+<div class="container">
 <?php
 
 echo $settings->toForm();
 
 ?>
+</div>
 </body>
 </html>

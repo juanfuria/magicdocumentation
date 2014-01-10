@@ -17,10 +17,13 @@ class Entity
         $vars       = get_object_vars($this);
         $classname  = get_class($this);
         $form       = new Form($classname, $classname, null, "javascript:void(null);");
+        $br = new LineBreak();
         foreach($vars as $key => $value)
         {
-            $form->addField((($key=="_id") || ($key=="Date"))?"hidden":"text", "$key", "$key", (($value!=null)?(($key=="_id")?(string)$value:$value):""), "input-medium uneditable-input", "$key", "");
+            $form->addField((($key=="_id") || ($key=="Date"))?"hidden":"text", "$key", "$key", (($value!=null)?(($key=="_id")?(string)$value:$value):""), "form-control uneditable-input", "$key", "");
+            //$form->addFieldManually($br);
         }
+        //$form->addFieldManually($br);
         $form->addField("button", $classname.".save","", "Save", "btn btn-success", null, "save$classname();");
         $form->addField("button",$classname.".cancel","", "Cancel", "btn btn-danger", null, "cancel$classname();");
 

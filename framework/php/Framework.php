@@ -87,6 +87,8 @@ class Framework{
     public function getAjaxFunctions(){
         $return = '';
         $return .= Ajax::Register("saveMethod", "Method", '$("#xplayers").append(data.html);');
+        $return .= Ajax::Register("saveSettings", "Settings", 'alert(data.html);');
+        $return .= Ajax::Register("cancelSettings", "Settings", 'location.reload();');
 
         $return .= 'function replaceData(data){
             if (typeof(data.replace) != \'undefined\') {

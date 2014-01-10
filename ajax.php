@@ -18,11 +18,11 @@ else
 
     switch($function)
     {
-        case "getCal":
-            $year = substr($GLOBALS['SENT_VARS']['nextDate'], 0, 4);
-            $month = substr($GLOBALS['SENT_VARS']['nextDate'], 4, 2);
+        case "saveSettings":
 
-            $jsondata['html'] = calendario($year, $month, DB::getPostDates($year, $month));
+
+
+            $jsondata[$RESPONSE_FIELD] = json_encode($framework->sentVars);
         break;
     }
 

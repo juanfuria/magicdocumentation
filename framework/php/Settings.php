@@ -1,7 +1,6 @@
 <?php
 
 class Settings extends Entity{
-    public $baseUrl;
     public $filesDir;
     public $frameworkDir;
     public $cssDir;

@@ -136,13 +136,19 @@ class FormField
 
     
     public function toString()
-    {
-        $ret = '<input';
+    {   $ret = '';
+        if($this->attributes['type'] != "hidden" || $this->attributes['type'] != "button")
+            $ret .= '<div class="form-group">';
+        if($this->attributes['type'] != "hidden")
+        $ret .= '<label for="' . $this->id . '">' . $this->attributes['name'] . '</label>';
+        $ret .= '<input';
         foreach($this->attributes as $key=>$value)
         {
             $ret .= ' ' . $key . '="' . $value . '"';
         }
         $ret .= ' />';
+        if($this->attributes['type'] != "hidden" || $this->attributes['type'] != "button")
+            $ret .= '</div>';
         return $ret;   
     }
 }
