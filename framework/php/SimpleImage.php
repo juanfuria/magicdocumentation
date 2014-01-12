@@ -4,11 +4,13 @@
 
 class SimpleImage
 {
+    var $file;
     var $image;
     var $image_type;
 
     function load($filename)
     {
+        $this->file = $filename;
         $image_info = getimagesize($filename);
         $this->image_type = $image_info[2];
         if ($this->image_type == IMAGETYPE_JPEG) {
@@ -34,13 +36,13 @@ class SimpleImage
         }
     }
 
-    function output($image_type = IMAGETYPE_JPEG)
+    function output()
     {
-        if ($image_type == IMAGETYPE_JPEG) {
+        if ($this->image_type == IMAGETYPE_JPEG) {
             imagejpeg($this->image);
-        } elseif ($image_type == IMAGETYPE_GIF) {
+        } elseif ($this->image_type == IMAGETYPE_GIF) {
             imagegif($this->image);
-        } elseif ($image_type == IMAGETYPE_PNG) {
+        } elseif ($this->image_type == IMAGETYPE_PNG) {
             imagepng($this->image);
         }
     }

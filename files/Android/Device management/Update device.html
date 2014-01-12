@@ -1,31 +1,35 @@
-<h3>update</h3>
-<p>The update operation checks for update to the card reader and initiates an update if needed.</p>
-<br />
-<h4>Parameters</h4>
-<table class="table-condensed table-responsive table-bordered">
-    <thead>
-    <tr>
-        <th>Parameter</th><th>Type</th><th>Validation</th><th>Notes</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>device</td><td>Device</td><td>Optional</td><td>This is used if you want to send the operation to a specific device. Recommended if you are using multiple devices</td>
-    </tr>
-    </tbody>
-</table>
-<br />
-<h4>Events invoked</h4>
-None
-<h4>Returns</h4>
-<dl>
-    <dt>Boolean</dt>
-    <dd>true if the operation was successfully sent to device</dd>
-</dl>
-
-
-<h4>Code examples</h4>
-<pre><code class="java">//Check for card reader update
-    api.update();
-</code></pre>
+{
+"title": "Update device",
+"name": "update",
+"description": "The update operation checks for update to the card reader and initiates an update if needed.",
+"parameters": [
+{
+"name": "device",
+"type": "Device",
+"validation": "Optional",
+"notes": "This is used if you want to send the operation to a specific device. Recommended if you are using multiple devices"
+}
+],
+"descriptionLists": [
+{
+"name": "Events invoked",
+"elements": [
+{
+"name": "None",
+"description": "Information about this process should be available at the device's screen."
+}
+]
+},
+{
+"name": "Returns",
+"elements": [
+{
+"name": "Boolean",
+"description": "true if the operation was successfully sent to device"
+}
+]
+}
+],
+"example": "\/\/Check for card reader update\napi.update();"
+}
                   

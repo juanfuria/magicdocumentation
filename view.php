@@ -26,8 +26,7 @@ $documentation = $framework->getDocumentation($framework->getSelectedPlatform())
     <title><?php echo $settings->pageTitle; ?></title>
     <style>
         body{
-            padding-top: 70px;
-            background: #dfdfdf;
+            padding-top: 50px;
         }
      </style>
 </head>
@@ -39,12 +38,12 @@ $framework->printNavBar();
 
 <div class="container-fluid">
     <div class="row-fluid">
-        <div class="col-md-2">
+        <div class="col-md-2 menu">
             <?php
             $documentation->printMenu($framework->settings->getBaseUrl() . "/platform/" . $framework->getSelectedPlatform());
             ?>
         </div>
-        <div class="col-md-10">
+        <div class="col-md-10 content">
             <div class="letter">
             <?php
             $documentation->printall();

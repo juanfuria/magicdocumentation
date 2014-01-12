@@ -18,6 +18,7 @@ class Settings extends Entity{
          $this->imgDir 		= $this->frameworkDir . "img";
          $this->pageTitle    = "Handpoint API";
          $this->urlStyle     = UrlType::URL_VARS;*/
+
     }
 
     function getSelfUrl(){

@@ -35,4 +35,3 @@ $image->load($settings->imgDir . "/" .$framework->sentVars["file"] . "." . $fram
 $image->resizeToWidth($framework->sentVars["size"]);
 $image->output();
 
-?>

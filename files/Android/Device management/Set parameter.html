@@ -1,38 +1,71 @@
-<h3>setParameter</h3>
-<p>Changes values of certain parameters on the card reader. Those are: BluetoothName, BluetoothPass, SystemTimeout, ScreenTimeout, SignatureTimeout</p>
-<br />
-<h4>Parameters</h4>
-<table class="table-condensed table-responsive table-bordered">
-    <thead>
-    <tr>
-        <th>Parameter</th><th>Type</th><th>Validation</th><th>Notes</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>param</td><td>DeviceParameter</td><td>Required</td><td>The parameter to change</td>
-    </tr>
-    <tr>
-        <td>value</td><td>String</td><td>Required</td><td>New value of the parameter</td>
-    </tr>
-    <tr>
-        <td>device</td><td>Device</td><td>Optional</td><td>This is used if you want to send the operation to a specific device. Recommended if you are using multiple devices</td>
-    </tr>
-    </tbody>
-</table>
-<br />
-<h4>Events invoked</h4>
-None
-<h4>Returns</h4>
-<dl>
-    <dt>Boolean</dt>
-    <dd>true if the operation was successfully sent to device</dd>
-</dl>
-
-
-<h4>Code examples</h4>
-<pre><code class="java">//Changes the bluetooth name of card reader
-    api.setParameter(DeviceParameter.BluetoothName, "OrangeCardReader");
-</code></pre>
-
-                  
+{
+"title": "Set parameter",
+"name": "setParameter",
+"description": "Changes values of certain parameters on the card reader.",
+"parameters": [
+{
+"name": "param",
+"type": "DeviceParameter",
+"validation": "Required",
+"notes": "The name of the parameter to change"
+},
+{
+"name": "value",
+"type": "String",
+"validation": "Required",
+"notes": "New value of the parameter"
+},
+{
+"name": "device",
+"type": "Device",
+"validation": "Optional",
+"notes": "This is used if you want to send the operation to a specific device. Recommended if you are using multiple devices"
+}
+],
+"descriptionLists": [
+{
+"name": "Available parameters",
+"elements": [
+{
+"name": "BluetoothName",
+"description": "true if the operation was successfully sent to device"
+},
+{
+"name": "BluetoothPass",
+"description": "true if the operation was successfully sent to device"
+},
+{
+"name": "SystemTimeout",
+"description": "true if the operation was successfully sent to device"
+},
+{
+"name": "ScreenTimeout",
+"description": "true if the operation was successfully sent to device"
+},
+{
+"name": "SignatureTimeout",
+"description": "true if the operation was successfully sent to device"
+}
+]
+},
+{
+"name": "Events invoked",
+"elements": [
+{
+"name": "None",
+"description": "No events are invoked."
+}
+]
+},
+{
+"name": "Returns",
+"elements": [
+{
+"name": "Boolean",
+"description": "true if the operation was successfully sent to device"
+}
+]
+}
+],
+"example": "\/\/Changes the bluetooth name of card reader\napi.setParameter(DeviceParameter.BluetoothName, \"OrangeCardReader\");"
+}

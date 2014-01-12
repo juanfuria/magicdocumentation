@@ -26,10 +26,10 @@ class Layout {
             }
 
             $url = '';
-            if($settings->urlMode == UrlType::URL_VARS){
+            if($settings->urlStyle == UrlType::URL_VARS){
                 $url = $settings->baseUrl . Utils::getStringAfterLast($_SERVER["PHP_SELF"], "/") . '?platform=' . $platform . '';
             }
-            else if ($settings->urlMode == UrlType::URL_READABLE){
+            else if ($settings->urlStyle == UrlType::URL_READABLE){
                 $url = $settings->baseUrl . 'platform/' . $platform . '/';
             }
 
@@ -48,10 +48,10 @@ class Layout {
         foreach($navBarItems as $platform){
             echo '<a class="btn btn-success btn-lg ' . $platform .' platform-btn" href="';
             $url = '';
-            if($settings->urlMode == UrlType::URL_VARS){
+            if($settings->urlStyle == UrlType::URL_VARS){
                 $url = $settings->baseUrl . 'view.php?platform=' . $platform . '';
             }
-            else if ($settings->urlMode == UrlType::URL_READABLE){
+            else if ($settings->urlStyle == UrlType::URL_READABLE){
                 $url = $settings->baseUrl . 'platform/' . $platform . '/';
             }
             //?platform='. $platform . '
@@ -128,7 +128,7 @@ class Layout {
         $result .= '<div class="col-md-6 item-example">';
 
         if(isset($jsondata["example"])){
-            $result .= Utils::surroundWithtag("h4", "Code examples");
+            $result .= Utils::surroundWithtag("h4", "Code example");
 
             $example = '<code class="java">' . $jsondata["example"] . '</code>';
             $result .= Utils::surroundWithtag("pre", $example);
