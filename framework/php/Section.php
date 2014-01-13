@@ -30,7 +30,9 @@ class Section
 
     function printContent(){
         echo '<section id="section_' . $this->getNameId() . '">';
-        echo '<h2>' . $this->name . '</h2>';
+        echo '<div class="row" >
+        <div class="col-md-6 item-description">
+        <h2>' . $this->name . '</h2></div><div class="col-md-6 item-example"></div></div>';
 
         /** @var $file File */
         foreach ($this->files as $file){

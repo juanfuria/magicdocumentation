@@ -74,6 +74,13 @@ section{
         margin-left: 0;
     }
 }
+.list-group-subitem{
+    border: none;
+}
+.list-group-subitem a{
+    padding-left: 20px;
+    overflow: hidden;
+}
 
 .list-group .active{
     background: #5db6e8;
@@ -90,6 +97,7 @@ section{
 }
 .list-group .active a{
     color: #fff !important;
+    font-weight: lighter;
 }
 
 .item-description {
@@ -101,9 +109,13 @@ section{
     padding-bottom: 1000px;
     margin-bottom: -1000px;
 }
+.menu{
+
+}
 
 .content{
     padding-left: 20px;
+    border-left: 1px solid #ddd;
 }
 /*
 .docs-nav {
