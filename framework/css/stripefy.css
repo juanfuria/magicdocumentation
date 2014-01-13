@@ -109,8 +109,11 @@ section{
     padding-bottom: 1000px;
     margin-bottom: -1000px;
 }
-.menu{
 
+/*TODO: Fix for responsive*/
+.menu>ul{
+    width:inherit;
+    position:fixed;
 }
 
 .content{
