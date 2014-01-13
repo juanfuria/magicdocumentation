@@ -27,10 +27,10 @@ class Layout {
 
             $url = '';
             if($settings->urlStyle == UrlType::URL_VARS){
-                $url = $settings->baseUrl . Utils::getStringAfterLast($_SERVER["PHP_SELF"], "/") . '?platform=' . $platform . '';
+                $url = $settings->getBaseUrl() . Utils::getStringAfterLast($_SERVER["PHP_SELF"], "/") . '?platform=' . $platform . '';
             }
             else if ($settings->urlStyle == UrlType::URL_READABLE){
-                $url = $settings->baseUrl . 'platform/' . $platform . '/';
+                $url = $settings->getBaseUrl() . 'platform/' . $platform . '/';
             }
 
 
@@ -49,10 +49,10 @@ class Layout {
             echo '<a class="btn btn-success btn-lg ' . $platform .' platform-btn" href="';
             $url = '';
             if($settings->urlStyle == UrlType::URL_VARS){
-                $url = $settings->baseUrl . 'view.php?platform=' . $platform . '';
+                $url = $settings->getBaseUrl() . 'view.php?platform=' . $platform . '';
             }
             else if ($settings->urlStyle == UrlType::URL_READABLE){
-                $url = $settings->baseUrl . 'platform/' . $platform . '/';
+                $url = $settings->getBaseUrl() . 'platform/' . $platform . '/';
             }
             //?platform='. $platform . '
             echo $url;
