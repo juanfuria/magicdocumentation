@@ -14,7 +14,7 @@ class Layout {
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="view.php"><span class="glyphicon glyphicon-cloud"></span>&nbsp;'.$settings->pageTitle.'</a>
+                  <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-cloud"></span>&nbsp;'.$settings->pageTitle.'</a>
                 </div>
                 <nav class="collapse navbar-collapse navbar-collapse" role="navigation">
                   <ul class="nav navbar-nav">';
@@ -49,7 +49,7 @@ class Layout {
             echo '<a class="btn btn-success btn-lg ' . $platform .' platform-btn" href="';
             $url = '';
             if($settings->urlStyle == UrlType::URL_VARS){
-                $url = $settings->getBaseUrl() . 'view.php?platform=' . $platform . '';
+                $url = $settings->getBaseUrl() . 'index.php?platform=' . $platform . '';
             }
             else if ($settings->urlStyle == UrlType::URL_READABLE){
                 $url = $settings->getBaseUrl() . 'platform/' . $platform . '/';
