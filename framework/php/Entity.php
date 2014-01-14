@@ -5,11 +5,19 @@ class Entity
 
     public $_id;
 
-    function BaseObject(){}
-
     public function getId()
     {
         return (string)$this->_id;
+    }
+
+    public function __get($key)
+    {
+        return $this->variables[$key];
+    }
+
+    public function __set($key, $value)
+    {
+        $this->variables[$key] = $value;
     }
 
     public function toForm()

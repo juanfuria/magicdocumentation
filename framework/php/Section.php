@@ -29,14 +29,14 @@ class Section
     }
 
     function printContent(){
-        echo '<section id="section_' . $this->getNameId() . '">';
+        echo '<section id="section_' . $this->getNameId() . '" class="escape-navbar">';
         echo '<div class="row" >
         <div class="col-md-6 item-description">
         <h2>' . $this->name . '</h2></div><div class="col-md-6 item-example"></div></div>';
 
         /** @var $file File */
         foreach ($this->files as $file){
-            echo '<div class="row" id="elem_' . $file->getNameId() . '">';
+            echo '<div class="row escape-navbar" id="elem_' . $file->getNameId() . '">';
             $content = $file->getContent();
             if(Utils::isJson($content)){
                 Layout::printMethod($content);

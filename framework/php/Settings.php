@@ -6,6 +6,7 @@ class Settings extends Entity{
     public $cssDir;
     public $jsDir;
     public $imgDir;
+    public $templatesDir;
     public $pageTitle;
     public $urlStyle;
 

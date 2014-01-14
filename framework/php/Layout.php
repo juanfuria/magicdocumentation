@@ -5,26 +5,14 @@ class Layout {
 
     static function printNavBar($navBarItems, $selectedItem, $settings){
 
-        echo '<header class="navbar navbar-default navbar-fixed-top docs-nav" role="banner">
-              <div class="container">
-                <div class="navbar-header">
-                  <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-cloud"></span>&nbsp;'.$settings->pageTitle.'</a>
-                </div>
-                <nav class="collapse navbar-collapse navbar-collapse" role="navigation">
-                  <ul class="nav navbar-nav">';
+        $view = new Template($settings->templatesDir . "/navbar.php");
+
+        $view->title = $settings->pageTitle;
+        $items = array();
+        $x = 0;
 
         foreach ($navBarItems as $platform) {
-            $addon = '';
-            if ($platform == $selectedItem) {
-                $addon = ' class="active"';
-            }
-
+            $entity = new Template("");
             $url = '';
             if($settings->urlStyle == UrlType::URL_VARS){
                 $url = $settings->getBaseUrl() . Utils::getStringAfterLast($_SERVER["PHP_SELF"], "/") . '?platform=' . $platform . '';
@@ -32,16 +20,18 @@ class Layout {
             else if ($settings->urlStyle == UrlType::URL_READABLE){
                 $url = $settings->getBaseUrl() . 'platform/' . $platform . '/';
             }
+            $entity->url      = $url;
+            $entity->platform = $platform;
+            if($platform == $selectedItem){
+                $entity->class = 'class="active"';
+            }
 
-
-            echo '<li' . $addon . '><a href="' . $url . '">' . $platform . '</a></li>';
-
+            $items[$x] = $entity;
+            $x++;
         }
+        $view->items = $items;
+        echo $view;
 
-               echo '</ul>
-                </nav>
-              </div>
-            </header>';
     }
 
     static function printNavButtons($navBarItems, $selectedItem, $settings){
@@ -83,6 +73,15 @@ class Layout {
 
         $result .= '<div class="col-md-6 item-description">';
         $result .= Utils::surroundWithtag("h3", $jsondata["name"]);
+        $result .= Utils::surroundWithtag("span", "(Available since version:    " . $jsondata["version"] . ")");
+        if(isset($jsondata["status"])){
+
+            $result .= '
+            <div class="callout callout-danger">
+              <h4>Warning!</h4>
+              <p>This method has been marked as deprecated. We strongly discourage you to use it.</p>
+            </div>';
+        }
         $result .= Utils::surroundWithtag("p", $jsondata["description"]);
 
         $parameters = $jsondata["parameters"];

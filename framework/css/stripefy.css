@@ -58,6 +58,8 @@ th {
 }
 section{
     border-bottom: 1px solid #eee8d5;
+    padding-top: 40px;
+    margin-top: -40px;
 }
 .letter{
     background: #fff;
@@ -102,6 +104,13 @@ section{
 
 .item-description {
     padding-right: 1em;
+
+}
+
+.escape-navbar{
+    padding-top: 60px;
+    margin-top: -60px;
+
 }
 
 .item-example {
