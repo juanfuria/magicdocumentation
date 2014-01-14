@@ -14,11 +14,11 @@ $settings = $framework->settings;
 <head>
     <meta charset="UTF-8">
     <?php
-        echo $framework->getFormattedCSSList();
+        $framework->printCssHeaders();
 
-        echo $framework->getFormattedJavaScriptList();
+        $framework->printJavaScriptHeaders();
 
-        echo $framework->getAjaxFunctions();
+        $framework->printAjaxFunctions();
     ?>
     <title>Administration</title>
 </head>

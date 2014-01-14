@@ -14,9 +14,9 @@ $settings = $framework->settings;
     <head>
         <meta charset="UTF-8">
         <?php
-        echo $framework->getFormattedCSSList();
+        echo $framework->printCssHeaders();
 
-        echo $framework->getFormattedJavaScriptList();
+        echo $framework->printJavaScriptHeaders();
 
         ?>
         <title><?php echo $settings->pageTitle; ?></title>

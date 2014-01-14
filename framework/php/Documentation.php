@@ -10,8 +10,16 @@ class Documentation
     /* var $sections Section */
     public $sections = array();
 
+    public $specialFiles = array();
+
     function Documentation($path)
     {
+        //$x = 0;
+        $this->specialFiles[count($this->specialFiles)] = $this->DEFAULT_ABOUT;
+        $this->specialFiles[count($this->specialFiles)] = $this->DEFAULT_INFO;
+        $this->specialFiles[count($this->specialFiles)] = $this->DEFAULT_INTRODUCTION;
+        $this->specialFiles[count($this->specialFiles)] = $this->DEFAULT_GETTING_STARTED;
+
         $files    = Utils::listFiles($path, "html");
         $dirs     = Utils::listDirs($path);
 
@@ -23,33 +31,19 @@ class Documentation
         }
     }
 
-    //Hacky dirty trick
     private function handleSpecialFiles($files){
-        foreach ($files as $file) {
-            $name = $this->DEFAULT_ABOUT;
-            if(stripos($file, $name)){
-                $this->sections[$name] = $this->getSectionFromFile($name, new File($file));
-            }
-        }
-        foreach ($files as $file) {
-            $name = $this->DEFAULT_INFO;
-            if(stripos($file, $name)){
-                $this->sections[$name] = $this->getSectionFromFile($name, new File($file));
-            }
-        }
-        foreach ($files as $file) {
-            $name = $this->DEFAULT_INTRODUCTION;
-            if(stripos($file, $name)){
-                $this->sections[$name] = $this->getSectionFromFile($name, new File($file));
-            }
-        }
-        foreach ($files as $file) {
-            $name = $this->DEFAULT_GETTING_STARTED;
-            if(stripos($file, $name)){
-                $this->sections[$name] = $this->getSectionFromFile($name, new File($file));
-            }
-        }
 
+       foreach ($this->specialFiles as $spfile) {
+            $found = false;
+            $x = 0;
+            while(!$found && ($x < count($files))){
+                if(stripos($files[$x], $spfile)){
+                    $this->sections[$spfile] = $this->getSectionFromFile($spfile, new File($files[$x]));
+                    $found = true;
+                }
+                $x++;
+            }
+        }
     }
 
     private function getSectionFromFile($sectionName, $file){
@@ -60,26 +54,6 @@ class Documentation
 
     function getSectionsSize(){
         return count($this->sections);
-    }
-
-    function printMenu($baseUrl){
-        /** @var $section Section */
-        echo '<ul class="list-group">';
-        foreach ($this->sections as $section) {
-            $badge = "";
-            if($section->getFilesSize() > 1){
-                $badge = '<span class="badge">' . $section->getFilesSize() . '</span>';
-            }
-            echo '<li class="list-group-item active">' . $badge . '<a href="#section_' . htmlentities($section->getNameId()) . '">' . $section->name . '</a></li>';
-            if($section->getFilesSize() > 1){
-
-                /** @var $file File */
-                foreach ($section->files as $file) {
-                    echo '<li class="list-group-item list-group-subitem">' . '<a href="#elem_' . $file->getNameId() . '">' . $file->name . '</a></li>';
-                }
-            }
-        }
-        echo '</ul>';
     }
 
     function printSectionContent($sectionName){

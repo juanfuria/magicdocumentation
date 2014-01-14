@@ -2,38 +2,6 @@
 
 class Layout {
 
-
-    static function printNavBar($navBarItems, $selectedItem, $settings){
-
-        $view = new Template($settings->templatesDir . "/navbar.php");
-
-        $view->title = $settings->pageTitle;
-        $items = array();
-        $x = 0;
-
-        foreach ($navBarItems as $platform) {
-            $entity = new Template("");
-            $url = '';
-            if($settings->urlStyle == UrlType::URL_VARS){
-                $url = $settings->getBaseUrl() . Utils::getStringAfterLast($_SERVER["PHP_SELF"], "/") . '?platform=' . $platform . '';
-            }
-            else if ($settings->urlStyle == UrlType::URL_READABLE){
-                $url = $settings->getBaseUrl() . 'platform/' . $platform . '/';
-            }
-            $entity->url      = $url;
-            $entity->platform = $platform;
-            if($platform == $selectedItem){
-                $entity->class = 'class="active"';
-            }
-
-            $items[$x] = $entity;
-            $x++;
-        }
-        $view->items = $items;
-        echo $view;
-
-    }
-
     static function printNavButtons($navBarItems, $selectedItem, $settings){
         foreach($navBarItems as $platform){
             echo '<a class="btn btn-success btn-lg ' . $platform .' platform-btn" href="';

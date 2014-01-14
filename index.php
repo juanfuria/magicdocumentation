@@ -18,15 +18,16 @@ $documentation = $framework->getDocumentation($framework->getSelectedPlatform())
 
     <?php
 
-    echo $framework->getFormattedCSSList();
+    echo $framework->printCssHeaders();
 
-    echo $framework->getFormattedJavaScriptList();
+    echo $framework->printJavaScriptHeaders();
 
     ?>
     <title><?php echo $settings->pageTitle; ?></title>
     <style>
         body{
             padding-top: 50px;
+            height: 100%;
         }
      </style>
 </head>
@@ -40,7 +41,7 @@ $framework->printNavBar();
     <div class="row-fluid">
         <div class="col-md-2 menu">
             <?php
-            $documentation->printMenu($framework->settings->getBaseUrl() . "/platform/" . $framework->getSelectedPlatform());
+            $framework->printMenu();
             ?>
         </div>
         <div class="col-md-10 content">
@@ -49,7 +50,6 @@ $framework->printNavBar();
             $documentation->printall();
             ?>
             </div>
-            <div class="shadow-separator"></div>
         </div>
     </div>
 </div>
