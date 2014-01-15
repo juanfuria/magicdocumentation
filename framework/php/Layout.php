@@ -41,7 +41,7 @@ class Layout {
 
         $result .= '<div class="col-md-6 item-description">';
         $result .= Utils::surroundWithtag("h3", $jsondata["name"]);
-        $result .= Utils::surroundWithtag("span", "(Available since version:    " . $jsondata["version"] . ")");
+        $result .= '<span class="label label-primary">Available since ' . $jsondata["version"] . '</span>';
         if(isset($jsondata["status"])){
 
             $result .= '
@@ -97,7 +97,7 @@ class Layout {
         if(isset($jsondata["example"])){
             $result .= Utils::surroundWithtag("h4", "Code example");
 
-            $example = '<code class="java">' . $jsondata["example"] . '</code>';
+            $example = '<code>' . $jsondata["example"] . '</code>';
             $result .= Utils::surroundWithtag("pre", $example);
         }
 

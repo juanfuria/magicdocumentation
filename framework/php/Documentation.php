@@ -11,8 +11,9 @@ class Documentation
     public $sections = array();
 
     public $specialFiles = array();
+    private $framework;
 
-    function Documentation($path)
+    function Documentation($path, $framework)
     {
         //$x = 0;
         $this->specialFiles[count($this->specialFiles)] = $this->DEFAULT_ABOUT;
@@ -27,8 +28,9 @@ class Documentation
 
         foreach ($dirs as $sectionPath) {
             $name = Utils::getStringAfterLast($sectionPath, "/");
-            $this->sections[$name] = new Section($name, $sectionPath);
+            $this->sections[$name] = new Section($name, $sectionPath, $framework);
         }
+        $this->framework = $framework;
     }
 
     private function handleSpecialFiles($files){
@@ -47,7 +49,7 @@ class Documentation
     }
 
     private function getSectionFromFile($sectionName, $file){
-        $section = new Section($sectionName);
+        $section = new Section($sectionName, NULL, $this->framework);
         $section->files[$section->getFilesSize()]   = $file;
         return $section;
     }

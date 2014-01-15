@@ -5,8 +5,12 @@ class Section
     public $name;
     public $files = array();
     private $path;
+    /**
+     * @var null
+     */
+    private $framework;
 
-    function Section($name, $path = NULL){
+    function Section($name, $path = NULL, $framework = NULL){
         $this->name   = $name;
         if($path != NULL){
             $this->path   = $path;
@@ -15,6 +19,7 @@ class Section
                 $this->files[$this->getFilesSize()] = new File($file);
             }
         }
+        $this->framework = $framework;
     }
 
     function getFilesSize(){
@@ -29,6 +34,8 @@ class Section
     }
 
     function printContent(){
+
+
         echo '<section id="section_' . $this->getNameId() . '" class="escape-navbar">';
         echo '<div class="row" >
         <div class="col-md-6 item-description">
@@ -36,10 +43,14 @@ class Section
 
         /** @var $file File */
         foreach ($this->files as $file){
+
+
             echo '<div class="row escape-navbar" id="elem_' . $file->getNameId() . '">';
             $content = $file->getContent();
             if(Utils::isJson($content)){
-                Layout::printMethod($content);
+                $view = new Template($this->framework->settings->templatesDir . "/method_two_columns.php");
+                $view->json = json_decode($content, true);
+                echo $view;
             }
             else{
                 echo $content;

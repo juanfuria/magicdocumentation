@@ -103,6 +103,9 @@ section{
 
 .item-description {
     padding-right: 1em;
+    /* You may want to take this two out */
+    font-family: HelveticaNeue, Helvetica, Arial, sans-serif !important;
+    font-size: 13px;
 
 }
 
@@ -126,15 +129,15 @@ section{
 .menu>ul{
     width:inherit;
     position:fixed;
-    margin-top: 5px;
+    margin-top: 3px;
     overflow-y: auto;
     height: 100%;
-    padding-bottom: 25px;
+    padding-bottom: 5%;
 }
 
 .list-group-item:first-child {
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
 }
 
 .content{

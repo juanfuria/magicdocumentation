@@ -54,7 +54,7 @@ class Framework{
             die;
         }
 
-        return new Documentation($this->settings->filesDir . "/" . $platform);
+        return new Documentation($this->settings->filesDir . "/" . $platform, $this);
     }
 
     public function printCssHeaders(){
