@@ -45,8 +45,13 @@ class Utils {
     }
 
     public static function isJson($string) {
-        json_decode($string);
-        return (json_last_error() == JSON_ERROR_NONE);
+        if(Utils::isValid($string)){
+            json_decode($string);
+            return (json_last_error() == JSON_ERROR_NONE);
+        }
+        else{
+            return false;
+        }
     }
 
 } 
