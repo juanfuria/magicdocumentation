@@ -47,9 +47,8 @@ pre {
     border-radius: 0px;
 }
 th {
-    font-weight: normal;
-    background: #098ebc;
-    color: #fff !important;
+    font-weight: bold;
+
 }
 .badge {
     color: #428bca;

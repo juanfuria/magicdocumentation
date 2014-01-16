@@ -21,9 +21,9 @@
 
         <?php if(isset($json['parameters']) &&  count($json['parameters']) > 0): ?>
             <h4>Parameters</h4>
-            <table class="table-condensed table-responsive">
+            <table class="table-condensed table-responsive parameters">
                 <thead>
-                <tr class="active">
+                <tr>
                     <th>Parameter</th>
                     <th>Type</th>
                     <th>Validation</th>
@@ -33,8 +33,8 @@
                 <tbody>
                 <?php foreach ($json['parameters'] as $param): ?>
                 <tr>
-                    <td><?=$param['name']?></td>
-                    <td><?=$param['type']?></td>
+                    <td><code><?=$param['name']?></code></td>
+                    <td><em><?=$param['type']?></em></td>
                     <td><?=$param['validation']?></td>
                     <td><?=$param['notes']?></td>
                 </tr>

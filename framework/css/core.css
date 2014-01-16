@@ -47,3 +47,19 @@
 .label{
     padding: .5em .7em .6em;
 }
+
+.parameters tbody tr{
+    border-top: 1px solid #dddddd;
+    vertical-align: top;
+}
+
+.parameters tbody tr em{
+    font-style: italic;
+}
+
+.parameters tbody tr code{
+    color: #48484c;
+    background-color: #f7f7f9;
+    border: 1px solid #e1e1e8;
+    white-space: nowrap;
+}
