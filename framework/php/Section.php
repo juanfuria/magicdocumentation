@@ -4,6 +4,7 @@ class Section
 {
     public $name;
     public $files = array();
+    public $special = false;
     private $path;
     /**
      * @var null
@@ -35,11 +36,15 @@ class Section
 
     function printContent(){
 
-
         echo '<section id="section_' . $this->getNameId() . '" class="escape-navbar">';
         echo '<div class="row" >
         <div class="col-md-6 item-description">
-        <h2>' . $this->name . '</h2></div><div class="col-md-6 item-example"></div></div>';
+        <h2>' . $this->name . '</h2></div>';
+
+        //TODO fix horrible kludge
+        if(!$this->special){
+            echo '<div class="col-md-6 item-example"></div></div>';
+        }
 
         /** @var $file File */
         foreach ($this->files as $file){
@@ -48,7 +53,7 @@ class Section
             echo '<div class="row escape-navbar" id="elem_' . $file->getNameId() . '">';
             $content = $file->getContent();
             if(Utils::isJson($content)){
-                $view = new Template($this->framework->settings->templatesDir . "/method_two_columns.php");
+                $view = new Template($this->framework->settings->getTemplatesDir() . "/method_two_columns.php");
                 $view->json = json_decode($content, true);
                 echo $view;
             }

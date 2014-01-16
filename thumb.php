@@ -31,7 +31,7 @@ $mimeTypes = array(
 header('Content-Type: ' . $mimeTypes[$framework->sentVars["ext"]]);
 //@require_once('framework/inc/SimpleImage.php');
 $image = new SimpleImage();
-$image->load($settings->imgDir . "/" .$framework->sentVars["file"] . "." . $framework->sentVars["ext"]);//http://pickr.me/i/pickr_d672ccf8.jpg');
+$image->load($settings->getImgDir() . "/" .$framework->sentVars["file"] . "." . $framework->sentVars["ext"]);//http://pickr.me/i/pickr_d672ccf8.jpg');
 $image->resizeToWidth($framework->sentVars["size"]);
 $image->output();
 

@@ -1,25 +1,36 @@
 <?php
 
 class Settings extends Entity{
-    public $filesDir;
-    public $frameworkDir;
-    public $cssDir;
-    public $jsDir;
-    public $imgDir;
     public $templatesDir;
     public $pageTitle;
     public $urlStyle;
 
 
     function Settings(){
-        /* $this->filesDir     = "files";
-         $this->frameworkDir = "framework/";
-         $this->cssDir       = $this->frameworkDir . "css";
-         $this->jsDir 		= $this->frameworkDir . "js";
-         $this->imgDir 		= $this->frameworkDir . "img";
-         $this->pageTitle    = "Handpoint API";
-         $this->urlStyle     = UrlType::URL_VARS;*/
+    }
 
+    function getCssDir(){
+        return $this->getFrameworkDir() . "/" . "css";
+    }
+
+    function getJsDir(){
+        return $this->getFrameworkDir() . "/" . "js";
+    }
+
+    function getImgDir(){
+        return $this->getFrameworkDir() . "/" . "img";
+    }
+
+    function getFilesDir(){
+        return "files";
+    }
+
+    function getTemplatesDir(){
+        return $this->getFrameworkDir() . "/" . "templates";
+    }
+
+    function getFrameworkDir(){
+        return "framework";
     }
 
     function getSelfUrl(){
@@ -31,7 +42,8 @@ class Settings extends Entity{
     }
 
     function getBaseUrl(){
-        return Utils::getStringBeforeLast(str_ireplace($this->getRoot() , "", $this->getSelfUrl()), "index.php");
+        //return Utils::getStringBeforeLast(str_ireplace($this->getRoot() , "", $this->getSelfUrl()), "index.php") . "/";
+        return Utils::getStringBeforeLast($_SERVER["SCRIPT_NAME"], "index.php");
     }
 
     function getAppRoot(){

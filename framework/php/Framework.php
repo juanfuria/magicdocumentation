@@ -22,13 +22,13 @@ class Framework{
         $this->sentVars     = Utils::getMergedInputArrays();
         $this->settings     = Settings::Read('settings.conf');
         $this->platforms    = $this->getListOfPlatforms();
-        $this->stylesheets  = Utils::listFiles($this->settings->cssDir, "css");
-        $this->javascripts  = Utils::listFiles($this->settings->jsDir, "js");
+        $this->stylesheets  = Utils::listFiles($this->settings->getCssDir(), "css");
+        $this->javascripts  = Utils::listFiles($this->settings->getJsDir(), "js");
     }
 
     public function getListOfPlatforms(){
 
-        $dirs = Utils::listDirs($this->settings->filesDir);
+        $dirs = Utils::listDirs($this->settings->getFilesDir());
         $platforms = array();
 
         foreach ($dirs as $path) {
@@ -54,12 +54,12 @@ class Framework{
             die;
         }
 
-        return new Documentation($this->settings->filesDir . "/" . $platform, $this);
+        return new Documentation($this->settings->getFilesDir() . "/" . $platform, $this);
     }
 
     public function printCssHeaders(){
         $return = "";
-        $view = new Template($this->settings->templatesDir . "/css_header.php");
+        $view = new Template($this->settings->getTemplatesDir() . "/css_header.php");
         foreach($this->stylesheets as $css){
             $view->url = $this->settings->getBaseUrl() . $css;
             $return .= $view;
@@ -69,7 +69,7 @@ class Framework{
 
     public function printJavaScriptHeaders(){
         $return = "";
-        $view = new Template($this->settings->templatesDir . "/js_header.php");
+        $view = new Template($this->settings->getTemplatesDir() . "/js_header.php");
         foreach($this->javascripts as $js){
             $view->url = $this->settings->getBaseUrl() . $js;
             $return .= $view;
@@ -79,7 +79,7 @@ class Framework{
 
     public function printNavBar(){
 
-        $view = new Template($this->settings->templatesDir . "/navbar.php");
+        $view = new Template($this->settings->getTemplatesDir() . "/navbar.php");
 
         $view->title = $this->settings->pageTitle;
         $items = array();
@@ -109,7 +109,7 @@ class Framework{
 
     public function printMenu(){
 
-        $view = new Template($this->settings->templatesDir . "/menu.php");
+        $view = new Template($this->settings->getTemplatesDir() . "/menu.php");
         $doc = $this->getDocumentation($this->getSelectedPlatform());
         /** @var $section Section */
         $items = array();

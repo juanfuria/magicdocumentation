@@ -41,6 +41,7 @@ class Documentation
             while(!$found && ($x < count($files))){
                 if(stripos($files[$x], $spfile)){
                     $this->sections[$spfile] = $this->getSectionFromFile($spfile, new File($files[$x]));
+                    $this->sections[$spfile]->special = true;
                     $found = true;
                 }
                 $x++;
