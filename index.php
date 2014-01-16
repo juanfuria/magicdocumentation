@@ -29,6 +29,7 @@ $documentation = $framework->getDocumentation($framework->getSelectedPlatform())
             padding-top: 50px;
             height: 100%;
         }
+
      </style>
 </head>
 <body>
@@ -36,7 +37,7 @@ $documentation = $framework->getDocumentation($framework->getSelectedPlatform())
 <?php
 $framework->printNavBar();
 ?>
-
+<div id="header-bar"></div>
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="col-md-2 menu">

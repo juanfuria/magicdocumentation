@@ -1,13 +1,13 @@
 <div class="row escape-navbar" id="<?=$json['id']?>">
     <div class="col-md-6 item-description">
         <h3><?=$json['name']?></h3>
-        <?php if(isset($version)): ?>
+        <?php if(isset($json['version'])): ?>
             <!-- if there's a version we display it -->
             <span class="label label-primary">Available since <?=$json['version']?></span>
         <?php endif; ?>
         <?php if(isset($json['status'])): ?>
             <?php if($json['status'] == 'deprecated'): ?>
-            <span class="label label-warning"><?=$json['status']?></span>
+            <span class="label label-danger"><?=$json['status']?></span>
             <div class="callout callout-danger">
                 <h4>Warning!</h4>
 
@@ -15,12 +15,13 @@
             </div>
             <?php endif; ?>
         <?php endif; ?>
-
+        <br/>
+        <br/>
         <p><?=$json['description']?></p>
 
         <?php if(isset($json['parameters']) &&  count($json['parameters']) > 0): ?>
             <h4>Parameters</h4>
-            <table class="table-condensed table-responsive table-bordered">
+            <table class="table-condensed table-responsive">
                 <thead>
                 <tr class="active">
                     <th>Parameter</th>
