@@ -3,7 +3,7 @@
 <p>Status events are events that the integrator can implement to get transaction and connection status events.</p>
 <h4>connectionStatusChanged</h4>
 <p>connectionStatusChanged event gets called when the state of a card reader connection changes.</p>
-<table class="table-condensed table-responsive table-bordered">
+<table class="table-condensed table-responsive parameters">
     <thead>
     <tr>
         <th>Parameter</th><th>Type</th><th>Notes</th>
@@ -11,10 +11,10 @@
     </thead>
     <tbody>
     <tr>
-        <td>status</td><td>ConnectionStatus</td><td>An enum contaning the status code for the connection</td>
+        <td><code>status</code></td><td>ConnectionStatus</td><td>An enum contaning the status code for the connection</td>
     </tr>
     <tr>
-        <td>device</td><td>Device</td><td>The device that is invoking the event</td>
+        <td><code>device</code></td><td>Device</td><td>The device that is invoking the event</td>
     </tr>
     </tbody>
 </table>
@@ -32,7 +32,7 @@ Log.d(App, connectionStatus.name());
 <div class="col-md-6 item-description">
 <h4>currentTransactionStatus</h4>
 <p>currentTransactionStatus event gets called when when the state of an ongoing transaction changes.</p>
-<table class="table-condensed table-responsive table-bordered">
+<table class="table-condensed table-responsive parameters">
     <thead>
     <tr>
         <th>Parameter</th><th>Type</th><th>Notes</th>
@@ -40,10 +40,10 @@ Log.d(App, connectionStatus.name());
     </thead>
     <tbody>
     <tr>
-        <td>info</td><td>StatusInfo</td><td>An enum contaning the status code for the transaction</td>
+        <td><code>info</code></td><td>StatusInfo</td><td>An enum contaning the status code for the transaction</td>
     </tr>
     <tr>
-        <td>device</td><td>Device</td><td>The device that is invoking the event</td>
+        <td><code>device</code></td><td>Device</td><td>The device that is invoking the event</td>
     </tr>
     </tbody>
 </table>

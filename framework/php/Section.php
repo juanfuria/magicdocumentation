@@ -48,11 +48,11 @@ class Section
 
         /** @var $file File */
         foreach ($this->files as $file){
-
+            $content = $file->getContent();
+            $isJson = Utils::isJson($content);
 
             echo '<div class="row escape-navbar" id="elem_' . $file->getNameId() . '">';
-            $content = $file->getContent();
-            if(Utils::isJson($content)){
+            if($isJson){
                 $view = new Template($this->framework->settings->getTemplatesDir() . "/method_two_columns.php");
                 $view->json = json_decode($content, true);
                 echo $view;

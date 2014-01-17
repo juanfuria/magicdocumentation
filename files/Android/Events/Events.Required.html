@@ -3,7 +3,7 @@
 <p>Required events are events that the integrator is required to implement to be able to conduct a successful transaction.</p>
 <h4>endOfTransaction</h4>
 <p>endOfTransaction event gets called at the end of each transaction and has two parameters, result and device.</p>
-<table class="table-condensed table-responsive table-bordered">
+<table class="table-condensed table-responsive parameters">
     <thead>
     <tr>
         <th>Parameter</th><th>Type</th><th>Notes</th>
@@ -11,10 +11,10 @@
     </thead>
     <tbody>
     <tr>
-        <td>result</td><td>TransactionResult</td><td>Holds the results for the transaction</td>
+        <td><code>result</code></td><td>TransactionResult</td><td>Holds the results for the transaction</td>
     </tr>
     <tr>
-        <td>device</td><td>Device</td><td>The device that is invoking the event</td>
+        <td><code>device</code></td><td>Device</td><td>The device that is invoking the event</td>
     </tr>
     </tbody>
 </table>
@@ -32,7 +32,7 @@ Log.d(App, transactionResult.getCustomerReceipt());
 <br />
 <h4>signatureRequired</h4>
 <p>signatureRequired event gets called when a card requires a signature instead of PIN entry and has two parameters, request and device.</p>
-<table class="table-condensed table-responsive table-bordered">
+<table class="table-condensed table-responsive parameters">
     <thead>
     <tr>
         <th>Parameter</th><th>Type</th><th>Notes</th>
@@ -40,10 +40,10 @@ Log.d(App, transactionResult.getCustomerReceipt());
     </thead>
     <tbody>
     <tr>
-        <td>request</td><td>SignatureRequest</td><td>Holds the signature request</td>
+        <td><code>request</code></td><td>SignatureRequest</td><td>Holds the signature request</td>
     </tr>
     <tr>
-        <td>device</td><td>Device</td><td>The device that is invoking the event</td>
+        <td><code>device</code></td><td>Device</td><td>The device that is invoking the event</td>
     </tr>
     </tbody>
 </table>
@@ -63,7 +63,7 @@ api.signatureResult(true);
 
 <h4>deviceDiscoveryFinished</h4>
 <p>deviceDiscoveryFinished event gets called when a device discovery has finished and returns a list of devices.</p>
-<table class="table-condensed table-responsive table-bordered">
+<table class="table-condensed table-responsive parameters">
     <thead>
     <tr>
         <th>Parameter</th><th>Type</th><th>Notes</th>
@@ -71,7 +71,7 @@ api.signatureResult(true);
     </thead>
     <tbody>
     <tr>
-        <td>devices</td><td>List&lt;Device&gt;</td><td>List of devices.</td>
+        <td><code>devices</code></td><td>List&lt;Device&gt;</td><td>List of devices.</td>
     </tr>
     </tbody>
 </table>
