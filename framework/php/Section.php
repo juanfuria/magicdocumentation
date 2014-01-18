@@ -43,8 +43,9 @@ class Section
 
         //TODO fix horrible kludge
         if(!$this->special){
-            echo '<div class="col-md-6 item-example"></div></div>';
+            echo '<div class="col-md-6 item-example"></div>';
         }
+        echo "</div>";
 
         /** @var $file File */
         foreach ($this->files as $file){
