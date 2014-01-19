@@ -1,0 +1,8 @@
+{
+    "title": "Add listener",
+    "description": "Registers a listener to hapi events.",
+    "files": [
+
+    ],
+    "order": "0"
+}

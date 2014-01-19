@@ -25,4 +25,10 @@ class File{
         return file_get_contents ($this->path);
     }
 
+
+    public function setContent($data)
+    {
+        return file_put_contents ($this->path, $data);
+    }
+
 }

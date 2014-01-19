@@ -48,6 +48,7 @@ $framework->printNavBar();
         <div class="col-md-10 content">
             <div class="letter">
             <?php
+            print_r($_POST);
             $documentation->printall();
             ?>
             </div>

@@ -15,7 +15,7 @@ class Section
         $this->name   = $name;
         if($path != NULL){
             $this->path   = $path;
-            $tempFiles = Utils::listFiles($path, "html");
+            $tempFiles = Utils::listFiles($path, "json");
             foreach ($tempFiles as $file) {
                 $this->files[$this->getFilesSize()] = new File($file);
             }

@@ -1,7 +1,6 @@
 <?php
 
 class Settings extends Entity{
-    public $templatesDir;
     public $pageTitle;
     public $urlStyle;
 
