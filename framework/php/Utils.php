@@ -54,4 +54,11 @@ class Utils {
         }
     }
 
+    public static function getNameId($name){
+        $finalName = html_entity_decode($name);
+        $finalName = str_ireplace(" ", "_", $finalName);
+        $finalName = strtolower($finalName);
+        return $finalName;
+    }
+
 } 

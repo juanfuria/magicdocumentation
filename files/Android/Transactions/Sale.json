@@ -57,5 +57,6 @@
             ]
         }
     ],
-    "example": "\/\/Initiate a sale for 10.00 in Great British Pounds\napi.sale(new BigInteger(\"1000\"),Currency.GBP);"
+    "example": "\/\/Initiate a sale for 10.00 in Great British Pounds\napi.sale(new BigInteger(\"1000\"),Currency.GBP);",
+    "order": "0"
 }

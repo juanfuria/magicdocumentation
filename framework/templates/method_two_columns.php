@@ -1,6 +1,6 @@
 <div class="row escape-navbar" id="<?=$json['id']?>">
     <div class="col-md-6 item-description">
-        <h3><?=$json['name']?></h3>
+        <h3 class="<?=$json['status']?>"><?=$json['title']?></h3>
         <?php if(isset($json['version'])): ?>
             <!-- if there's a version we display it -->
             <span class="label label-primary">Available since <?=$json['version']?></span>
@@ -41,12 +41,13 @@
                 <?php endforeach ?>
                 </tbody>
             </table>
+            <div id="xparam_<?=$json['id']?>"></div>
         <?php endif; ?>
         <?php foreach ($json['descriptionLists'] as $list): ?>
         <h4><?=$list['name']?></h4>
         <dl>
             <?php foreach ($list['elements'] as $elem): ?>
-            <dt><?=$elem['name']?></dt>
+            <dt class="underlined"><?=$elem['name']?></dt>
             <dd><?=$elem['description']?></dd>
             <?php endforeach ?>
         </dl>

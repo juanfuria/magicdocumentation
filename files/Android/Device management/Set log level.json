@@ -37,6 +37,7 @@
             ]
         }
     ],
-    "example": "\/\/Sets the log level to info\napi.setLogLevel(LogLevel.info);"
+    "example": "\/\/Sets the log level to info\napi.setLogLevel(LogLevel.info);",
+    "order": "0"
 }
                   

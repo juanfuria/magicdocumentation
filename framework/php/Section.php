@@ -1,5 +1,9 @@
 <?php
 
+function cmp($a, $b) {
+    $sortby = 'order'; //define here the field by which you want to sort
+    return strcmp(json_decode($a->getContent(), true)[$sortby] , json_decode($b->getContent(), true)[$sortby]);
+}
 class Section
 {
     public $name;
@@ -11,6 +15,7 @@ class Section
      */
     private $framework;
 
+    //TODO fix this horrible thing
     function Section($name, $path = NULL, $framework = NULL){
         $this->name   = $name;
         if($path != NULL){
@@ -19,9 +24,23 @@ class Section
             foreach ($tempFiles as $file) {
                 $this->files[$this->getFilesSize()] = new File($file);
             }
+           // uasort($this->files, 'cmp');
+
+            $htmlFiles = Utils::listFiles($path, "html");
+            foreach ($htmlFiles as $file) {
+                $this->files[$this->getFilesSize()] = new File($file);
+            }
+
+
+            echo "<pre>";
+            print_r($this);
+            echo "</pre>";
+
         }
         $this->framework = $framework;
     }
+
+
 
     function getFilesSize(){
         return count($this->files);

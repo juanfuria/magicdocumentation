@@ -68,5 +68,6 @@
             ]
         }
     ],
-    "example": "\/\/Changes the bluetooth name of card reader\napi.setParameter(DeviceParameter.BluetoothName, \"OrangeCardReader\");"
+    "example": "\/\/Changes the bluetooth name of card reader\napi.setParameter(DeviceParameter.BluetoothName, \"OrangeCardReader\");",
+    "order": "0"
 }

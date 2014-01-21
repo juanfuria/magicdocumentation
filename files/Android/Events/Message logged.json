@@ -18,5 +18,6 @@
         }
     ],
     "descriptionLists": [],
-    "example": "@Override\npublic void onMessageLogged(LogLevel logLevel, String message){\n\tLog.d(\"API log\", message);\n}"
+    "example": "@Override\npublic void onMessageLogged(LogLevel logLevel, String message){\n\tLog.d(\"API log\", message);\n}",
+    "order": "0"
 }

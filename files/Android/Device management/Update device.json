@@ -31,6 +31,7 @@
             ]
         }
     ],
-    "example": "\/\/Check for card reader update\napi.update();"
+    "example": "\/\/Check for card reader update\napi.update();",
+    "order": "0"
 }
                   

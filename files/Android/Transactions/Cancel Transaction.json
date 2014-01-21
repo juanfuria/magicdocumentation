@@ -35,5 +35,6 @@
             ]
         }
     ],
-    "example": "//Attempts to cancel an operation\napi.cancelRequest();"
+    "example": "//Attempts to cancel an operation\napi.cancelRequest();",
+    "order": "4"
 }

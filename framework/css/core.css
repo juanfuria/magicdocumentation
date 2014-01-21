@@ -4,7 +4,7 @@
 .callout {
     margin: 20px 0;
     padding: 20px;
-    border-left: 3px solid #eee;
+    border-left: 5px solid #eee;
 }
 .callout h4 {
     margin-top: 0;
@@ -17,7 +17,7 @@
 /* Variations */
 .callout-danger {
     background-color: #fdf7f7;
-    border-color: #eed3d7;
+    border-color: #E77E8D;
 }
 .callout-danger h4 {
     color: #b94a48;
@@ -46,6 +46,8 @@
 }
 .label{
     padding: .5em .7em .6em;
+    font-size: 85%;
+    font-weight:normal;
 }
 #header-bar{
     width: 100%;
@@ -72,4 +74,8 @@
     background-color: #f7f7f9;
     border: 1px solid #e1e1e8;
     white-space: nowrap;
+}
+
+h3.deprecated{
+    text-decoration: line-through;
 }

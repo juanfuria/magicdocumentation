@@ -18,5 +18,6 @@
         }
     ],
     "descriptionLists": [],
-    "example": "@Override\npublic void currentTransactionStatus(StatusInfo statusInfo, Device device) {\n}"
+    "example": "@Override\npublic void currentTransactionStatus(StatusInfo statusInfo, Device device) {\n}",
+    "order": "0"
 }

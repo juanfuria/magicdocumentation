@@ -1,5 +1,5 @@
 {
-    "title": "End of transaction logged",
+    "title": "End of transaction",
     "name": "endOfTransaction",
     "version": "3.0.0",
     "description": "endOfTransaction event gets called at the end of each transaction and has two parameters, result and device.",
@@ -18,5 +18,6 @@
         }
     ],
     "descriptionLists": [],
-    "example": "@Override\npublic void endOfTransaction(TransactionResult transactionResult, Device device) {\n\tLog.d(App, transactionResult.getCustomerReceipt());\n}"
+    "example": "@Override\npublic void endOfTransaction(TransactionResult transactionResult, Device device) {\n\tLog.d(App, transactionResult.getCustomerReceipt());\n}",
+    "order": "0"
 }

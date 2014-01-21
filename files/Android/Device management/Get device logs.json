@@ -31,6 +31,7 @@
             ]
         }
     ],
-    "example": "\/\/Downloads logs from device\napi.getDeviceLogs();"
+    "example": "\/\/Downloads logs from device\napi.getDeviceLogs();",
+    "order": "0"
 }
                   

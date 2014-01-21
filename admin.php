@@ -13,7 +13,7 @@ $settings = $framework->settings;
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="5; URL=">
+<!--    <meta http-equiv="refresh" content="5; URL=">-->
     <?php
         $framework->printCssHeaders();
 

@@ -63,5 +63,6 @@
             ]
         }
     ],
-    "example": "\/\/Initiate a reversal for 10.00 in Great British Pounds\napi.saleReversal(new BigInteger(\"1000\"),Currency.GBP,\"1234567\");"
+    "example": "\/\/Initiate a reversal for 10.00 in Great British Pounds\napi.saleReversal(new BigInteger(\"1000\"),Currency.GBP,\"1234567\");",
+    "order": "2"
 }

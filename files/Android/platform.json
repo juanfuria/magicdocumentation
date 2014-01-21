@@ -1,0 +1,12 @@
+{
+    "title": "Android",
+    "description": "hapi android",
+    "sections": [
+        {"name":"Introduction", "special" : "true"},
+        {"name":"Getting started", "special" : "true"},
+        {"name":"Transactions"},
+        {"name":"Device management"},
+        {"name":"Events"}
+    ],
+    "order": "0"
+}

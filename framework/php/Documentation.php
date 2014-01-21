@@ -15,23 +15,54 @@ class Documentation
 
     function Documentation($path, $framework)
     {
-        //$x = 0;
-        $this->specialFiles[count($this->specialFiles)] = $this->DEFAULT_ABOUT;
-        $this->specialFiles[count($this->specialFiles)] = $this->DEFAULT_INFO;
-        $this->specialFiles[count($this->specialFiles)] = $this->DEFAULT_INTRODUCTION;
-        $this->specialFiles[count($this->specialFiles)] = $this->DEFAULT_GETTING_STARTED;
+        $this->initDefaults();
 
-        $files    = Utils::listFiles($path, "html");
-        $dirs     = Utils::listDirs($path);
+        $files = Utils::listFiles($path, "html");
+        $dirs = Utils::listDirs($path);
 
-        $this->handleSpecialFiles($files);
+
+
+        //$this->handleSpecialFiles($files);
 
         foreach ($dirs as $sectionPath) {
             $name = Utils::getStringAfterLast($sectionPath, "/");
             $this->sections[$name] = new Section($name, $sectionPath, $framework);
+
         }
+
+        if(file_exists($path . "/platform.json")){
+            $platformSettingsFile = new File($path . "/platform.json");
+            $platformSettings = json_decode($platformSettingsFile->getContent(), true);
+        }
+        else{
+            $platformSettings['sections'][0]['name'] = $this->DEFAULT_ABOUT;
+            $platformSettings['sections'][0]['special'] = true;
+            $platformSettings['sections'][1]['name'] = $this->DEFAULT_INFO;
+            $platformSettings['sections'][1]['special'] = true;
+            $platformSettings['sections'][2]['name'] = $this->DEFAULT_INTRODUCTION;
+            $platformSettings['sections'][2]['special'] = true;
+            $platformSettings['sections'][3]['name'] = $this->DEFAULT_GETTING_STARTED;
+            $platformSettings['sections'][3]['special'] = true;
+        }
+
+        $order = array();
+        foreach($platformSettings['sections'] as $key => $section){
+            if(array_key_exists($section['name'] , $this->sections)){
+                $order[count($order)] = $section['name'];
+            }
+
+            if(isset($section['special'])){
+                if(array_key_exists($section['name'] , $this->sections)){
+                    $this->sections[$section['name']]->special = true;
+                }
+            }
+        }
+
+        $this->sections = array_merge(array_flip($order), $this->sections);
+
         $this->framework = $framework;
     }
+
 
     private function handleSpecialFiles($files){
 
@@ -79,5 +110,13 @@ class Documentation
             $section->printContent();
         }
 
+    }
+
+    private function initDefaults()
+    {
+        $this->specialFiles[count($this->specialFiles)] = $this->DEFAULT_ABOUT;
+        $this->specialFiles[count($this->specialFiles)] = $this->DEFAULT_INFO;
+        $this->specialFiles[count($this->specialFiles)] = $this->DEFAULT_INTRODUCTION;
+        $this->specialFiles[count($this->specialFiles)] = $this->DEFAULT_GETTING_STARTED;
     }
 }
