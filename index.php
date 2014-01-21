@@ -8,7 +8,7 @@ $framework = new Framework();
 $settings = $framework->settings;
 
 /** @var $documentation Documentation */
-$documentation = $framework->getDocumentation($framework->getSelectedPlatform());
+//$documentation = $framework->getDocumentation($framework->getSelectedPlatform());
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,9 +34,9 @@ $documentation = $framework->getDocumentation($framework->getSelectedPlatform())
 </head>
 <body>
 <script>hljs.initHighlightingOnLoad();</script>
-<?php
-$framework->printNavBar();
-?>
+    <?php
+    $framework->printNavBar();
+    ?>
 <div id="header-bar"></div>
 <div class="container-fluid">
     <div class="row-fluid">
@@ -49,7 +49,7 @@ $framework->printNavBar();
             <div class="letter">
             <?php
             //print_r($_POST);
-            $documentation->printall();
+            $framework->printSelectedPlatform();
             ?>
             </div>
         </div>

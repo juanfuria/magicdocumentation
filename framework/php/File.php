@@ -1,16 +1,15 @@
 <?php
 
 class File{
-    public $name;
     public $path;
+    public $name;
     public $ext;
+    public $content;
+    public $json;
 
-    function File($path)
+    function File()
     {
-        $fullFileName   = Utils::getStringAfterLast($path, "/");
-        $this->name     = Utils::getStringBeforeLast($fullFileName, ".");
-        $this->ext      = Utils::getStringAfterLast($fullFileName, ".");
-        $this->path     = $path;
+
     }
 
     function getNameId(){

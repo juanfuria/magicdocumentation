@@ -61,4 +61,25 @@ class Utils {
         return $finalName;
     }
 
+
+    public static function getContent($path)
+    {
+        return file_get_contents ($path);
+    }
+
+
+    public static function setContent($path, $data)
+    {
+        return file_put_contents ($path, $data);
+    }
+
+    public static function arrayToObject($array){
+        $object = new stdClass();
+        foreach ($array as $key => $value)
+        {
+            $object->$key = $value;
+        }
+        return $object;
+    }
+
 } 

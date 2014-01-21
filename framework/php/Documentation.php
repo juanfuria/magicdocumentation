@@ -5,109 +5,141 @@ class Documentation
     private $DEFAULT_ABOUT              = "About";
     private $DEFAULT_INFO               = "Info";
     private $DEFAULT_INTRODUCTION       = "Introduction";
-    private $DEFAULT_GETTING_STARTED    = "Getting Started";
+    private $DEFAULT_GETTING_STARTED    = "Getting started";
 
-    /* var $sections Section */
-    public $sections = array();
+    //public $sections    = array();
+    public $platforms   = array();
+    public $magic;
 
     public $specialFiles = array();
     private $framework;
 
-    function Documentation($path, $framework)
+    function Documentation($_path, $framework)
     {
+        $this->framework = $framework;
         $this->initDefaults();
 
-        $files = Utils::listFiles($path, "html");
-        $dirs = Utils::listDirs($path);
+        $platforms = Utils::listDirs($_path);
 
+        foreach($platforms as $platform){
+            $platforminfo       = pathinfo($platform);
+            $platformObj        = new Platform();
+            $platformObj->name  = $platforminfo['basename'];
 
+            $this->platforms[$platformObj->name] = $platformObj;
 
-        //$this->handleSpecialFiles($files);
+            //We search for "sections" inside the platform
+            $dirs = Utils::listDirs($platform);
+            foreach ($dirs as $dir) {
 
-        foreach ($dirs as $sectionPath) {
-            $name = Utils::getStringAfterLast($sectionPath, "/");
-            $this->sections[$name] = new Section($name, $sectionPath, $framework);
+                $pathinfo           = pathinfo($dir);
+                $sectionObj         = new Section();
 
-        }
+                $sectionObj->name   = $pathinfo['basename'];
+                $sectionObj->path   = $pathinfo['dirname'];
+                $sectionObj->special= (in_array($sectionObj->name, $this->specialFiles));
 
-        if(file_exists($path . "/platform.json")){
-            $platformSettingsFile = new File($path . "/platform.json");
-            $platformSettings = json_decode($platformSettingsFile->getContent(), true);
-        }
-        else{
-            $platformSettings['sections'][0]['name'] = $this->DEFAULT_ABOUT;
-            $platformSettings['sections'][0]['special'] = true;
-            $platformSettings['sections'][1]['name'] = $this->DEFAULT_INFO;
-            $platformSettings['sections'][1]['special'] = true;
-            $platformSettings['sections'][2]['name'] = $this->DEFAULT_INTRODUCTION;
-            $platformSettings['sections'][2]['special'] = true;
-            $platformSettings['sections'][3]['name'] = $this->DEFAULT_GETTING_STARTED;
-            $platformSettings['sections'][3]['special'] = true;
-        }
+                $this->platforms[$platformObj->name]->sections[$sectionObj->name] = $sectionObj;
 
-        $order = array();
-        foreach($platformSettings['sections'] as $key => $section){
-            if(array_key_exists($section['name'] , $this->sections)){
-                $order[count($order)] = $section['name'];
-            }
+                if(file_exists($dir . "/platform.json")){
+                    $settings = json_decode(Utils::getContent($dir . "/platform.json"));
+                }
+                else{
+                    foreach ($this->specialFiles as $key => $spFile) {
+                        $settings['order'][$key] = $spFile;
+                    }
+                }
 
-            if(isset($section['special'])){
-                if(array_key_exists($section['name'] , $this->sections)){
-                    $this->sections[$section['name']]->special = true;
+                $this->platforms[$platformObj->name]->settings = $settings;
+
+                //order sections
+                $order = array();
+                foreach($this->platforms[$platformObj->name]->settings['order'] as $section_name){
+                    if(array_key_exists($section_name , $this->platforms[$platformObj->name]->sections)){
+                        $order[count($order)] = $section_name;
+                    }
+                }
+
+                $this->platforms[$platformObj->name]->sections = array_merge(array_flip($order), $this->platforms[$platformObj->name]->sections);
+                //end order sections
+
+                $files      = Utils::listFiles($dir, "*");
+                foreach ($files as $file) {
+                    $fileinfo           = pathinfo($file);
+                    $fileObj            = new File();
+                    $fileObj->path      = $fileinfo['dirname'];
+                    $fileObj->name      = $fileinfo['filename'];
+                    $fileObj->ext       = $fileinfo['extension'];
+                    $fileObj->content   = Utils::getContent($file);
+
+                    if($fileObj->ext == 'json'){
+                        $fileObj->json = json_decode($fileObj->content, true);
+                        //TODO
+                        if(array_key_exists('version', $fileObj->json)){
+                            $version = $fileObj->json['version'];
+                            $this->platforms[$platformObj->name]->addVersion($version);
+                        }
+                    }
+                    $pos = count($this->platforms[$platformObj->name]->sections[$sectionObj->name]->files);
+                    $this->platforms[$platformObj->name]->sections[$sectionObj->name]->files[$pos] = $fileObj;
                 }
             }
         }
+    }
 
-        $this->sections = array_merge(array_flip($order), $this->sections);
+    private function addVersion($version){
 
-        $this->framework = $framework;
     }
 
 
-    private function handleSpecialFiles($files){
+//    function getSectionsSize(){
+//        return count($this->platforms[$platform_name]['sections']);
+//    }
 
-       foreach ($this->specialFiles as $spfile) {
-            $found = false;
-            $x = 0;
-            while(!$found && ($x < count($files))){
-                if(stripos($files[$x], $spfile)){
-                    $this->sections[$spfile] = $this->getSectionFromFile($spfile, new File($files[$x]));
-                    $this->sections[$spfile]->special = true;
-                    $found = true;
-                }
-                $x++;
+    function printSectionContent($section){
+        echo '<section id="section_' . $section->getNameId() . '" class="escape-navbar">';
+        echo '<div class="row" >
+        <div class="col-md-6 item-description">
+        <h2>' . $section->name . '</h2></div>';
+
+        //TODO fix horrible kludge
+        if(!$section->special){
+            echo '<div class="col-md-6 item-example"></div>';
+        }
+        echo "</div>";
+
+        /** @var $file File */
+        foreach ($section->files as $file){
+
+            echo '<div class="row escape-navbar" id="elem_' . $file->getNameId() . '">';
+            if($file->ext == 'json'){
+
+                $view = new Template($this->framework->settings->getTemplatesDir() . "/method_two_columns.php");
+                $view->json = $file->json;
+                echo $view;
             }
+            else{
+                echo $file->content;
+            }
+            echo '</div>';
         }
+
+        echo '</section>';
     }
 
-    private function getSectionFromFile($sectionName, $file){
-        $section = new Section($sectionName, NULL, $this->framework);
-        $section->files[$section->getFilesSize()]   = $file;
-        return $section;
+    function getPlatform($platform_name){
+        return $this->platforms[$platform_name];
     }
 
-    function getSectionsSize(){
-        return count($this->sections);
-    }
+    /*function hasSection($sectionName){
+        return array_key_exists($sectionName, $this->platforms[$platform_name]['sections']);
+    }*/
 
-    function printSectionContent($sectionName){
-        if($this->hasSection($sectionName)){
-
-            /** @var $section Section */
-            $section = $this->sections[$sectionName];
-            $section->printContent();
-        }
-    }
-
-    function hasSection($sectionName){
-        return array_key_exists($sectionName, $this->sections);
-    }
-
-    function printAll(){
+    function printAll($platform_name){
 
         /** @var $section Section */
-        foreach ($this->sections as $section) {
-            $section->printContent();
+        foreach ($this->platforms[$platform_name]->sections as $section) {
+            $this->printSectionContent($section);
         }
 
     }

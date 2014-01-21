@@ -16,38 +16,31 @@ class Framework{
     public $stylesheets;
     public $javascripts;
 
-    public $platforms;
+    public $documentation;
 
     function Framework(){
         $this->sentVars     = Utils::getMergedInputArrays();
         $this->settings     = Settings::Read('settings.conf');
-        $this->platforms    = $this->getListOfPlatforms();
         $this->stylesheets  = Utils::listFiles($this->settings->getCssDir(), "css");
         $this->javascripts  = Utils::listFiles($this->settings->getJsDir(), "js");
+        $this->documentation= new Documentation($this->settings->getFilesDir(), $this);
+        $this->platforms    = $this->getListOfPlatforms();
     }
 
     public function getListOfPlatforms(){
 
-        $dirs = Utils::listDirs($this->settings->getFilesDir());
         $platforms = array();
 
-        foreach ($dirs as $path) {
-            $platforms[count($platforms)] = Utils::getStringAfterLast($path, "/");
+        foreach ($this->documentation->platforms as $platform) {
+            $platforms[count($platforms)] = $platform->name;
         }
         return $platforms;
     }
 
     public function getSelectedPlatform(){
-        //TODO fix this last
-        $requestedPos = false;
-        if (isset($this->sentVars["platform"])) {
-            $requestedPos = array_search($this->sentVars["platform"], $this->platforms);
-        }
-        if(count($this->platforms) == 0){
-            die;
-        }
-        return ($requestedPos) ? $this->platforms[$requestedPos] : $this->platforms[0];
+        return (isset($this->sentVars["platform"])) ? $this->sentVars["platform"] : key($this->documentation->platforms);
     }
+
 
     public function getDocumentation($platform){
         if(array_search($platform, $this->platforms) === false){
@@ -110,7 +103,7 @@ class Framework{
     public function printMenu(){
 
         $view = new Template($this->settings->getTemplatesDir() . "/menu.php");
-        $doc = $this->getDocumentation($this->getSelectedPlatform());
+        $doc = $this->documentation->getPlatform($this->getSelectedPlatform());
         /** @var $section Section */
         $items = array();
         $x = 0;
@@ -164,6 +157,10 @@ class Framework{
 
         echo "\t" . Utils::surroundWithtag("script", $return) . "\n";
 
+    }
+
+    public function printSelectedPlatform(){
+        $this->documentation->printAll($this->getSelectedPlatform());
     }
 }
 
