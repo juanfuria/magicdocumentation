@@ -48,7 +48,11 @@
         <dl>
             <!-- TODO limit to existing entities -->
             <?php foreach ($list['elements'] as $elem): ?>
-            <dt class="underlined"><a href="#elem_<?=$elem['name']?>"><?=$elem['name']?></a></dt>
+                <?php if(in_array($elem['name'], $entities)){?>
+                    <dt class="underlined"><a href="#elem_<?=$elem['name']?>"><?=$elem['name']?> <span class="glyphicon glyphicon-chevron-down"></span></a></dt>
+                <?php }else{ ?>
+                    <dt class="underlined"><?=$elem['name']?></dt>
+                <?php } ?>
             <dd><?=$elem['description']?></dd>
             <?php endforeach ?>
         </dl>

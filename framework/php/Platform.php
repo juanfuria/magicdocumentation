@@ -6,6 +6,7 @@ class Platform extends Entity{
     public $name;
     public $description;
     public $versions = array();
+    public $entities    = array();
 
 
     function getSection($section_name){
@@ -14,7 +15,13 @@ class Platform extends Entity{
 
     function addVersion($version){
         if(!in_array($version, $this->versions)){
-            $this->versions[count($this->versions)] = $version;
+            $this->versions[] = $version;
+        }
+    }
+
+    function addEntity($entity){
+        if(!in_array($entity, $this->entities)){
+            $this->entities[] = $entity;
         }
     }
 } 

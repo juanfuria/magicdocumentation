@@ -9,7 +9,6 @@ class Documentation
 
     //public $sections    = array();
     public $platforms   = array();
-    public $magic;
 
     public $specialFiles = array();
     private $framework;
@@ -66,6 +65,8 @@ class Documentation
                         if(array_key_exists('version', $fileObj->json)){
                             $version = $fileObj->json['version'];
                             $this->platforms[$platformObj->name]->addVersion($version);
+                            $entity = $fileObj->json['name'];
+                            $this->platforms[$platformObj->name]->addEntity($entity);
                         }
                     }
                     $pos = count($this->platforms[$platformObj->name]->sections[$sectionObj->name]->files);
@@ -90,24 +91,8 @@ class Documentation
         }
     }
 
-    function sortArrayByArray($array,$orderArray) {
-        $ordered = array();
-        foreach($orderArray as $key) {
-            if(array_key_exists($key,$array)) {
-                $ordered[$key] = $array[$key];
-                unset($array[$key]);
-            }
-        }
-        return $ordered + $array;
-    }
-
-
-//    function getSectionsSize(){
-//        return count($this->platforms[$platform_name]['sections']);
-//    }
-
-    function printSectionContent($section){
-        echo '<section id="section_' . $section->getNameId() . '" class="escape-navbar">';
+    function printSectionContent($platform_name, $section){
+        echo '<section id="section_' . Utils::camelCase($section->name) . '" class="escape-navbar">';
         echo '<div class="row" >
         <div class="col-md-6 item-description">
         <h2>' . $section->name . '</h2></div>';
@@ -120,12 +105,16 @@ class Documentation
 
         /** @var $file File */
         foreach ($section->files as $file){
-
+            if(isset($this->framework->sentVars['version'])){
+                $version = $this->framework->sentVars['version'];
+            }
+            if(isset($version) && (($file->ext == 'json' && $file->json['version'] == $version) || ($file->ext != 'json')) || (!isset($version))){
             $elemName = ($file->ext == 'json') ? $file->json['name'] : $file->name;
             echo '<div class="row escape-navbar" id="elem_' . Utils::camelCase($elemName) . '">';
             if($file->ext == 'json'){
 
                 $view = new Template($this->framework->settings->getTemplatesDir() . "/method_two_columns.php");
+                $view->entities = $this->getPlatform($platform_name)->entities;
                 $view->json = $file->json;
                 echo $view;
             }
@@ -133,6 +122,7 @@ class Documentation
                 echo $file->content;
             }
             echo '</div>';
+            }
         }
 
         echo '</section>';
@@ -150,7 +140,7 @@ class Documentation
 
         /** @var $section Section */
         foreach ($this->platforms[$platform_name]->sections as $section) {
-            $this->printSectionContent($section);
+            $this->printSectionContent($platform_name, $section);
         }
 
     }
