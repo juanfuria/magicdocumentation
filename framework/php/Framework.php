@@ -38,7 +38,7 @@ class Framework{
     }
 
     public function getSelectedPlatform(){
-        return (isset($this->sentVars["platform"])) ? $this->sentVars["platform"] : key($this->documentation->platforms);
+        return (isset($this->sentVars["platform"])) ? $this->sentVars["platform"] : $this->getListOfPlatforms()[0];
     }
 
 
@@ -110,7 +110,7 @@ class Framework{
         foreach ($doc->sections as $section) {
             $viewSection = new Template("");
             $viewSection->class = "active";
-            $viewSection->url = '#section_' . htmlentities($section->getNameId());
+            $viewSection->url = '#section_' . htmlentities(Utils::camelCase($section->name));
             $viewSection->name = $section->name;
             if($section->getFilesSize() > 1){
                 $viewSection->badge = '<span class="badge">' . $section->getFilesSize() . '</span>';
@@ -123,9 +123,11 @@ class Framework{
                 /** @var $file File */
                 foreach ($section->files as $file) {
 
+                    $elemName = ($file->ext == 'json') ? $file->json['name'] : $file->name;
+
                     $subSection = new Template("");
                     $subSection->class = "list-group-subitem";
-                    $subSection->url = '#elem_' . $file->getNameId();
+                    $subSection->url = '#elem_' . Utils::camelCase($elemName);
                     $subSection->name = $file->name;
 
                     $items[count($items)] = $subSection;

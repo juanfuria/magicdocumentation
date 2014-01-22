@@ -19,5 +19,5 @@
     ],
     "descriptionLists": [],
     "example": "@Override\npublic void signatureRequired(SignatureRequest signatureRequest, Device device) {\n\tsignatureRequest.getMerchantReceipt();\n\tapi.signatureResult(true);\n}",
-    "order": "0"
+    "order": "5"
 }

@@ -13,5 +13,5 @@
     ],
     "descriptionLists": [],
     "example": "@Override\npublic void deviceDiscoveryFinished(List&lt;Device&gt; devices) {\n\tLog.d(\"Devices list:\", devices.toString());\n}",
-    "order": "0"
+    "order": "2"
 }

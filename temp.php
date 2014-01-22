@@ -9,7 +9,7 @@ $frw = new Framework();
 
 
 echo "<pre>";
-print_r($frw->documentation->platforms['Android']->versions);
+print_r($frw->getSelectedPlatform());
 echo "</pre>";
 
 //$frw->printSelectedPlatform();

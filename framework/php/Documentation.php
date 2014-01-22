@@ -28,6 +28,17 @@ class Documentation
 
             $this->platforms[$platformObj->name] = $platformObj;
 
+            $settings = array();
+            if(file_exists($platform . "/platform.json")){
+                $settings = json_decode(Utils::getContent($platform . "/platform.json"), true);
+            }
+            else{
+                foreach ($this->specialFiles as $key => $spFile) {
+                    $settings['order'][$key] = $spFile;
+                }
+            }
+            $this->platforms[$platformObj->name]->settings = $settings;
+
             //We search for "sections" inside the platform
             $dirs = Utils::listDirs($platform);
             foreach ($dirs as $dir) {
@@ -41,28 +52,6 @@ class Documentation
 
                 $this->platforms[$platformObj->name]->sections[$sectionObj->name] = $sectionObj;
 
-                if(file_exists($dir . "/platform.json")){
-                    $settings = json_decode(Utils::getContent($dir . "/platform.json"));
-                }
-                else{
-                    foreach ($this->specialFiles as $key => $spFile) {
-                        $settings['order'][$key] = $spFile;
-                    }
-                }
-
-                $this->platforms[$platformObj->name]->settings = $settings;
-
-                //order sections
-                $order = array();
-                foreach($this->platforms[$platformObj->name]->settings['order'] as $section_name){
-                    if(array_key_exists($section_name , $this->platforms[$platformObj->name]->sections)){
-                        $order[count($order)] = $section_name;
-                    }
-                }
-
-                $this->platforms[$platformObj->name]->sections = array_merge(array_flip($order), $this->platforms[$platformObj->name]->sections);
-                //end order sections
-
                 $files      = Utils::listFiles($dir, "*");
                 foreach ($files as $file) {
                     $fileinfo           = pathinfo($file);
@@ -74,7 +63,6 @@ class Documentation
 
                     if($fileObj->ext == 'json'){
                         $fileObj->json = json_decode($fileObj->content, true);
-                        //TODO
                         if(array_key_exists('version', $fileObj->json)){
                             $version = $fileObj->json['version'];
                             $this->platforms[$platformObj->name]->addVersion($version);
@@ -83,12 +71,34 @@ class Documentation
                     $pos = count($this->platforms[$platformObj->name]->sections[$sectionObj->name]->files);
                     $this->platforms[$platformObj->name]->sections[$sectionObj->name]->files[$pos] = $fileObj;
                 }
+
+                $this->platforms[$platformObj->name]->sections[$sectionObj->name]->sort();
+
             }
+
+
+            //order sections
+            $sorted = array();
+            foreach($this->platforms[$platformObj->name]->settings['order'] as $section_name){
+                if(array_key_exists($section_name , $this->platforms[$platformObj->name]->sections)){
+                    $sorted[$section_name] = $this->platforms[$platformObj->name]->sections[$section_name];
+                }
+            }
+            $this->platforms[$platformObj->name]->sections = $sorted;
+
+            //end order sections
         }
     }
 
-    private function addVersion($version){
-
+    function sortArrayByArray($array,$orderArray) {
+        $ordered = array();
+        foreach($orderArray as $key) {
+            if(array_key_exists($key,$array)) {
+                $ordered[$key] = $array[$key];
+                unset($array[$key]);
+            }
+        }
+        return $ordered + $array;
     }
 
 
@@ -111,7 +121,8 @@ class Documentation
         /** @var $file File */
         foreach ($section->files as $file){
 
-            echo '<div class="row escape-navbar" id="elem_' . $file->getNameId() . '">';
+            $elemName = ($file->ext == 'json') ? $file->json['name'] : $file->name;
+            echo '<div class="row escape-navbar" id="elem_' . Utils::camelCase($elemName) . '">';
             if($file->ext == 'json'){
 
                 $view = new Template($this->framework->settings->getTemplatesDir() . "/method_two_columns.php");

@@ -150,9 +150,7 @@ section{
 }
 
 .menu{
-    overflow:auto;
-    float: left;
-    width: 239px;
+    overflow:hidden;
 }
 /*TODO: Fix for responsive*/
 .menu>ul{
@@ -173,7 +171,6 @@ section{
     padding-left: 20px;
     padding-top: 0;
     border-left: 1px solid #ddd;
-    margin-left: 239px;
 }
 
 .docs-nav {

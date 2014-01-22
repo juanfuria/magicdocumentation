@@ -46,8 +46,9 @@
         <?php foreach ($json['descriptionLists'] as $list): ?>
         <h4><?=$list['name']?></h4>
         <dl>
+            <!-- TODO limit to existing entities -->
             <?php foreach ($list['elements'] as $elem): ?>
-            <dt class="underlined"><?=$elem['name']?></dt>
+            <dt class="underlined"><a href="#elem_<?=$elem['name']?>"><?=$elem['name']?></a></dt>
             <dd><?=$elem['description']?></dd>
             <?php endforeach ?>
         </dl>

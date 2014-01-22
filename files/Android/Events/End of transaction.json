@@ -19,5 +19,5 @@
     ],
     "descriptionLists": [],
     "example": "@Override\npublic void endOfTransaction(TransactionResult transactionResult, Device device) {\n\tLog.d(App, transactionResult.getCustomerReceipt());\n}",
-    "order": "0"
+    "order": "4"
 }
