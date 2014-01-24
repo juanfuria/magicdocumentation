@@ -3,7 +3,7 @@ SetEnv REGISTER_GLOBALS 0
 SetEnv cache_control public
 SetEnv SESSION_USE_TRANS_SID 0 
 
-Options -Indexes
+Options
 
 AddOutputFilterByType DEFLATE text/plain
 AddOutputFilterByType DEFLATE text/html
@@ -21,7 +21,7 @@ AddOutputFilterByType DEFLATE application/x-httpd-php
 #Header set Cache-Control: "max-age=1296000"
 #</FilesMatch>
 
-Options +FollowSymLinks
+Options +FollowSymLinks -MultiViews -Indexes
 RewriteEngine On
 #RewriteBase /
 
@@ -32,4 +32,4 @@ RewriteEngine On
 #RewriteRule ^platform/(.*)/section/(.*)/$ index.php?platform=$1&section=$2 [NE,L]
 RewriteRule ^platform/(.*)/$ index.php?platform=$1 [NE,L]
 RewriteRule ^platform/(.*)$ index.php?platform=$1 [NE,L]
-RewriteRule ^thumb/(.*)_(.*)\.(.*)$ thumb.php?file=$1&size=$2&ext=$3 [L]
+RewriteRule ^thumb/(.*)_(.*)\.(.*)/?$ thumb.php?file=$1&size=$2&ext=$3 [L]
