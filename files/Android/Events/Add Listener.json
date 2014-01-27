@@ -23,5 +23,6 @@
         }
     ],
     "example": "\/\/Register a listener for required events\nthis.api.addListener(this);",
-    "order": "0"
+    "order": "0",
+    "type": "method"
 }

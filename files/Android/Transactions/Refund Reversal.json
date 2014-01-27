@@ -64,6 +64,7 @@
         }
     ],
     "example": "\/\/Initiate a refund reversal for 10.00 in Great British Pounds\napi.refundReversal(new BigInteger(\"1000\"),Currency.GBP,\"1234567\");",
-    "order": "5"
+    "order": "5",
+    "type": "method"
 
 }

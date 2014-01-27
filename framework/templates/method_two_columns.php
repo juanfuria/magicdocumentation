@@ -41,7 +41,6 @@
                 <?php endforeach ?>
                 </tbody>
             </table>
-            <div id="xparam_<?=$json['id']?>"></div>
         <?php endif; ?>
         <?php foreach ($json['descriptionLists'] as $list): ?>
         <h4><?=$list['name']?></h4>

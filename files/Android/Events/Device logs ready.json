@@ -19,5 +19,6 @@
     ],
     "descriptionLists": [],
     "example": "@Override\npublic void deviceLogsReady(String logs, Device device){\n\tLog.d(\"Device logs:\", logs);\n}",
-    "order": "8"
+    "order": "8",
+    "type": "method"
 }

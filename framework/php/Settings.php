@@ -3,6 +3,9 @@
 class Settings extends Entity{
     public $pageTitle;
     public $urlStyle;
+    public $methodTemplate;
+    public $objectTemplate;
+    public $enumTemplate;
 
 
     function Settings(){
@@ -60,6 +63,23 @@ class Settings extends Entity{
 
     public static function Save($path, $settings){
         file_put_contents($path, $settings);
+    }
+
+    public function getTemplate($objectType){
+        switch($objectType){
+            case 'object':
+                return $this->objectTemplate;
+                break;
+            case 'method':
+                return $this->methodTemplate;
+                break;
+            case 'enum':
+                return $this->enumTemplate;
+                break;
+            default:
+                return $this->methodTemplate;
+                break;
+        }
     }
 
 

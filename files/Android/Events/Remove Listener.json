@@ -23,5 +23,6 @@
         }
     ],
     "example": "\/\/unegister a listener for required events\napi.removeListener(this);",
-    "order": "1"
+    "order": "1",
+    "type": "method"
 }

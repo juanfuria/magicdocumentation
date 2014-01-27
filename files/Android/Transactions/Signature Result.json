@@ -42,5 +42,6 @@
         }
     ],
     "example": "\/\/Approves signature automatically in signatureRequired event\n@Override\npublic void signatureRequired(SignatureRequest signatureRequest, Device device){\n\tapi.signatureResult(true);\n}",
-    "order": "3"
+    "order": "3",
+    "type": "method"
 }

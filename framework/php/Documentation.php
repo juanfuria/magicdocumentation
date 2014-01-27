@@ -112,8 +112,9 @@ class Documentation
             $elemName = ($file->ext == 'json') ? $file->json['name'] : $file->name;
             echo '<div class="row escape-navbar" id="elem_' . Utils::camelCase($elemName) . '">';
             if($file->ext == 'json'){
-
-                $view = new Template($this->framework->settings->getTemplatesDir() . "/method_two_columns.php");
+                $type = $file->json['type'];
+                $template = $this->framework->settings->getTemplate($type);
+                $view = new Template($this->framework->settings->getTemplatesDir() . "/" . $template . ".php");
                 $view->entities = $this->getPlatform($platform_name)->entities;
                 $view->json = $file->json;
                 echo $view;

@@ -25,8 +25,7 @@ else
             unset($framework->sentVars['function']);
             $json = json_encode($framework->sentVars);
             if(Utils::isJson($json)){
-                $settingsFile = new File("settings.conf");
-                $settingsFile->setContent($json);
+                Settings::Save("settings.conf", $json);
             }
 
             $jsondata[$RESPONSE_FIELD] = $json;

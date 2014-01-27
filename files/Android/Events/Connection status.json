@@ -19,5 +19,6 @@
     ],
     "descriptionLists": [],
     "example": "@Override\npublic void connectionStatusChanged(ConnectionStatus connectionStatus, Device device) {\n\tLog.d(App, connectionStatus.name());\n}",
-    "order": "3"
+    "order": "3",
+    "type": "method"
 }

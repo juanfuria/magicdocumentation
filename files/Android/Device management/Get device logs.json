@@ -32,6 +32,7 @@
         }
     ],
     "example": "\/\/Downloads logs from device\napi.getDeviceLogs();",
-    "order": "1"
+    "order": "1",
+    "type": "method"
 }
                   
