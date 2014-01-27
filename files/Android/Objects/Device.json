@@ -1,8 +1,42 @@
-
-description
-constructor
-methods
-properties
-
-
-enum
+{
+    "title": "Device",
+    "name": "Device",
+    "version": "3.0.0",
+    "description": "An object to store the information about the device we're working with.",
+    "methods": [
+        {
+            "name": "",
+            "description": "",
+            "parameters": [
+                {
+                    "name": "device",
+                    "type": "Device",
+                    "validation": "Optional",
+                    "notes": "This is used if you want to send the operation to a specific device. Recommended if you are using multiple devices"
+                }
+            ]
+        }
+    ],
+    "descriptionLists": [
+        {
+            "name": "Events invoked",
+            "elements": [
+                {
+                    "name": "deviceLogsReady",
+                    "description": "Invoked when hapi has finished downloading logs from the card reader."
+                }
+            ]
+        },
+        {
+            "name": "Returns",
+            "elements": [
+                {
+                    "name": "Boolean",
+                    "description": "true if the operation was successfully sent to device"
+                }
+            ]
+        }
+    ],
+    "example": "\/\/Downloads logs from device\napi.getDeviceLogs();",
+    "order": "1"
+}
