@@ -45,8 +45,9 @@
     padding: 7px 15px;
 }
 .label{
-    padding: .5em .7em .6em;
+    padding: 0.6em 0.7em 0.4em;
     font-size: 85%;
+    text-transform: capitalize;
     font-weight:normal;
 }
 #header-bar{
