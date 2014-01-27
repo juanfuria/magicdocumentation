@@ -48,7 +48,8 @@ $settings = $framework->settings;
         <div class="col-md-10 content">
             <div class="letter">
             <?php
-            //print_r($_POST);
+
+
             $framework->printSelectedPlatform();
             ?>
             </div>

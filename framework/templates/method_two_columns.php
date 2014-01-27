@@ -1,6 +1,10 @@
 <div class="row escape-navbar" id="<?=$json['id']?>">
     <div class="col-md-6 item-description">
         <h3 class="<?=$json['status']?>"><?=$json['title']?></h3>
+        <?php if(isset($json['type'])): ?>
+            <!-- if there's a version we display it -->
+            <span class="label label-success"><?=$json['type']?></span>
+        <?php endif; ?>
         <?php if(isset($json['version'])): ?>
             <!-- if there's a version we display it -->
             <span class="label label-primary">Available since <?=$json['version']?></span>
@@ -34,7 +38,11 @@
                 <?php foreach ($json['parameters'] as $param): ?>
                 <tr>
                     <td><code><?=$param['name']?></code></td>
-                    <td><em><?=$param['type']?></em></td>
+                    <?php if(in_array(Utils::camelCase($param['type']), $entities)){?>
+                        <td><em><a href="#elem_<?=Utils::camelCase($param['type'])?>"><?=$param['type']?></a></em></td>
+                    <?php }else{ ?>
+                        <td><em><?=$param['type']?></em></td>
+                    <?php } ?>
                     <td><?=$param['validation']?></td>
                     <td><?=$param['notes']?></td>
                 </tr>

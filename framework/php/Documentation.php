@@ -66,7 +66,7 @@ class Documentation
                             $version = $fileObj->json['version'];
                             $this->platforms[$platformObj->name]->addVersion($version);
                             $entity = $fileObj->json['name'];
-                            $this->platforms[$platformObj->name]->addEntity($entity);
+                            $this->platforms[$platformObj->name]->addEntity(Utils::camelCase($entity));
                         }
                     }
                     $pos = count($this->platforms[$platformObj->name]->sections[$sectionObj->name]->files);
@@ -109,18 +109,18 @@ class Documentation
                 $version = $this->framework->sentVars['version'];
             }
             if(isset($version) && (($file->ext == 'json' && $file->json['version'] == $version) || ($file->ext != 'json')) || (!isset($version))){
-            $elemName = ($file->ext == 'json') ? $file->json['name'] : $file->name;
-            echo '<div class="row escape-navbar" id="elem_' . Utils::camelCase($elemName) . '">';
-            if($file->ext == 'json'){
-                $type = $file->json['type'];
-                $template = $this->framework->settings->getTemplate($type);
-                $view = new Template($this->framework->settings->getTemplatesDir() . "/" . $template . ".php");
-                $view->entities = $this->getPlatform($platform_name)->entities;
-                $view->json = $file->json;
-                echo $view;
-            }
-            else{
-                echo $file->content;
+                $elemName = ($file->ext == 'json') ? $file->json['name'] : $file->name;
+                echo '<div class="row escape-navbar" id="elem_' . Utils::camelCase($elemName) . '">';
+                if($file->ext == 'json'){
+                    $type = $file->json['type'];
+                    $template = $this->framework->settings->getTemplate($type);
+                    $view = new Template($this->framework->settings->getTemplatesDir() . "/" . $template . ".php");
+                    $view->entities = $this->getPlatform($platform_name)->entities;
+                    $view->json = $file->json;
+                    echo $view;
+                }
+                else{
+                    echo $file->content;
             }
             echo '</div>';
             }
