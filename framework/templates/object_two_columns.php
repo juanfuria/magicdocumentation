@@ -34,44 +34,42 @@
                     <h4><?=$method['title']?></h4>
                     <p><?=$method['name']?>(
 
-                        <?php if(isset($method['parameters']) &&  count($method['parameters']) > 0): ?>
-
+                    <?php if(isset($method['parameters']) &&  count($method['parameters']) > 0): ?>
                         <?php foreach ($method['parameters'] as $key => $param): ?>
                             <?=$param['type']?> <?=$param['name']?>
                             <?php if($key < count($method['parameters'])-1){ ?>
                                 ,
                             <?php } ?>
                         <?php endforeach ?>
-                        );</p>
-                        <table class="table-condensed table-responsive parameters">
-                            <thead>
+                    );</p>
+                    <table class="table-condensed table-responsive parameters">
+                        <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Type</th>
+                            <th>Validation</th>
+                            <th>Notes</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($method['parameters'] as $param): ?>
                             <tr>
-                                <th>Parameter</th>
-                                <th>Type</th>
-                                <th>Validation</th>
-                                <th>Notes</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php foreach ($method['parameters'] as $param): ?>
-                                <tr>
-                                    <td><code><?=$param['name']?></code></td>
+                                <td><code><?=$param['name']?></code></td>
 
-                                    <?php if(in_array(Utils::camelCase($param['type']), $entities)){?>
-                                        <td><em><a href="#elem_<?=Utils::camelCase($param['type'])?>"><?=$param['type']?></a></em></td>
-                                    <?php }else{ ?>
-                                        <td><em><?=$param['type']?></em></td>
-                                    <?php } ?>
+                                <?php if(in_array(Utils::camelCase($param['type']), $entities)){?>
+                                    <td><em><a href="#elem_<?=Utils::camelCase($param['type'])?>"><?=$param['type']?></a></em></td>
+                                <?php }else{ ?>
+                                    <td><em><?=$param['type']?></em></td>
+                                <?php } ?>
 
 <!--                                    <td><em>--><?//=$param['type']?><!--</em></td>-->
-                                    <td><?=$param['validation']?></td>
-                                    <td><?=$param['notes']?></td>
-                                </tr>
-                            <?php endforeach ?>
-                            </tbody>
-                        </table>
-                        <?php endif; ?>
-                    </p>
+                                <td><?=$param['validation']?></td>
+                                <td><?=$param['notes']?></td>
+                            </tr>
+                        <?php endforeach ?>
+                        </tbody>
+                    </table>
+                    <?php endif; ?>
 
                 </div>
                 <?php endforeach ?>
