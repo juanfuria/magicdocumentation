@@ -146,8 +146,8 @@ section{
 .item-example {
     padding-top: 15px;
     background: #292e33;
-    padding-bottom: 1000px;
-    margin-bottom: -1000px;
+    padding-bottom: 10000px;
+    margin-bottom: -10000px;
 }
 
 .menu{

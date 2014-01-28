@@ -1,0 +1,171 @@
+{
+    "title": "Transaction Result",
+    "name": "TransactionResult",
+    "version": "3.0.0",
+    "description": "A class holding information about a transaction result.",
+    "methods": [
+        {
+            "title": "Constructor",
+            "name": "TransactionResult",
+            "description": "constructor method",
+            "parameters": [
+                {
+                    "name": "transaction",
+                    "type": "Map<String, String>",
+                    "validation": "Required",
+                    "notes": "A constructor for <code>TransactionResult</code> <p>A transaction result contains: statusMessage, type, financialStatus, requestedAmount, gratuityAmount, gratuityPercentage, totalAmount, currency, transactionID, eFTTransactionID, originalEFTTransactionID, eFTTimestamp, authorisationCode, verificationMethod, cardEntryType, cardSchemeName, errorMessage, customerReference, budgetNumber, merchantReceipt and customerReceipt</p>"
+                }
+            ]
+        }
+    ],
+    "properties": [
+        {
+            "name": "StatusMessage",
+            "type": "String",
+            "description": "Gets the statusMessage from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "Type",
+            "type": "TransactionType",
+            "description": "Gets the transaction type from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "FinStatus",
+            "type": "FinancialStatus",
+            "description": "Gets the financial status from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "RequestedAmount",
+            "type": "BigInteger",
+            "description": "Gets the requested amount from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "GratuityAmount",
+            "type": "BigInteger",
+            "description": "Gets the gratuity amount from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "GratuityPercentage",
+            "type": "String",
+            "description": "Gets the gratuity percentage from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "TotalAmount",
+            "type": "BigInteger",
+            "description": "Gets the total amount from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "Currency",
+            "type": "Currency",
+            "description": "Gets the currency from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "TransactionID",
+            "type": "String",
+            "description": "Gets the device transaction id from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "eFTTransactionID",
+            "type": "String",
+            "description": "Gets the device transaction id from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "OriginalEFTTransactionID",
+            "type": "String",
+            "description": "Gets the original EFT transaction id from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "eFTTimestamp",
+            "type": "Date",
+            "description": "Gets the time stamp from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "AuthorisationCode",
+            "type": "String",
+            "description": "Gets the authorisation code from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "VerificationMethod",
+            "type": "VerificationMethod",
+            "description": "Gets the verification method from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "CardEntryType",
+            "type": "CardEntryType",
+            "description": "Gets the card entry type from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "CardSchemeName",
+            "type": "String",
+            "description": "Gets the card scheme name from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "ErrorMessage",
+            "type": "String",
+            "description": "Gets the error message from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "Id",
+            "type": "String",
+            "description": "Gets the error message from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "CustomerReference",
+            "type": "String",
+            "description": "Gets the customer reference from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "Id",
+            "type": "String",
+            "description": "Gets the budget number from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "BudgetNumber",
+            "type": "String",
+            "description": "Gets the budget number from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "MerchantReceipt",
+            "type": "String",
+            "description": "Gets the merchant receipt from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "CustomerReceipt",
+            "type": "String",
+            "description": "Gets the customer receipt from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        },
+        {
+            "name": "DeviceStatus",
+            "type": "DeviceStatus",
+            "description": "Gets the device status from the <code>TransactionResult</code>",
+            "accessorType": "get"
+        }
+    ],
+    "descriptionLists": [],
+    "example": "",
+    "order": "0",
+    "type": "object"
+}

@@ -1,0 +1,69 @@
+{
+    "title": "Device Status",
+    "name": "DeviceStatus",
+    "version": "3.0.0",
+    "description": "A class that holds the device status.",
+    "methods": [
+        {
+            "title": "Constructor",
+            "name": "DeviceStatus",
+            "description": "A constructor for DeviceStatus <p>A DeviceStatus contains: serialNumber, batteryStatus, batterymV, batteryCharging, externalPower, applicationName and applicationVersion</p>",
+            "parameters": [
+                {
+                    "name": "status",
+                    "type": "Map<String, String>",
+                    "validation": "Required",
+                    "notes": "<code>map</code> containing all information about the device"
+                }
+            ]
+        }
+    ],
+    "properties": [
+        {
+            "name": "SerialNumber",
+            "type": "String",
+            "description": "Gets the serial number of the device",
+            "accessorType": "get"
+        },
+        {
+            "name": "BatteryStatus",
+            "type": "String",
+            "description": "Gets the battery milli volts of a device",
+            "accessorType": "get"
+        },
+        {
+            "name": "BatterymV",
+            "type": "String",
+            "description": "Gets the battery milli volts of a device",
+            "accessorType": "get"
+        },
+        {
+            "name": "BatteryCharging",
+            "type": "String",
+            "description": "Gets the battery charging status of a device",
+            "accessorType": "get"
+        },
+        {
+            "name": "ExternalPower",
+            "type": "String",
+            "description": "Gets the status of an external power of a device",
+            "accessorType": "get"
+        },
+        {
+            "name": "ApplicationName",
+            "type": "String",
+            "description": "Gets the application name used on a device",
+            "accessorType": "get"
+        },
+        {
+            "name": "ApplicationVersion",
+            "type": "String",
+            "description": "Gets the application version number used on a device",
+            "accessorType": "get"
+        }
+    ],
+    "descriptionLists": [],
+    "example": "",
+    "order": "3",
+    "type": "object"
+}
