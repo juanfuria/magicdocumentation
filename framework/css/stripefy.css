@@ -126,6 +126,7 @@ section{
 .list-group .active a{
     color: #fff !important;
     font-weight: lighter;
+    letter-spacing: 1px;
 }
 
 .item-description {
