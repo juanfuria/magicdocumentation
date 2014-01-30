@@ -27,9 +27,7 @@ $settings = $framework->settings;
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="col-md-2 menu">
-
             <ul class="list-group">
-
                 <li class="list-group-item active"><a href="javascript:editSettings();"><span class="glyphicon glyphicon-pencil">&nbsp;</span>Edit settings</a></li>
                 <li class="list-group-item active"><span class="glyphicon glyphicon-pencil">&nbsp;</span>Edit platforms</li>
                 <?php
