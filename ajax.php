@@ -30,6 +30,12 @@ else
 
             $jsondata[$RESPONSE_FIELD] = $json;
             break;
+        case "editPlatform":
+            unset($framework->sentVars['function']);
+            $json = json_encode($framework->sentVars);
+
+            $jsondata[$RESPONSE_FIELD] = $json;
+            break;
     }
 
     echo json_encode($jsondata);
