@@ -12,12 +12,12 @@ class Entity
 
     public function __get($key)
     {
-        return $this->variables[$key];
+        return $this->$key;
     }
 
     public function __set($key, $value)
     {
-        $this->variables[$key] = $value;
+        $this->$key = $value;
     }
 
     public function toForm()

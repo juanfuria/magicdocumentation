@@ -149,6 +149,8 @@ class Framework{
         $return .= Ajax::Register("cancelSettings", "Settings", 'location.reload();');
         $return .= Ajax::Register("editSettings", "Settings", '$("#xcontent").html(data.html);');
         $return .= Ajax::Register("editPlatform", "", '$("#xcontent").html(data.html);', array("platform"));
+        $return .= Ajax::Register("savePlatform", "Platform", 'location.reload();');
+        $return .= Ajax::Register("cancelPlatform", "Platform", 'location.reload();');
 
         $return .= 'function replaceData(data){
             if (typeof(data.replace) != \'undefined\') {

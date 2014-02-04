@@ -59,7 +59,7 @@ class Form
     {
         $ret ="";
         if($this->legend)
-            $ret .= "<legend>Add " . $this->attributes['name'] . "</legend>\n";
+            $ret .= "<legend>" . $this->attributes['name'] . "</legend>\n";
         $ret .= '<form';
         foreach($this->attributes as $key=>$value)
         {
@@ -137,7 +137,7 @@ class FormField
     
     public function toString()
     {   $ret = '';
-        if($this->attributes['type'] != "hidden" || $this->attributes['type'] != "button")
+        if($this->attributes['type'] != "hidden" && $this->attributes['type'] != "button")
             $ret .= '<div class="form-group">';
         if($this->attributes['type'] != "hidden")
         $ret .= '<label for="' . $this->id . '">' . $this->attributes['name'] . '</label>';
@@ -147,7 +147,7 @@ class FormField
             $ret .= ' ' . $key . '="' . $value . '"';
         }
         $ret .= ' />';
-        if($this->attributes['type'] != "hidden" || $this->attributes['type'] != "button")
+        if($this->attributes['type'] != "hidden" && $this->attributes['type'] != "button")
             $ret .= '</div>';
         return $ret;   
     }

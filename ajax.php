@@ -13,7 +13,8 @@ else
     /** @var $settings Settings */
     $settings = $framework->settings;
 
-    $function = $framework->sentVars['function'];
+    $vars = $framework->sentVars;
+    $function = $vars['function'];
     $jsondata[] = array();
 
     switch($function)
@@ -22,8 +23,8 @@ else
             $jsondata[$RESPONSE_FIELD] = $settings->toForm();
             break;
         case "saveSettings":
-            unset($framework->sentVars['function']);
-            $json = json_encode($framework->sentVars);
+            unset($vars['function']);
+            $json = json_encode($vars);
             if(Utils::isJson($json)){
                 Settings::Save("settings.conf", $json);
             }
@@ -31,10 +32,20 @@ else
             $jsondata[$RESPONSE_FIELD] = $json;
             break;
         case "editPlatform":
-            unset($framework->sentVars['function']);
+            if(!isset($vars['platform'])){
+                die;
+            }
+
+            unset($vars['function']);
             $json = json_encode($framework->sentVars);
 
-            $jsondata[$RESPONSE_FIELD] = $json;
+            $classname = "Platform";
+            $form = new Form($classname,$classname, "POST", "javascript:void(null);");
+            $form->addField("text","name","$classname Name", $vars['platform'], "form-control uneditable-input", "$classname Name", "");
+            $form->addField("button", $classname.".save","", "Save", "btn btn-success", null, "save$classname();");
+            $form->addField("button",$classname.".cancel","", "Cancel", "btn btn-danger", null, "cancel$classname();");
+
+            $jsondata[$RESPONSE_FIELD] = $form->toString();
             break;
     }
 
