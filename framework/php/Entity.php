@@ -3,7 +3,7 @@
 class Entity
 {
 
-    public $_id;
+    //public $_id;
 
     public function getId()
     {

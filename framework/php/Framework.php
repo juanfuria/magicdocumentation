@@ -17,6 +17,7 @@ class Framework{
     public $javascripts;
 
     public $documentation;
+    public $edit = false;
 
     function Framework(){
         $this->sentVars     = Utils::getMergedInputArrays();
@@ -92,6 +93,9 @@ class Framework{
             if($platform == $this->getSelectedPlatform()){
                 $entity->class = 'class="active"';
             }
+            if($this->edit){
+                $entity->url = 'javascript:editPlatform(\'' . $entity->platform . '\');';
+            }
 
             $items[$x] = $entity;
             $x++;
@@ -148,10 +152,9 @@ class Framework{
         $return .= Ajax::Register("saveSettings", "Settings", 'alert(data.html);location.reload();');
         $return .= Ajax::Register("cancelSettings", "Settings", 'location.reload();');
         $return .= Ajax::Register("editSettings", "Settings", '$("#xcontent").html(data.html);');
-        $return .= Ajax::Register("editPlatform", "", '$("#xcontent").html(data.html);', array("platform"));
+        $return .= Ajax::Register("editPlatform", "", 'replaceData(data);', array("platform"));
         $return .= Ajax::Register("savePlatform", "Platform", 'location.reload();');
         $return .= Ajax::Register("cancelPlatform", "Platform", 'location.reload();');
-
         $return .= 'function replaceData(data){
             if (typeof(data.replace) != \'undefined\') {
                 $("#" + data.replace.id).replaceWith(data.replace.html);

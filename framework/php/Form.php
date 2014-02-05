@@ -75,6 +75,7 @@ class Form
         $ret .= '</form>'. "\n";
         return $ret;
     }
+
     
     public static function fromObject($object, $actioncancel, $actionsave)
     {

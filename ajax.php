@@ -35,9 +35,15 @@ else
             if(!isset($vars['platform'])){
                 die;
             }
-
             unset($vars['function']);
+
+
+
             $json = json_encode($framework->sentVars);
+
+
+            $ent = new Entity();
+            $ent->name = $vars['platform'];
 
             $classname = "Platform";
             $form = new Form($classname,$classname, "POST", "javascript:void(null);");
@@ -45,7 +51,13 @@ else
             $form->addField("button", $classname.".save","", "Save", "btn btn-success", null, "save$classname();");
             $form->addField("button",$classname.".cancel","", "Cancel", "btn btn-danger", null, "cancel$classname();");
 
-            $jsondata[$RESPONSE_FIELD] = $form->toString();
+            //$jsondata[$RESPONSE_FIELD] = $form->toString();*/
+
+            $jsondata['replace']['id']      = "xplatform_" . Utils::camelCase($vars['platform']);
+            $jsondata['replace']['html']    = $ent->toEdit();
+
+
+
             break;
     }
 
