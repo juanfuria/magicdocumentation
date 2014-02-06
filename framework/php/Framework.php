@@ -93,9 +93,9 @@ class Framework{
             if($platform == $this->getSelectedPlatform()){
                 $entity->class = 'class="active"';
             }
-//            if($this->edit){
-//                $entity->url = 'javascript:editPlatform(\'' . $entity->platform . '\');';
-//            }
+            if($this->edit){
+                $entity->url = 'javascript:editPlatform(\'' . $entity->platform . '\');';
+            }
 
             $items[$x] = $entity;
             $x++;
@@ -160,11 +160,11 @@ class Framework{
                 $("#" + data.replace.id).replaceWith(data.replace.html);
             }
         };';
-        $return .= '
-        $(\'#xnavbar li a\').dblclick(function() {
-                editPlatform($(this).attr(\'id\'));
-                event.preventDefault();
-            });';
+//        $return .= '
+//        $(\'#xnavbar li a\').dblclick(function() {
+//                editPlatform($(this).attr(\'id\'));
+//                event.preventDefault();
+//            });';
 
         //$return = Utils::compress($return);
 

@@ -32,7 +32,7 @@ class Layout {
      * @internal param \settings $ Settings
      */
     public static function getImagePath($imgName, $settings){
-        return $settings->imgDir . "/" . $imgName;
+        return $settings->getImgDir() . "/" . $imgName;
     }
 
     public static function printMethod($json){

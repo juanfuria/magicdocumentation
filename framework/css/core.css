@@ -80,3 +80,6 @@
 h3.deprecated{
     text-decoration: line-through;
 }
+.center{
+    text-align: center;
+}

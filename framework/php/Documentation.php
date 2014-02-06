@@ -18,76 +18,86 @@ class Documentation
         $this->framework = $framework;
         $this->initDefaults();
 
-        $platforms = Utils::listDirs($_path);
+        $projects = Utils::listDirs($_path);
 
-        foreach($platforms as $platform){
-            $platforminfo       = pathinfo($platform);
-            $platformObj        = new Platform();
-            $platformObj->name  = $platforminfo['basename'];
+        foreach($projects as $project){
 
-            $this->platforms[$platformObj->name] = $platformObj;
+            $projectinfo       = pathinfo($project);
+            $projectObj        = new Project();
+            $projectObj->name  = $projectinfo['basename'];
 
-            $settings = array();
-            if(file_exists($platform . "/platform.json")){
-                $settings = json_decode(Utils::getContent($platform . "/platform.json"), true);
-            }
-            else{
-                foreach ($this->specialFiles as $key => $spFile) {
-                    $settings['order'][$key] = $spFile;
+            $this->projects[$projectObj->name] = $projectObj;
+
+            $platforms = Utils::listDirs($project);
+            foreach($platforms as $platform){
+                $platforminfo       = pathinfo($platform);
+                $platformObj        = new Platform();
+                $platformObj->name  = $platforminfo['basename'];
+
+                $this->platforms[$platformObj->name] = $platformObj;
+
+                $settings = array();
+                if(file_exists($platform . "/platform.json")){
+                    $settings = json_decode(Utils::getContent($platform . "/platform.json"), true);
                 }
-            }
-            $this->platforms[$platformObj->name]->settings = $settings;
-
-            //We search for "sections" inside the platform
-            $dirs = Utils::listDirs($platform);
-            foreach ($dirs as $dir) {
-
-                $pathinfo           = pathinfo($dir);
-                $sectionObj         = new Section();
-
-                $sectionObj->name   = $pathinfo['basename'];
-                $sectionObj->path   = $pathinfo['dirname'];
-                $sectionObj->special= (in_array($sectionObj->name, $this->specialFiles));
-
-                $this->platforms[$platformObj->name]->sections[$sectionObj->name] = $sectionObj;
-
-                $files      = Utils::listFiles($dir, "*");
-                foreach ($files as $file) {
-                    $fileinfo           = pathinfo($file);
-                    $fileObj            = new File();
-                    $fileObj->path      = $fileinfo['dirname'];
-                    $fileObj->name      = $fileinfo['filename'];
-                    $fileObj->ext       = $fileinfo['extension'];
-                    $fileObj->content   = Utils::getContent($file);
-
-                    if($fileObj->ext == 'json'){
-                        $fileObj->json = json_decode($fileObj->content, true);
-                        if(array_key_exists('version', $fileObj->json)){
-                            $version = $fileObj->json['version'];
-                            $this->platforms[$platformObj->name]->addVersion($version);
-                            $entity = $fileObj->json['name'];
-                            $this->platforms[$platformObj->name]->addEntity(Utils::camelCase($entity));
-                        }
+                else{
+                    foreach ($this->specialFiles as $key => $spFile) {
+                        $settings['order'][$key] = $spFile;
                     }
-                    $pos = count($this->platforms[$platformObj->name]->sections[$sectionObj->name]->files);
-                    $this->platforms[$platformObj->name]->sections[$sectionObj->name]->files[$pos] = $fileObj;
+                }
+                $this->platforms[$platformObj->name]->settings = $settings;
+
+                //We search for "sections" inside the platform
+                $dirs = Utils::listDirs($platform);
+                foreach ($dirs as $dir) {
+
+                    $pathinfo           = pathinfo($dir);
+                    $sectionObj         = new Section();
+
+                    $sectionObj->name   = $pathinfo['basename'];
+                    $sectionObj->path   = $pathinfo['dirname'];
+                    $sectionObj->special= (in_array($sectionObj->name, $this->specialFiles));
+
+                    $this->platforms[$platformObj->name]->sections[$sectionObj->name] = $sectionObj;
+
+                    $files      = Utils::listFiles($dir, "*");
+                    foreach ($files as $file) {
+                        $fileinfo           = pathinfo($file);
+                        $fileObj            = new File();
+                        $fileObj->path      = $fileinfo['dirname'];
+                        $fileObj->name      = $fileinfo['filename'];
+                        $fileObj->ext       = $fileinfo['extension'];
+                        $fileObj->content   = Utils::getContent($file);
+
+                        if($fileObj->ext == 'json'){
+                            $fileObj->json = json_decode($fileObj->content, true);
+                            if(array_key_exists('version', $fileObj->json)){
+                                $version = $fileObj->json['version'];
+                                $this->platforms[$platformObj->name]->addVersion($version);
+                                $entity = $fileObj->json['name'];
+                                $this->platforms[$platformObj->name]->addEntity(Utils::camelCase($entity));
+                            }
+                        }
+                        $pos = count($this->platforms[$platformObj->name]->sections[$sectionObj->name]->files);
+                        $this->platforms[$platformObj->name]->sections[$sectionObj->name]->files[$pos] = $fileObj;
+                    }
+
+                    $this->platforms[$platformObj->name]->sections[$sectionObj->name]->sort();
+
                 }
 
-                $this->platforms[$platformObj->name]->sections[$sectionObj->name]->sort();
 
-            }
-
-
-            //order sections
-            $sorted = array();
-            foreach($this->platforms[$platformObj->name]->settings['order'] as $section_name){
-                if(array_key_exists($section_name , $this->platforms[$platformObj->name]->sections)){
-                    $sorted[$section_name] = $this->platforms[$platformObj->name]->sections[$section_name];
+                //order sections
+                $sorted = array();
+                foreach($this->platforms[$platformObj->name]->settings['order'] as $section_name){
+                    if(array_key_exists($section_name , $this->platforms[$platformObj->name]->sections)){
+                        $sorted[$section_name] = $this->platforms[$platformObj->name]->sections[$section_name];
+                    }
                 }
-            }
-            $this->platforms[$platformObj->name]->sections = $sorted;
+                $this->platforms[$platformObj->name]->sections = $sorted;
 
-            //end order sections
+                //end order sections
+            }
         }
     }
 
