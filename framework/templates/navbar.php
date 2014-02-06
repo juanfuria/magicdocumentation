@@ -10,7 +10,7 @@
             <a class="navbar-brand" href=""><span class="glyphicon glyphicon-cloud"></span>&nbsp;<?=$title?></a>
         </div>
         <nav class="collapse navbar-collapse navbar-collapse" role="navigation">
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav" id="xnavbar">
                 <?php foreach ($this->items as $item): ?>
                     <li <?=$item->class?>><a id="xplatform_<?=Utils::camelCase($item->platform)?>" <?=$item->event?> href="<?=$item->url?>"><?=$item->platform?></a></li>
                 <?php endforeach; ?>

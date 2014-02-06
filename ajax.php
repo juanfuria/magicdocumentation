@@ -56,8 +56,6 @@ else
             $jsondata['replace']['id']      = "xplatform_" . Utils::camelCase($vars['platform']);
             $jsondata['replace']['html']    = $ent->toEdit();
 
-
-
             break;
     }
 
