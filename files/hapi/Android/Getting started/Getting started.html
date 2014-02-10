@@ -60,7 +60,7 @@ public void initApi(Context context){
 @Override
 public void deviceDiscoveryFinished(List&lt;Device&gt; devices){
     for(Device device : devices){
-    if(device.getName() == "MyDeviceName"){
+    if(device.getName().equals("MyDeviceName")){
         //We'll remember the device for this session, but is cool that you do too
             this.device = device;
             this.api.useDevice(this.device);
