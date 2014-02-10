@@ -14,6 +14,7 @@ $settings = $framework->settings;
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="baseurl" id="baseurl" content="<?=$framework->settings->getBaseUrl()?>" />
     <!--        <meta http-equiv="refresh" content="5; URL=">-->
 
     <?php

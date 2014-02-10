@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href=""><span class="glyphicon glyphicon-cloud"></span>&nbsp;<?=$title?></a>
+            <a class="navbar-brand" href=""><i class="glyphicon glyphicon-cloud"></i>&nbsp;<?=$title?></a>
         </div>
         <nav class="collapse navbar-collapse navbar-collapse" role="navigation">
             <ul class="nav navbar-nav" id="xnavbar">

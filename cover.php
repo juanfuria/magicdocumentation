@@ -22,8 +22,8 @@ $settings = $framework->settings;
         <title><?php echo $settings->pageTitle; ?></title>
         <style>
             body{
-                background: url(<?=Layout::getImagePath("blur.jpg", $settings)?>) center center fixed no-repeat !important;
-                background-size: auto;
+<!--                background: url(--><?//=Layout::getImagePath("blur.jpg", $settings)?><!--) center center fixed no-repeat !important;-->
+<!--                background-size: auto;-->
             }
             .jumbotron{
                 margin-top: 220px;
@@ -33,12 +33,12 @@ $settings = $framework->settings;
                 margin-right: 25px;
             }
             .slogan{
-                font-size: 50px;
+                font-size: 29px;
                 font-weight: 100;
                 letter-spacing: 3px;
-                /*color:#514736;*/
-                color:#fff;
-
+                color:#514736;
+                color: #fff;
+                line-height: 1.6;
             }
             .banner{
                 margin: 30px 0px;
@@ -47,12 +47,17 @@ $settings = $framework->settings;
                 background: rgba(255, 255, 255, 0.25);
                 width: 70%;
                 margin: auto;
-                margin-bottom:10px;
-                color:#fff;
-                font-weight: 100;
-                /*font-size: 200%;*/
+                margin-bottom: -1px;
+                background-color: #F5F5F5;
+                font-weight: 300;
                 padding: 10px 20px;
-                letter-spacing: 2px;
+                letter-spacing: 0.04em;
+                color: #8A8A8A;
+                border: 1px solid #B8B8B8;
+            }
+            .header{
+                background: #535353;
+                color: #fff;
             }
         </style>
     </head>
@@ -63,8 +68,14 @@ $settings = $framework->settings;
 
 
     </div>
-    <div class="box">
-        <div class="slogan center">handpoint[dev]</div>
+    <div class="box header"><img src="<?=$settings->getBaseUrl() . "thumb/handpoint-logo-w_100.png"; ?>" />
+        <span class="handpoint-logo slogan"></span>[dev]
+        <span style="float:right;
+            display: table-cell;
+            vertical-align: middle;">
+            <a href="#" class="btn btn-default">Sign up</a>
+            <a href="#" class="btn btn-default">Order a demo kit</a>
+        </span>
     </div>
     <div class="box">
 
@@ -94,7 +105,7 @@ $settings = $framework->settings;
         <br/>
     </div>
     <div class="box">
-        handpoint[dev] is part of <a href="http://handpoint.com"><img src="<?=$settings->getBaseUrl() . "thumb/handpoint-logo-w_100.png"; ?>" /></a>
+        <a href="https://handpoint.com">handpoint.com</a> // sales@handpoint.com // Tel: +3545103300 // @HandpointLtd
     </div>
 <!--    -->
 <!--        <div class="jumbotron">-->

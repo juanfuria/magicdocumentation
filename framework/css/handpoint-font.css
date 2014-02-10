@@ -1,0 +1,142 @@
+@font-face {
+    font-family: 'Handpoint';
+    src:url('../fonts/Handpoint.eot?gny463');
+    src:url('../fonts/Handpoint.eot?#iefixgny463') format('embedded-opentype'),
+    url('../fonts/Handpoint.woff?gny463') format('woff'),
+    url('../fonts/Handpoint.ttf?gny463') format('truetype'),
+    url('../fonts/Handpoint.svg?gny463#Handpoint') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="handpoint-"], [class*=" handpoint-"] {
+    font-family: 'Handpoint';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.handpoint-smile:before {
+    content: "\e600";
+}
+.handpoint-lightning:before {
+    content: "\e601";
+}
+.handpoint-gears:before {
+    content: "\e602";
+}
+.handpoint-guy:before {
+    content: "\e603";
+}
+.handpoint-piggy:before {
+    content: "\e604";
+}
+.handpoint-tablets-over:before {
+    content: "\e605";
+}
+.handpoint-palm:before {
+    content: "\e606";
+}
+.handpoint-pencil:before {
+    content: "\e607";
+}
+.handpoint-card:before {
+    content: "\e608";
+}
+.handpoint-password:before {
+    content: "\e609";
+}
+.handpoint-cashier:before {
+    content: "\e60a";
+}
+.handpoint-mpos:before {
+    content: "\e60b";
+}
+.handpoint-bank:before {
+    content: "\e60c";
+}
+.handpoint-padlock:before {
+    content: "\e60d";
+}
+.handpoint-letter:before {
+    content: "\e60e";
+}
+.handpoint-laptops:before {
+    content: "\e60f";
+}
+.handpoint-tablets:before {
+    content: "\e610";
+}
+.handpoint-logout:before {
+    content: "\e611";
+}
+.handpoint-receipt:before {
+    content: "\e612";
+}
+.handpoint-home:before {
+    content: "\e613";
+}
+.handpoint-info:before {
+    content: "\e614";
+}
+.handpoint-question:before {
+    content: "\e615";
+}
+.handpoint-gears-clear:before {
+    content: "\e616";
+}
+.handpoint-connect:before {
+    content: "\e617";
+}
+.handpoint-refund:before {
+    content: "\e618";
+}
+.handpoint-clock:before {
+    content: "\e619";
+}
+.handpoint-calculator:before {
+    content: "\e61a";
+}
+.handpoint-clock-full:before {
+    content: "\e61b";
+}
+.handpoint-receipt-full:before {
+    content: "\e61c";
+}
+.handpoint-home-full:before {
+    content: "\e61d";
+}
+.handpoint-info-full:before {
+    content: "\e61e";
+}
+.handpoint-logout-full:before {
+    content: "\e61f";
+}
+.handpoint-connect-full:before {
+    content: "\e620";
+}
+.handpoint-calculator-full:before {
+    content: "\e621";
+}
+.handpoint-refund-full:before {
+    content: "\e622";
+}
+.handpoint-key-cancel:before {
+    content: "\e623";
+}
+.handpoint-key-on:before {
+    content: "\e624";
+}
+.handpoint-key-ok:before {
+    content: "\e625";
+}
+.handpoint-logo:before {
+    content: "\e626";
+}

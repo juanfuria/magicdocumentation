@@ -16,11 +16,18 @@
         <p style="border: 1px solid gray; border-radius: 3px; background: #eeeeee; padding: 10px; margin: 15px; width: 40%; float: left;">The Handpoint socket interface is a popular choice. The Headstart package includes a server which runs on a PC as a service and exposes the Handpoint Library functionality over a socket connection, via JSON messages (as string or as an object).</p>
     </div>
     <div class="col-md-2 downloadSDK">
-        <a href="http://handpoint.com/downloads/sdk/Handpoint-PC-v1.1.2.zip">
-            <p style="text-align: center; margin-top: 25px;">
-                <span class="ball ball-macbook"></span>
-            </p>
-            <p style="text-align: center"><span class="btn btn-primary">Get the SDK</span></p>
-        </a>
+        <div style="text-align: center; margin-top: 25px;">
+            <span class="ball ball-macbook"></span>
+            <form id="getSDK" action="download.php" method="POST">
+                <input type="hidden" name="url" value="http://handpoint.com/downloads/sdk/Handpoint-PC-v1.1.2.zip" />
+                <input type="hidden" name="name" value="Desktop SDK" />
+                <br />
+                <button class="btn btn-primary btn-large">Get the SDK</button>
+            </form>
+            <script>
+                var baseurl = $('meta[name=baseurl]');
+                $('#getSDK').attr('action', baseurl.attr("content") + 'download.php');
+            </script>
+        </div>
     </div>
 </div>

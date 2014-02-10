@@ -15,11 +15,18 @@
         <p style="border: 1px solid gray; border-radius: 3px; background: #eeeeee; padding: 10px; margin: 15px; width: 40%; float: left;">Central part of Handpoint Windows Mobile/CE solution is the Handpoint&nbsp;Library. This library provides core functionality, including interaction with&nbsp;PED&nbsp;device and communication with payment gateway. Those integrators who wish to integrate Handpoint&nbsp;solution into their C++ based products, will most likely use Handpoint&nbsp;Library directly from their C++ based applications for these purposes.</p>
     </div>
     <div class="col-md-2 downloadSDK">
-        <a href="http://handpoint.com/downloads/sdk/Handpoint-SDK-Win-CE-Mobile-v1.3.3.zip">
-            <p style="text-align: center; margin-top: 25px;">
-                <span class="ball ball-windows-phone"></span>
-            </p>
-            <p style="text-align: center"><span class="btn btn-primary">Get the SDK</span></p>
-        </a>
+        <div style="text-align: center; margin-top: 25px;">
+            <span class="ball ball-windows-phone"></span>
+            <form id="getSDK" action="download.php" method="POST">
+                <input type="hidden" name="url" value="http://handpoint.com/downloads/sdk/Handpoint-SDK-Win-CE-Mobile-v1.3.3.zip" />
+                <input type="hidden" name="name" value="Windows Mobile SDK" />
+                <br />
+                <button class="btn btn-primary btn-large">Get the SDK</button>
+            </form>
+            <script>
+                var baseurl = $('meta[name=baseurl]');
+                $('#getSDK').attr('action', baseurl.attr("content") + 'download.php');
+            </script>
+        </div>
     </div>
 </div>
