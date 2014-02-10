@@ -2,7 +2,7 @@
     "title": "Reversal",
     "name": "saleReversal",
     "version": "3.0.0",
-    "description": "A saleReversal initiates a reversal operation for a previous sale operation to the card reader. This operation reverts (if possible) a specific sale identified with a transaction id. In it's simplest form you only have to pass the <strong>amount</strong>, <strong>currency</strong> and <strong>originalTransactionID</strong> but it also accepts a device object and a map with extra parameters. Note that transactions can only be reversed within 12 hours of the transaction??",
+    "description": "A saleReversal initiates a reversal operation for a previous sale operation to the card reader. This operation reverts (if possible) a specific sale identified with a transaction id. In it's simplest form you only have to pass the <strong>amount</strong>, <strong>currency</strong> and <strong>originalTransactionID</strong> but it also accepts a device object and a map with extra parameters. Note that transactions can only be reversed within the same day as the transaction was made.",
     "parameters": [
         {
             "name": "amount",

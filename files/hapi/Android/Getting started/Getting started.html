@@ -1,8 +1,8 @@
 <h3>Step 1: The basic class</h3>
 
-<p>To use the library we're assuming you have an Android project. In order to work, our library requires
-    some permissions on your side. You <strong>must</strong> add the following to your AndroidManifest.xml
-    file</p>
+<p>To use the library we're assuming you have an Android project. The SDK it self is a single jar file with all needed dependencies.
+    Depending on the IDE used the jar needs to be added as an external library or a dependency to the Android project. In order to work,
+    our library requires some permissions on your side. You <strong>must</strong> add the following to your AndroidManifest.xml file</p>
 <pre><code class="xml">&lt;uses-permission android:name="android.permission.BLUETOOTH" /&gt;
 &lt;uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /&gt;
 &lt;uses-permission android:name="android.permission.INTERNET" /&gt;
@@ -11,7 +11,7 @@
 
 <p>Now we're going to create a simple class to show the usage of the API:</p>
 
-<pre><code class="java">import com.handpoint.api;
+<pre><code class="java">import com.handpoint.api.*;
 
 //You need to take care of the required events.
 //You can live with those for now
@@ -72,13 +72,7 @@ public void deviceDiscoveryFinished(List&lt;Device&gt; devices){
 <h3>Step 3: Pay something!</h3>
 <pre><code class="java">//Let's create a sample payment
 public boolean pay(){
-
-    BigInteger amount = new BigInteger("1000");
-    Currency currency = Currency.ISK;
-
-    boolean isPaymentStarted = this.api.sale(amount, currency);
-
-    return isPaymentStarted;
+    return this.api.sale(new BigInteger("1000"), Currency.ISK);
 }
 
 @Override
@@ -110,13 +104,7 @@ public void endOfTransaction(TransactionResult transactionResult, Device device)
     }
 
     public boolean pay(){
-
-        BigInteger amount = new BigInteger("1000");
-        Currency currency = Currency.ISK;
-
-        boolean isPaymentStarted = this.api.sale(amount, currency);
-
-        return isPaymentStarted;
+        return this.api.sale(new BigInteger("1000"), Currency.ISK);
     }
 
     @Override
@@ -135,7 +123,7 @@ public void endOfTransaction(TransactionResult transactionResult, Device device)
     @Override
     public void deviceDiscoveryFinished(List&lt;Device&gt; devices){
         for(Device device : devices){
-            if(device.getName() == "MyDeviceName"){
+            if(device.getName().equals("MyDeviceName")){
                 //We'll remember the device for this session, but is cool that you do too
                 this.device = device;
                 this.api.useDevice(this.device);
