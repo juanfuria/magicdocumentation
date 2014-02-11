@@ -199,12 +199,14 @@ dt{
     border-bottom: 1px solid #ddd;
 }
 
-.label-primary{
+
+/* Handpoint palette */
+.label-primary, .btn-primary{
     background-color: #5db6e8;
 }
 
-.label-success{
-    background-color: #55bdae;
+.label-success, .btn-success{
+    background-color: #1abc9c;
 }
 
 
