@@ -1,11 +1,12 @@
 <?php
 
 class Platform extends Entity{
+
     public $settings;
-    public $sections;
+    public $sections    = array();
     public $name;
     public $description;
-    public $versions = array();
+    public $versions    = array();
     public $entities    = array();
 
 

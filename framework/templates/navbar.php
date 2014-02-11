@@ -11,7 +11,7 @@
         </div>
         <nav class="collapse navbar-collapse navbar-collapse" role="navigation">
             <ul class="nav navbar-nav" id="xnavbar">
-                <?php foreach ($this->items as $item): ?>
+                <?php foreach ($items as $item): ?>
                     <li <?=$item->class?>><a id="xplatform_<?=Utils::camelCase($item->platform)?>" href="<?=$item->url?>"><?=$item->platform?></a></li>
                 <?php endforeach; ?>
             </ul>

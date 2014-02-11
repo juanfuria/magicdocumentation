@@ -22,8 +22,8 @@ $settings = $framework->settings;
         <title><?php echo $settings->pageTitle; ?></title>
         <style>
             body{
-<!--                background: url(--><?//=Layout::getImagePath("blur.jpg", $settings)?><!--) center center fixed no-repeat !important;-->
-<!--                background-size: auto;-->
+                background: url(<?=Layout::getImagePath("blur.jpg", $settings)?>) center center fixed no-repeat !important;
+                background-size: auto;
             }
             .jumbotron{
                 margin-top: 220px;
@@ -49,62 +49,83 @@ $settings = $framework->settings;
                 margin: auto;
                 margin-bottom: -1px;
                 background-color: #F5F5F5;
-                font-weight: 300;
                 padding: 10px 20px;
-                letter-spacing: 0.04em;
                 color: #8A8A8A;
                 border: 1px solid #B8B8B8;
+            }
+            .box .btn{
+
+                color:#514736;
+                font-weight: 500;
             }
             .header{
                 background: #535353;
                 color: #fff;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                border-color: #535353;
+            }
+            .footer{
+                background: #535353;
+                color: #fff;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                border-color: #535353;
+                font-weight: 100;
+                letter-spacing: 1px;
+            }
+            .footer a, .header a{
+                color: #fff;
+            }
+
+            .sect{
+                padding: 10px;
+                text-align: center;
             }
         </style>
     </head>
     <body>
     <div class="center banner">
-<!--        <img src="--><?//=$settings->getBaseUrl() . "thumb/dev-logo-ball_120.png"; ?><!--" /><br />-->
-        <img src="<?=Layout::getImagePath("dev-logo-ball.png", $settings)?>" />
+        <img src="<?=$settings->getBaseUrl() . "thumb/dev-logo-ball_120.png"; ?>" /><br />
+<!--        <img src="--><?//=Layout::getImagePath("dev-logo-ball.png", $settings)?><!--" />-->
 
 
     </div>
-    <div class="box header"><img src="<?=$settings->getBaseUrl() . "thumb/handpoint-logo-w_100.png"; ?>" />
-        <span class="handpoint-logo slogan"></span>[dev]
-        <span style="float:right;
-            display: table-cell;
-            vertical-align: middle;">
+    <div class="box header">
+        <img src="<?=$settings->getBaseUrl() . "thumb/handpoint-logo-w_160.png"; ?>" />[dev]
+<!--        <span class="handpoint-logo slogan"></span>[dev]-->
+        <span style="float:right;">
             <a href="#" class="btn btn-default">Sign up</a>
             <a href="#" class="btn btn-default">Order a demo kit</a>
         </span>
     </div>
     <div class="box">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 device sect">
+                    <h1>Use a card reader</h1>
+                    <br /><br /><br />
 
-        handpoint[dev] is the perfect place to be if you're looking on how to integrate with our products.
+                    <span class="handpoint-mpos" style="font-size: 250px;"></span>
+                    <br /><br /><br />
 
-        Here have some content
-        <br/>
-        Here have some content
-        <br/>
-        Here have some content
-        <br/>
-        Here have some content
-        <br/>
-        Here have some content
-        <br/>
-        Here have some content
-        <br/>
-        Here have some content
-        <br/>
-        Here have some content
-        <br/>
-        Here have some content
-        <br/>
-        Here have some content
-        <br/>
-        Here have some content
-        <br/>
+                    <?php $framework->printNavButtons();  ?>
+                </div>
+                <div class="col-md-6 ecommerce sect">
+                    <h1>Use the cloud</h1>
+                    <br /><br /><br />
+
+                    <span class="handpoint-laptops" style="font-size: 250px;"></span>
+                    <br /><br /><br />
+
+                    <?php $framework->printNavButtons();  ?>
+                </div>
+            </div>
+        </div>
+
+
     </div>
-    <div class="box">
+    <div class="box footer">
         <a href="https://handpoint.com">handpoint.com</a> // sales@handpoint.com // Tel: +3545103300 // @HandpointLtd
     </div>
 <!--    -->

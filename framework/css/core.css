@@ -45,8 +45,8 @@
     padding: 7px 15px;
 }
 .label{
-    padding: 0.6em 0.7em 0.4em;
-    font-size: 85%;
+    padding: 0.7em;
+    font-size: 100%;
     text-transform: capitalize;
     font-weight:normal;
 }
