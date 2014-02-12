@@ -49,11 +49,12 @@
     font-size: 100%;
     text-transform: capitalize;
     font-weight:normal;
+    letter-spacing: 0.05em;
 }
 #header-bar{
     width: 100%;
     height: 6px;
-    background: url('../img/header_bar.png');
+    background: url('../img/header_bar2.png') 200px;
     position: fixed;
     top: 48px;
     left: 0;
@@ -82,4 +83,7 @@ h3.deprecated{
 }
 .center{
     text-align: center;
+}
+p{
+    line-height: 1.8em;
 }

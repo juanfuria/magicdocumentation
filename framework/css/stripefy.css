@@ -1,32 +1,39 @@
 /* Custom navigation styling */
-
+body{
+    color: #535353;
+}
 header, nav{
     background: #FAFAFA;
     color: #fff;
 }
 
 .navbar {
-    background: #FAFAFA !important;
+    /*background: #FAFAFA !important;*/
     border-bottom-width: 4px !important;
     /*box-shadow: 0 .25em .25em rgba(0,0,0,.1) !important;*/
 }
 .navbar-brand{
-    padding-right: 94px;
+    /*padding-right: 94px;*/
 }
+
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    background-color: #1cc7a6;
+ }
 
 .docs-nav .navbar-brand,
 .docs-nav .navbar-nav > li > a,
 .docs-nav .navbar-nav > li > a:hover {
     text-transform: uppercase;
-    color: #5F6A7D;
+    color: #fafafa;
     font-size: 13px;
     font-weight: normal;
-    border-right: 1px dashed #CCC;
+    border-right: 1px dashed rgba(250, 250, 250, 0.5);;
+    background-color: #1cc7a6;
 }
 .docs-nav .navbar-nav > .active > a,
 .docs-nav .navbar-nav > .active > a:hover {
-    /*color: #FAFAFA;*/
-    background-color: #f1f1f1;
+    color: #FAFAFA;
+    background-color: #16a085;
 }
 
 .docs-nav {
@@ -38,10 +45,14 @@ header, nav{
     padding: 0 15px 0 25px;
     margin-left: 0px;
 }
+
 .docs-nav {
     max-height: 54px;
 }
 
+.navbar-header{
+    background: #1cc7a6;
+}
 
 
 /* Custom styling for content columns*/
@@ -71,13 +82,11 @@ th {
 
 }
 .badge {
-    color: #428bca;
+    color: #1abc9c;
     background-color: #fff;
-    /*box-shadow: 0 0em 1.1em rgba(4, 43, 145, 0.61);*/
-    /*box-shadow: 0 0em .4em rgba(4, 43, 145, 0.61);*/
+    box-shadow: 2px 2px 0 rgba(211, 211, 211, 1);
     padding: 5px 8px;
     border-radius: 15px;
-    font-weight: normal;
 }
 section{
     border-bottom: 1px solid #eee8d5;
@@ -106,26 +115,22 @@ section{
     overflow: hidden;
 }
 
-.list-group .active{
-    background: #5db6e8;
-    /*background: -moz-linear-gradient(top,  #5db6e8 0px, #168eda 85%, #168eda 90%, #1d93dd 100%);*/
-    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0px,#5db6e8), color-stop(85%,#168eda), color-stop(90%,#168eda), color-stop(100%,#1d93dd));*/
-    /*background: -webkit-linear-gradient(top,  #5db6e8 0px,#168eda 85%,#168eda 90%,#1d93dd 100%);*/
-    /*background: -o-linear-gradient(top,  #5db6e8 0px,#168eda 85%,#168eda 90%,#1d93dd 100%);*/
-    /*background: -ms-linear-gradient(top,  #5db6e8 0px,#168eda 85%,#168eda 90%,#1d93dd 100%);*/
-    /*background: linear-gradient(to bottom,  #5db6e8 0px,#168eda 85%,#168eda 90%,#1d93dd 100%);*/
-    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5db6e8', endColorstr='#1d93dd',GradientType=0 );*/
+.list-group .active, .list-group .active:first-child{
+    background: #1cc7a6;
 
     color: #fff !important;
-    /*border-color:rgb(79, 107, 218);*/
-    border-color:rgba(40, 153, 241, 0.39);
+    border: none;
     font-size: 111%;
-    border-right: none;
-    border-left: none;
+    box-shadow: inset 0 -4px rgba(0,0,0,0.25);
+    padding-bottom: 10px;
+    border-radius: 0.5em;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    margin-top: 6px;
 }
 .list-group .active a{
     color: #fff !important;
-    font-weight: lighter;
+    /*font-weight: lighter;*/
     letter-spacing: 1px;
 }
 
@@ -172,18 +177,14 @@ section{
 .content{
     padding-left: 20px;
     padding-top: 0;
-    border-left: 1px solid #ddd;
-}
-
-.content div:focus{
-    border:solid 1px red;
 }
 
 .docs-nav {
     text-shadow: 0 -1px 0 rgba(0,0,0,.15);
-    background-color: #55bdae;
-    border-color: #56545A;
-    box-shadow: 0 1px 0 rgba(255,255,255,.1);
+    background-color:  #1cc7a6;;
+    border-color: rgba(0,0,0,.25);
+    /*box-shadow: 0px 5px 10px rgba(0,0,0,.1);*/
+    border-bottom-width: 4px;
 }
 
 .shadow-separator{
@@ -199,14 +200,70 @@ dt{
     border-bottom: 1px solid #ddd;
 }
 
+td a{
+    border-bottom: 1px dashed #428bca;
+}
+td a:hover{
+    text-decoration: none;
+}
 
 /* Handpoint palette */
+.btn{
+    border: none;
+}
+
+.label, .btn{
+    box-shadow: inset 0 -3px rgba(0,0,0,0.25);
+}
+
 .label-primary, .btn-primary{
     background-color: #5db6e8;
 }
 
 .label-success, .btn-success{
     background-color: #1abc9c;
+}
+
+.label-warning, .btn-warning{
+    background-color: #e67e22;
+}
+
+.label-info, .btn-info{
+    background-color: #34495e;
+}
+
+.label-default, .btn-default{
+    background-color: #ecf0f1;
+}
+
+.label-danger, .btn-danger{
+    background-color: #e74c3c;
+}
+
+#logo{
+    background: url('../img/handpoint-logo-w.png') center center no-repeat;
+    width: 110px;
+    height: 20px;
+    background-size: 108px 22px;
+    /*width: 184px;*/
+    /*height: 20px;*/
+    /*background-size: 108px 22px;*/
+    /*overflow: hidden;*/
+    /*font-size: 200%;*/
+    /*color: #fafafa;*/
+}
+
+.navbar .btn{
+    margin-top: 4px;
+    margin-right: 4px;margin-top: 4px;
+    margin-right: 4px;
+    background: white;
+}
+
+#buttons{
+    float: right;
+    margin-top: -44px;
+    margin-right: 10px;
 }
 
 

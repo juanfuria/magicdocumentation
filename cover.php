@@ -101,7 +101,6 @@ $settings = $framework->settings;
             }
 
             .palette-wet-asphalt .btn-default{
-                background-color: #cacaca;
                 color: #535353;
                 font-weight: bold;
             }

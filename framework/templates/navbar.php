@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href=""><i class="glyphicon glyphicon-cloud"></i>&nbsp;<?=$title?></a>
+            <a class="navbar-brand" href=""><div id="logo"></div></a>
         </div>
         <nav class="collapse navbar-collapse navbar-collapse" role="navigation">
             <ul class="nav navbar-nav" id="xnavbar">
@@ -16,5 +16,11 @@
                 <?php endforeach; ?>
             </ul>
         </nav>
+    </div>
+
+    <div id="buttons">
+       <a class="btn btn-default">Sign up</a>
+       <a class="btn btn-default ">Order a demo kit</a>
+
     </div>
 </header>

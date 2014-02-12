@@ -3,7 +3,7 @@
     "name": "ConnectionMethod",
     "type": "enum",
     "version": "3.0.0",
-    "description": "A list of defined connection methods in the hapi.<p>Not all methods are supported at this time</p>",
+    "description": "A list of defined connection methods in the hapi.<p>Only <code>BLUETOOTH</code> is supported for android devices right now.</p>",
     "values": [
         "USB",
         "SERIAL",
@@ -13,5 +13,5 @@
         "ETHERNET"
     ],
     "order": "1",
-    "example": "public enum ConnectionMethod {\n\tUSB,\n\tSERIAL,\n\tBLUETOOTH,\n\tHTTPS,\n\tWIFI,\n\tETHERNET\n}"
+    "example": "//Currently BLUETOOTH is the only ConnectionMethod available.\npublic enum ConnectionMethod {\n\t<strike>USB</strike>,\n\t<strike>SERIAL</strike>,\n\tBLUETOOTH,\n\t<strike>HTTPS</strike>,\n\t<strike>WIFI</strike>,\n\t<strike>ETHERNET</strike>\n}"
 }
