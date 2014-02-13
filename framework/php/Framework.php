@@ -73,10 +73,10 @@ class Framework{
             $entity = new Template("");
             $url = '';
             if($this->settings->urlStyle == UrlType::URL_VARS){
-                $url = $this->settings->getBaseUrl() . Utils::getStringAfterLast($_SERVER["PHP_SELF"], "/") . '?platform=' . $platform->name . '';
+                $url = $this->settings->getBaseUrl() . Utils::getStringAfterLast($_SERVER["PHP_SELF"], "/") . '?project=' . $project->name . '&platform=' . $platform->name . '';
             }
             else if ($this->settings->urlStyle == UrlType::URL_READABLE){
-                $url = $this->settings->getBaseUrl() . 'platform/' . $platform->name . '/';
+                $url = $this->settings->getBaseUrl() . $project->name . '/platform/' . $platform->name . '/';
             }
             $entity->url      = $url;
             $entity->platform = $platform->name;

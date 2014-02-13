@@ -255,9 +255,10 @@ td a:hover{
 
 .navbar .btn{
     margin-top: 4px;
-    margin-right: 4px;margin-top: 4px;
     margin-right: 4px;
     background: white;
+    font-weight: 500;
+    color: rgba(83, 83, 83, .7);
 }
 
 #buttons{

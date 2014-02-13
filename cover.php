@@ -205,7 +205,7 @@ $settings = $framework->settings;
                     <div class="">Get access to the tutorials, libraries and full documentation<br />that will enable you to integrate with our card reader.
                         <br /><strong>easy-peasy</strong>
                         <br /><br />
-                        <p><a href="#" class="btn btn-default btn-lg">Give me the docs!</a></p>
+                        <p><a href="hapi/" class="btn btn-default btn-lg">Give me the docs!</a></p>
                     </div>
                 </div>
                 <div class="col-sm-2"><span class="handpoint-key-ok"></span><span class="fix"></span></div>
@@ -223,7 +223,7 @@ $settings = $framework->settings;
                     <div class="">Use our powerful cloud gateway for your e-commerce solution
 
                         <br /><br />
-                        <p><a href="#" class="btn btn-default btn-lg">Take me to the clouds!</a></p></div>
+                        <p><a href="test/" class="btn btn-default btn-lg">Take me to the clouds!</a></p></div>
                 </div>
                 <div class="clearfix visible-xs"></div>
             </div>
