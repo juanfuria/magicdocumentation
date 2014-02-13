@@ -20,7 +20,7 @@
             "name": "map",
             "type": "Map",
             "validation": "Optional",
-            "notes": "A map including extra (optional) parameters."
+            "notes": "A map including extra <a href=\"#elem_optionalParameters\">optional parameters</a>."
         },
         {
             "name": "device",

@@ -7,14 +7,14 @@
         {
             "name": "sharedSecret",
             "type": "String",
-            "validation": "Optional",
-            "notes": "This is used if you want to send the operation to a specific device. Recommended if you are using multiple devices"
+            "validation": "Required",
+            "notes": "The shared secret"
         },
         {
             "name": "device",
             "type": "Device",
-            "validation": "Required",
-            "notes": "The shared secret"
+            "validation": "Optional",
+            "notes": "This is used if you want to send the operation to a specific device. Recommended if you are using multiple devices"
         }
     ],
     "descriptionLists": [
