@@ -14,11 +14,18 @@
         <p style="border: 1px solid gray; border-radius: 3px; background: #eeeeee; padding: 10px; margin: 15px; width: 40%; float: left;">Please check out the documentation available. Then watch this space for further updates.</p>
     </div>
     <div class="col-md-2 downloadSDK">
-        <a href="http://www.handpoint.com/downloads/sdk/Handpoint-ios-SDK-v2.1.2.zip">
-            <p style="text-align: center; margin-top: 25px;">
-                <span class="ball ball-ios-devices"></span>
-            </p>
-            <p style="text-align:center"><span class="btn btn-primary">Get the SDK</span></p>
-        </a>
+        <div style="text-align: center; margin-top: 25px;">
+            <span class="ball ball-ios-devices"></span>
+            <form id="getSDK" action="download.php" method="POST">
+                <input type="hidden" name="url" value="https://www.handpoint.com/downloads/sdk/Handpoint-ios-SDK-v2.1.2.zip" />
+                <input type="hidden" name="name" value="iOS SDK" />
+                <br />
+                <button class="btn btn-primary btn-large">Get the SDK</button>
+            </form>
+            <script>
+                var baseurl = $('meta[name=baseurl]');
+                $('#getSDK').attr('action', baseurl.attr("content") + 'download.php');
+            </script>
+        </div>
     </div>
 </div>

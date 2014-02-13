@@ -19,37 +19,23 @@ class Framework{
     public $documentation;
     public $edit = false;
 
-    function Framework(){
+    function Framework($fetchdoc = true){
         $this->sentVars     = Utils::getMergedInputArrays();
         $this->settings     = Settings::Read('settings.conf');
         $this->stylesheets  = Utils::listFiles($this->settings->getCssDir(), "css");
         $this->javascripts  = Utils::listFiles($this->settings->getJsDir(), "js");
-        $this->documentation= new Documentation($this->settings->getFilesDir(), $this);
-        $this->platforms    = $this->getListOfPlatforms();
-    }
-
-    public function getListOfPlatforms(){
-
-        $platforms = array();
-
-        foreach ($this->documentation->platforms as $platform) {
-            $platforms[count($platforms)] = $platform->name;
+        if($fetchdoc){
+            $this->documentation= new Documentation($this->settings->getFilesDir(), $this);
         }
-        return $platforms;
     }
 
-    public function getSelectedPlatform(){
-        return (isset($this->sentVars["platform"])) ? $this->sentVars["platform"] : $this->getListOfPlatforms()[0];
-    }
-
-
-    public function getDocumentation($platform){
-        if(array_search($platform, $this->platforms) === false){
-            die;
-        }
-
-        return new Documentation($this->settings->getFilesDir() . "/" . $platform, $this);
-    }
+//    public function getDocumentation($platform){
+//        if(array_search($platform, $this->platforms) === false){
+//            die;
+//        }
+//
+//        return new Documentation($this->settings->getFilesDir() . "/" . $platform, $this);
+//    }
 
     public function printCssHeaders(){
         $return = "";
@@ -71,6 +57,7 @@ class Framework{
         echo $return;
     }
 
+    /*TODO this should not be here*/
     public function printNavBar(){
 
         $view = new Template($this->settings->getTemplatesDir() . "/navbar.php");
@@ -79,18 +66,21 @@ class Framework{
         $items = array();
         $x = 0;
 
-        foreach ($this->platforms as $platform) {
+        /** @var  $project Project */
+        $project = $this->documentation->getSelectedProject();
+
+        foreach ($project->platforms as $platform) {
             $entity = new Template("");
             $url = '';
             if($this->settings->urlStyle == UrlType::URL_VARS){
-                $url = $this->settings->getBaseUrl() . Utils::getStringAfterLast($_SERVER["PHP_SELF"], "/") . '?platform=' . $platform . '';
+                $url = $this->settings->getBaseUrl() . Utils::getStringAfterLast($_SERVER["PHP_SELF"], "/") . '?project=' . $project->name . '&platform=' . $platform->name . '';
             }
             else if ($this->settings->urlStyle == UrlType::URL_READABLE){
-                $url = $this->settings->getBaseUrl() . 'platform/' . $platform . '/';
+                $url = $this->settings->getBaseUrl() . $project->name . '/platform/' . $platform->name . '/';
             }
             $entity->url      = $url;
-            $entity->platform = $platform;
-            if($platform == $this->getSelectedPlatform()){
+            $entity->platform = $platform->name;
+            if($platform->name == $project->getSelectedPlatformName()){
                 $entity->class = 'class="active"';
             }
             if($this->edit){
@@ -107,11 +97,13 @@ class Framework{
     public function printMenu(){
 
         $view = new Template($this->settings->getTemplatesDir() . "/menu.php");
-        $doc = $this->documentation->getPlatform($this->getSelectedPlatform());
-        /** @var $section Section */
+        /** @var  $project Project */
+        $project = $this->documentation->getSelectedProject();
+        /** @var  $platform Platform*/
+        $platform = $project->getSelectedPlatform();
         $items = array();
-        $x = 0;
-        foreach ($doc->sections as $section) {
+        /** @var $section Section */
+        foreach ($platform->sections as $section) {
             $viewSection = new Template("");
             $viewSection->class = "active";
             $viewSection->url = '#section_' . htmlentities(Utils::camelCase($section->name));
@@ -143,8 +135,12 @@ class Framework{
     }
 
     public function printNavButtons(){
-        Layout::printNavButtons($this->platforms, $this->getSelectedPlatform(), $this->settings);
+        $selectedProject = $this->documentation->getSelectedProject();
+        $platformNames = $selectedProject->getListOfPlatforms;
+        $selectedPlatform = $selectedProject->getSelectedPlatform();
+        Layout::printNavButtons($platformNames, $selectedPlatform, $this->settings);
     }
+    /*TODO End this shoud not be here */
 
     public function printAjaxFunctions(){
         $return = '';
@@ -166,14 +162,16 @@ class Framework{
 //                event.preventDefault();
 //            });';
 
-        //$return = Utils::compress($return);
+        $return = Utils::compress($return);
 
         echo "\t" . Utils::surroundWithtag("script", $return) . "\n";
 
     }
 
     public function printSelectedPlatform(){
-        $this->documentation->printAll($this->getSelectedPlatform());
+        /** @var  $project Project */
+        $project = $this->documentation->getSelectedProject();
+        $project->printAll($project->getSelectedPlatform());
     }
 }
 

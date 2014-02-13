@@ -1,4 +1,11 @@
 <?php
+
+if(!isset($_GET['project'])){
+    include('cover.php');
+}
+else{
+
+
 include_once('framework/php/Framework.php');
 
 
@@ -14,6 +21,9 @@ $settings = $framework->settings;
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="baseurl" id="baseurl" content="<?=$framework->settings->getBaseUrl()?>" />
+
+
     <!--        <meta http-equiv="refresh" content="5; URL=">-->
 
     <?php
@@ -37,7 +47,6 @@ $settings = $framework->settings;
     <?php
     $framework->printNavBar();
     ?>
-<div id="header-bar"></div>
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="col-md-2 menu">
@@ -58,3 +67,9 @@ $settings = $framework->settings;
 </div>
 </body>
 </html>
+
+<?php
+
+}
+
+

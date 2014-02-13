@@ -9,6 +9,7 @@
         <dl>
             <dt>Superly Robust</dt>
             <dd>We take care of the PCI side so you don't have to.</dd>
+            <dd>The Handpoint card reader encrypts all sensitive cardholder data so your app will not need to handle any sensitive data. </dd>
         </dl>
         <dl>
             <dt>Working with the SDK</dt>
@@ -22,11 +23,18 @@
         </dl>
     </div>
     <div class="col-md-2 downloadSDK">
-        <a href="#">
-            <p style="text-align: center; margin-top: 25px;">
-                <span class="ball ball-android"></span>
-            </p>
-            <p style="text-align:center"><span class="btn btn-primary">Get the SDK</span></p>
-        </a>
+       <div style="text-align: center; margin-top: 25px;">
+            <span class="ball ball-android"></span>
+            <form id="getSDK" action="download.php" method="POST">
+                <input type="hidden" name="url" value="https://www.handpoint.com/downloads/sdk/Handpoint-SDK-Win-CE-Mobile-v1.3.3.zip" />
+                <input type="hidden" name="name" value="Android SDK" />
+                <br />
+                <button class="btn btn-primary btn-large">Get the SDK</button>
+            </form>
+            <script>
+                var baseurl = $('meta[name=baseurl]');
+                $('#getSDK').attr('action', baseurl.attr("content") + 'download.php');
+            </script>
+        </div>
     </div>
 </div>

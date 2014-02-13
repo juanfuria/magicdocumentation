@@ -10,6 +10,7 @@ class Section
     public $name;
     public $files = array();
     public $special = false;
+    public $path;
 
     function getFilesSize(){
         return count($this->files);

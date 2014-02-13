@@ -45,15 +45,16 @@
     padding: 7px 15px;
 }
 .label{
-    padding: 0.6em 0.7em 0.4em;
-    font-size: 85%;
+    padding: 0.7em;
+    font-size: 100%;
     text-transform: capitalize;
     font-weight:normal;
+    letter-spacing: 0.05em;
 }
 #header-bar{
     width: 100%;
     height: 6px;
-    background: url('../img/header_bar.png');
+    background: url('../img/header_bar2.png') 200px;
     position: fixed;
     top: 48px;
     left: 0;
@@ -82,4 +83,7 @@ h3.deprecated{
 }
 .center{
     text-align: center;
+}
+p{
+    line-height: 1.8em;
 }

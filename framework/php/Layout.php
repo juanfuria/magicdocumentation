@@ -4,7 +4,7 @@ class Layout {
 
     static function printNavButtons($navBarItems, $selectedItem, $settings){
         foreach($navBarItems as $platform){
-            echo '<a class="btn btn-success btn-lg ' . $platform .' platform-btn" href="';
+            echo '<a class="btn btn-warning btn-lg ' . $platform .' platform-btn" href="';
             $url = '';
             if($settings->urlStyle == UrlType::URL_VARS){
                 $url = $settings->getBaseUrl() . 'index.php?platform=' . $platform . '';

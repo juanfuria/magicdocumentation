@@ -25,31 +25,6 @@
     ],
     "descriptionLists": [
         {
-            "name": "Available parameters",
-            "elements": [
-                {
-                    "name": "",
-                    "description": "BluetoothName"
-                },
-                {
-                    "name": "",
-                    "description": "BluetoothPass"
-                },
-                {
-                    "name": "",
-                    "description": "SystemTimeout"
-                },
-                {
-                    "name": "",
-                    "description": "ScreenTimeout"
-                },
-                {
-                    "name": "",
-                    "description": "SignatureTimeout"
-                }
-            ]
-        },
-        {
             "name": "Events invoked",
             "elements": [
                 {

@@ -1,20 +1,37 @@
 {
     "title": "Status Info",
-    "name": "StatusInfo",
-    "type": "enum",
+    "name": "statusInfo",
     "version": "3.0.0",
     "description": "A class containing information about the status of the transaction.",
-    "values": [
-        "WaitingForCard",
-        "CardInserted",
-        "ApplicationSelection",
-        "ApplicationConfirmation",
-        "AmountValidation",
-        "PinInput",
-        "WaitingForCardRemoval",
-        "TipInput",
-        "Undefined"
+    "methods": [],
+    "properties": [
+        {
+            "name": "cancelAllowed",
+            "type": "bool",
+            "description": "A <code>bool</code> representing if the card reader will accept a cancel request.",
+            "accessorType": "get"
+        },
+        {
+            "name": "status",
+            "type": "Status",
+            "description": "A <code>Status</code> enum representing the status of the transaction.",
+            "accessorType": "get"
+        },
+        {
+            "name": "message",
+            "type": "String",
+            "description": "A <code>String</code> containing the status message of the transaction.",
+            "accessorType": "get"
+        },
+        {
+            "name": "deviceStatus",
+            "type": "DeviceStatus",
+            "description": "A <code>DeviceStatus</code> object containing information about the device.",
+            "accessorType": "get"
+        }
     ],
-    "order": "8",
-    "example": ""
+    "descriptionLists": [],
+    "example": "",
+    "order": "6",
+    "type": "object"
 }

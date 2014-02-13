@@ -7,10 +7,8 @@ class Documentation
     private $DEFAULT_INTRODUCTION       = "Introduction";
     private $DEFAULT_GETTING_STARTED    = "Getting started";
 
-    //public $sections    = array();
-    public $platforms   = array();
-
-    public $specialFiles = array();
+    public  $projects        = array();
+    public  $specialFiles    = array();
     private $framework;
 
     function Documentation($_path, $framework)
@@ -22,11 +20,14 @@ class Documentation
 
         foreach($projects as $project){
 
-            $projectinfo       = pathinfo($project);
-            $projectObj        = new Project();
-            $projectObj->name  = $projectinfo['basename'];
+            $projectinfo            = pathinfo($project);
+            $projectObj             = new Project();
+            $projectObj->name       = $projectinfo['basename'];
+            $projectObj->framework  = $framework;
 
             $this->projects[$projectObj->name] = $projectObj;
+
+            $currentProject = $this->projects[$projectObj->name];
 
             $platforms = Utils::listDirs($project);
             foreach($platforms as $platform){
@@ -34,7 +35,10 @@ class Documentation
                 $platformObj        = new Platform();
                 $platformObj->name  = $platforminfo['basename'];
 
-                $this->platforms[$platformObj->name] = $platformObj;
+                $currentProject->platforms[$platformObj->name] = $platformObj;
+
+                /** @var $currentPlatform Platform */
+                $currentPlatform = $currentProject->platforms[$platformObj->name];
 
                 $settings = array();
                 if(file_exists($platform . "/platform.json")){
@@ -45,7 +49,7 @@ class Documentation
                         $settings['order'][$key] = $spFile;
                     }
                 }
-                $this->platforms[$platformObj->name]->settings = $settings;
+                $currentPlatform->settings = $settings;
 
                 //We search for "sections" inside the platform
                 $dirs = Utils::listDirs($platform);
@@ -58,7 +62,10 @@ class Documentation
                     $sectionObj->path   = $pathinfo['dirname'];
                     $sectionObj->special= (in_array($sectionObj->name, $this->specialFiles));
 
-                    $this->platforms[$platformObj->name]->sections[$sectionObj->name] = $sectionObj;
+                    $currentPlatform->sections[$sectionObj->name] = $sectionObj;
+
+                    /** @var $currentSection Section */
+                    $currentSection = $currentPlatform->sections[$sectionObj->name];
 
                     $files      = Utils::listFiles($dir, "*");
                     foreach ($files as $file) {
@@ -73,87 +80,53 @@ class Documentation
                             $fileObj->json = json_decode($fileObj->content, true);
                             if(array_key_exists('version', $fileObj->json)){
                                 $version = $fileObj->json['version'];
-                                $this->platforms[$platformObj->name]->addVersion($version);
+                                $currentPlatform->addVersion($version);
                                 $entity = $fileObj->json['name'];
-                                $this->platforms[$platformObj->name]->addEntity(Utils::camelCase($entity));
+                                $currentPlatform->addEntity(Utils::camelCase($entity));
                             }
                         }
-                        $pos = count($this->platforms[$platformObj->name]->sections[$sectionObj->name]->files);
-                        $this->platforms[$platformObj->name]->sections[$sectionObj->name]->files[$pos] = $fileObj;
+                        $pos = count($currentSection->files);
+                        $currentSection->files[$pos] = $fileObj;
                     }
 
-                    $this->platforms[$platformObj->name]->sections[$sectionObj->name]->sort();
+                    $currentSection->sort();
 
                 }
 
 
                 //order sections
                 $sorted = array();
-                foreach($this->platforms[$platformObj->name]->settings['order'] as $section_name){
-                    if(array_key_exists($section_name , $this->platforms[$platformObj->name]->sections)){
-                        $sorted[$section_name] = $this->platforms[$platformObj->name]->sections[$section_name];
+                foreach($currentPlatform->settings['order'] as $section_name){
+                    if(array_key_exists($section_name , $currentPlatform->sections)){
+                        $sorted[$section_name] = $currentPlatform->sections[$section_name];
                     }
                 }
-                $this->platforms[$platformObj->name]->sections = $sorted;
+                $currentPlatform->sections = $sorted;
 
                 //end order sections
             }
         }
     }
 
-    function printSectionContent($platform_name, $section){
-        echo '<section id="section_' . Utils::camelCase($section->name) . '" class="escape-navbar">';
-        echo '<div class="row" >
-        <div class="col-md-6 item-description">
-        <h2>' . $section->name . '</h2></div>';
-
-        //TODO fix horrible kludge
-        if(!$section->special){
-            echo '<div class="col-md-6 item-example"></div>';
-        }
-        echo "</div>";
-
-        /** @var $file File */
-        foreach ($section->files as $file){
-            if(isset($this->framework->sentVars['version'])){
-                $version = $this->framework->sentVars['version'];
-            }
-            if(isset($version) && (($file->ext == 'json' && $file->json['version'] == $version) || ($file->ext != 'json')) || (!isset($version))){
-                $elemName = ($file->ext == 'json') ? $file->json['name'] : $file->name;
-                echo '<div class="row escape-navbar" id="elem_' . Utils::camelCase($elemName) . '">';
-                if($file->ext == 'json'){
-                    $type = $file->json['type'];
-                    $template = $this->framework->settings->getTemplate($type);
-                    $view = new Template($this->framework->settings->getTemplatesDir() . "/" . $template . ".php");
-                    $view->entities = $this->getPlatform($platform_name)->entities;
-                    $view->json = $file->json;
-                    echo $view;
-                }
-                else{
-                    echo $file->content;
-            }
-            echo '</div>';
-            }
-        }
-
-        echo '</section>';
+    public function getSelectedProjectName(){
+        $settings = $this->framework->settings;
+        return (isset($settings->sentVars["project"])) ? $settings->sentVars["project"] : $this->getListOfProjects()[0];
     }
 
-    function getPlatform($platform_name){
-        return $this->platforms[$platform_name];
+    public function getSelectedProject(){
+
+        return $this->projects[$this->getSelectedProjectName()];
     }
 
-    /*function hasSection($sectionName){
-        return array_key_exists($sectionName, $this->platforms[$platform_name]['sections']);
-    }*/
+    public function getListOfProjects()
+    {
 
-    function printAll($platform_name){
+        $projects = array();
 
-        /** @var $section Section */
-        foreach ($this->platforms[$platform_name]->sections as $section) {
-            $this->printSectionContent($platform_name, $section);
+        foreach ($this->projects as $project) {
+            $projects[count($projects)] = $project->name;
         }
-
+        return $projects;
     }
 
     private function initDefaults()
