@@ -224,6 +224,10 @@ td a:hover{
     background-color: #1abc9c;
 }
 
+.label-success:hover, .btn-success:hover{
+    background: #1adbbb;
+}
+
 .label-warning, .btn-warning{
     background-color: #e67e22;
 }

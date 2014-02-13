@@ -160,13 +160,13 @@ $settings = $framework->settings;
             }
 
             .fix{
-
-                width: 135px;
-                height: 100px;
+                width: 154px;
+                height: 114px;
                 float: left;
-                margin-top: -200px;
-                margin-left: 51px;
+                margin-top: -208px;
+                margin-left: 42px;
                 background: #fff;
+                border-radius: 50%;
             }
 
             .align-right{
@@ -187,8 +187,8 @@ $settings = $framework->settings;
     </head>
     <body>
         <div class="buttons">
-            <a href="#" class="btn btn-success">Sign up</a>
-            <a href="#" class="btn btn-warning">Order a demo kit</a>
+            <a href="https://www.handpoint.com/?MPOS#sign-up" class="btn btn-success">Sign up</a>
+            <a href="https://www.handpoint.com/mpos/#signup" class="btn btn-warning">Get a starter kit</a>
         </div>
 <!--    <img src="<?=$settings->getBaseUrl() . "thumb/dev-logo-ball_120.png"; ?>" />-->
         <div>

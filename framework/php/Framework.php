@@ -111,7 +111,7 @@ class Framework{
             if($section->getFilesSize() > 1){
                 $viewSection->badge = '<span class="badge">' . $section->getFilesSize() . '</span>';
             }
-            $items[count($items)] = $viewSection;
+            $items[] = $viewSection;
 
             if($section->getFilesSize() > 1){
                 $subSection = new Template("");
@@ -126,7 +126,7 @@ class Framework{
                     $subSection->url = '#elem_' . Utils::camelCase($elemName);
                     $subSection->name = $file->name;
 
-                    $items[count($items)] = $subSection;
+                    $items[] = $subSection;
                 }
             }
         }

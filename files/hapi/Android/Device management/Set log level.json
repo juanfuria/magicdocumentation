@@ -9,12 +9,6 @@
             "type": "LogLevel",
             "validation": "Required",
             "notes": "The desired log level. Can be LogLevel.None, LogLevel.Info, LogLevel.Full, LogLevel.Debug"
-        },
-        {
-            "name": "device",
-            "type": "Device",
-            "validation": "Optional",
-            "notes": "This is used if you want to send the operation to a specific device. Recommended if you are using multiple devices"
         }
     ],
     "descriptionLists": [

@@ -20,13 +20,7 @@
             "name": "map",
             "type": "Map",
             "validation": "Optional",
-            "notes": "A map including extra <a href=\"#elem_optionalParameters\">optional parameters</a>."
-        },
-        {
-            "name": "device",
-            "type": "Device",
-            "validation": "Optional",
-            "notes": "This is used if you want to send the operation to a specific device. Recommended if you are using multiple devices"
+            "notes": "A map including extra <a href=\"#elem_optionalParameters\">optional transaction parameters</a>."
         }
     ],
     "descriptionLists": [

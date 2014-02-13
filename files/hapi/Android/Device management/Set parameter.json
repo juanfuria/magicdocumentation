@@ -15,12 +15,6 @@
             "type": "String",
             "validation": "Required",
             "notes": "New value of the parameter"
-        },
-        {
-            "name": "device",
-            "type": "Device",
-            "validation": "Optional",
-            "notes": "This is used if you want to send the operation to a specific device. Recommended if you are using multiple devices"
         }
     ],
     "descriptionLists": [
