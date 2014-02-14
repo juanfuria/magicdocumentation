@@ -9,8 +9,8 @@
             "name": "Events invoked",
             "elements": [
                 {
-                    "name": "None",
-                    "description": "No events are invoked."
+                    "name": "connectionStatusChanged",
+                    "description": "Causes the connection manager to invoke this event with the appropriate information."
                 }
             ]
         },

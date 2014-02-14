@@ -27,7 +27,7 @@ $settings = $framework->settings;
 <body>
 <!--<div class="container-fluid">-->
 <!--    <div class="row-fluid">-->
-<!--        <div class="col-md-2 menu">-->
+<!--        <div class="col-sm-2 menu">-->
 <!--            <ul class="list-group">-->
 <!--                <li class="list-group-item active"><a href="javascript:editSettings();"><span class="glyphicon glyphicon-pencil">&nbsp;</span>Edit settings</a></li>-->
 <!--                <li class="list-group-item active"><span class="glyphicon glyphicon-pencil">&nbsp;</span>Edit platforms</li>-->
@@ -42,7 +42,7 @@ $settings = $framework->settings;
 <!---->
 <!--        </div>-->
 <!---->
-<!--        <div class="col-md-10 content" id="xcontent">-->
+<!--        <div class="col-sm-10 content" id="xcontent">-->
 <!---->
 <!--        </div>-->
 <!--    </div>-->
@@ -55,12 +55,12 @@ $framework->printNavBar();
 <div id="header-bar"></div>
 <div class="container-fluid">
     <div class="row-fluid">
-        <div class="col-md-2 menu">
+        <div class="col-sm-2 menu">
             <?php
             $framework->printMenu();
             ?>
         </div>
-        <div class="col-md-10 content">
+        <div class="col-sm-10 content">
             <div class="letter">
                 <?php
 

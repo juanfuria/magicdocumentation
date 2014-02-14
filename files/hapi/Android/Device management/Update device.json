@@ -4,12 +4,6 @@
     "version": "3.0.0",
     "description": "The update operation checks for update to the card reader and initiates an update if needed.",
     "parameters": [
-        {
-            "name": "device",
-            "type": "Device",
-            "validation": "Optional",
-            "notes": "This is used if you want to send the operation to a specific device. Recommended if you are using multiple devices"
-        }
     ],
     "descriptionLists": [
         {

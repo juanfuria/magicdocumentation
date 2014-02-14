@@ -4,12 +4,6 @@
     "version": "3.0.0",
     "description": "Fetches the logs from the device and reports them to the deviceLogsReady event.",
     "parameters": [
-        {
-            "name": "device",
-            "type": "Device",
-            "validation": "Optional",
-            "notes": "This is used if you want to send the operation to a specific device. Recommended if you are using multiple devices"
-        }
     ],
     "descriptionLists": [
         {

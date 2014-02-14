@@ -49,12 +49,12 @@ $settings = $framework->settings;
     ?>
 <div class="container-fluid">
     <div class="row-fluid">
-        <div class="col-md-2 menu">
+        <div class="col-sm-2 menu">
             <?php
             $framework->printMenu();
             ?>
         </div>
-        <div class="col-md-10 content">
+        <div class="col-sm-10 content">
             <div class="letter">
             <?php
 

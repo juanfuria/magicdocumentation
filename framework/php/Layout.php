@@ -39,7 +39,7 @@ class Layout {
         $jsondata = json_decode($json, true);
         $result = '';
 
-        $result .= '<div class="col-md-6 item-description">';
+        $result .= '<div class="col-sm-6 item-description">';
         $result .= Utils::surroundWithtag("h3", $jsondata["name"]);
         $result .= '<span class="label label-primary">Available since ' . $jsondata["version"] . '</span>';
         if(isset($jsondata["status"])){
@@ -92,7 +92,7 @@ class Layout {
             }
         }
         $result .= '</div>';
-        $result .= '<div class="col-md-6 item-example">';
+        $result .= '<div class="col-sm-6 item-example">';
 
         if(isset($jsondata["example"])){
             $result .= Utils::surroundWithtag("h4", "Code example");

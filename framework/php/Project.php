@@ -45,12 +45,12 @@ class Project extends Entity
     function printSectionContent($platform_name, $section){
         echo '<section id="section_' . Utils::camelCase($section->name) . '" class="escape-navbar">';
         echo '<div class="row" >
-        <div class="col-md-6 item-description">
+        <div class="col-sm-6 item-description">
         <h2>' . $section->name . '</h2></div>';
 
         //TODO fix horrible kludge
         if(!$section->special){
-            echo '<div class="col-md-6 item-example"></div>';
+            echo '<div class="col-sm-6 item-example"></div>';
         }
         echo "</div>";
 

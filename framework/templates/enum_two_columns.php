@@ -1,5 +1,5 @@
 <div class="row escape-navbar" id="<?=$json['id']?>">
-    <div class="col-md-6 item-description">
+    <div class="col-sm-6 item-description">
         <h3 class="<?=$json['status']?>"><?=$json['title']?></h3>
         <?php if(isset($json['type'])): ?>
             <!-- if there's a version we display it -->
@@ -33,7 +33,7 @@
                 </div>
         <?php endif; ?>
     </div>
-    <div class="col-md-6 item-example">
+    <div class="col-sm-6 item-example">
         <?php if(isset($json['example']) &&  $json['example'] != ''): ?>
             <h4>Code example</h4>
             <pre><code><?=$json['example']?></code></pre>
