@@ -1,0 +1,28 @@
+{
+    "title": "Add Status Notification Event Handler",
+    "name": "addStatusNotificationEventHandler",
+    "version": "3.0.0",
+    "description": "Adds a listener so transaction information can be retrieved.",
+    "parameters": [
+        {
+            "name": "listener",
+            "type": "Status",
+            "validation": "Required",
+            "notes": "An implementation of the Events.Status interface"
+        }
+    ],
+    "descriptionLists": [
+        {
+            "name": "Returns",
+            "elements": [
+                {
+                    "name": "Boolean",
+                    "description": "true if the new listener was added successfully"
+                }
+            ]
+        }
+    ],
+    "example": "//Register a listener for transaction information events\nthis.api.addStatusNotificationEventHandler(this);",
+    "order": "1",
+    "type": "method"
+}

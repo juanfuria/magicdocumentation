@@ -19,6 +19,6 @@
     ],
     "descriptionLists": [],
     "example": "@Override\npublic void currentTransactionStatus(StatusInfo statusInfo, Device device) {\n}",
-    "order": "6",
+    "order": "10",
     "type": "method"
 }
