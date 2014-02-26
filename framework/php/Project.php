@@ -35,6 +35,24 @@ class Project extends Entity
 
     function printAll($platform){
 
+        if(count($platform->versions) > 0){
+            echo '<div class="version-info">
+                        <span class="alert alert-info">You are currently viewing the documentation for version
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                            ' . $platform->versions[0] . ' <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu" role="menu">';
+                    foreach($platform->versions as $version){
+                        echo '<li><a href="#">' . $version . '</a></li>';
+                    }
+
+              echo '        </ul>
+                        </div>
+                    </span>
+                </div>';
+        }
+
         /** @var $section Section */
         foreach ($platform->sections as $section) {
             $this->printSectionContent($platform->name, $section);
@@ -43,41 +61,51 @@ class Project extends Entity
     }
 
     function printSectionContent($platform_name, $section){
-        echo '<section id="section_' . Utils::camelCase($section->name) . '" class="escape-navbar">';
-        echo '<div class="row" >
+
+        $content = '<section id="section_' . Utils::camelCase($section->name) . '" class="escape-navbar">';
+        $content.= '<div class="row" >
         <div class="col-sm-6 item-description">
         <h2>' . $section->name . '</h2></div>';
 
         //TODO fix horrible kludge
         if(!$section->special){
-            echo '<div class="col-sm-6 item-example"></div>';
+            $content.= '<div class="col-sm-6 item-example"></div>';
         }
-        echo "</div>";
+        $content.= "</div>";
+
+
+        if(isset($this->framework->sentVars['version'])){
+            $version = $this->framework->sentVars['version'];
+        }
+        $count = 0;
 
         /** @var $file File */
         foreach ($section->files as $file){
-            if(isset($this->framework->sentVars['version'])){
-                $version = $this->framework->sentVars['version'];
-            }
-            if(isset($version) && (($file->ext == 'json' && $file->json['version'] == $version) || ($file->ext != 'json')) || (!isset($version))){
+            if(isset($version) && (($file->ext == 'json' &&  Utils::shouldPrintVersion($version, $file->json['version'])) || ($file->ext != 'json')) || (!isset($version))){
                 $elemName = ($file->ext == 'json') ? $file->json['name'] : $file->name;
-                echo '<div class="row escape-navbar" id="elem_' . Utils::camelCase($elemName) . '">';
+                $content.= '<div class="row escape-navbar" id="elem_' . Utils::camelCase($elemName) . '">';
                 if($file->ext == 'json'){
                     $type = $file->json['type'];
                     $template = $this->framework->settings->getTemplate($type);
                     $view = new Template($this->framework->settings->getTemplatesDir() . "/" . $template . ".php");
                     $view->entities = $this->getPlatform($platform_name)->entities;
                     $view->json = $file->json;
-                    echo $view;
+                    $content.= $view;
                 }
                 else{
-                    echo $file->content;
+                    $content.= $file->content;
                 }
-                echo '</div>';
+                $content.= '</div>';
+                $count++;
+
             }
         }
 
-        echo '</section>';
+        $content.= '</section>';
+
+        if($count > 0){
+            echo $content;
+        }
     }
 
 }

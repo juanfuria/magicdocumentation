@@ -201,11 +201,11 @@ $settings = $framework->settings;
         <div class="jumbotron palette-wet-asphalt">
             <div class="row">
                 <div class="col-sm-9 align-right">
-                    <div class="title">Pay with our card reader</div>
+                    <div class="title">Payments using our card reader</div>
                     <div class="">Get access to the tutorials, libraries and full documentation<br />that will enable you to integrate with our card reader.
                         <br /><strong>easy-peasy</strong>
                         <br /><br />
-                        <p><a href="hapi/" class="btn btn-default btn-lg">Give me the docs!</a></p>
+                        <p><a href="device/" class="btn btn-default btn-lg">Give me the docs!</a></p>
                     </div>
                 </div>
                 <div class="col-sm-2"><span class="handpoint-key-ok"></span><span class="fix"></span></div>
@@ -219,11 +219,11 @@ $settings = $framework->settings;
             <div class="row">
                 <div class="col-sm-3 center"><span class="glyphicon glyphicon-cloud"></span></div>
                 <div class="col-sm-8 align-left">
-                    <div class="title">...or with our cloud gateway</div>
+                    <div class="title">...or using our cloud gateway</div>
                     <div class="">Use our powerful cloud gateway for your e-commerce solution
 
                         <br /><br />
-                        <p><a href="test/" class="btn btn-default btn-lg">Take me to the clouds!</a></p></div>
+                        <p><a href="https://github.com/handpoint/hp-ecommerce-java/" class="btn btn-default btn-lg">Take me to the clouds!</a></p></div>
                 </div>
                 <div class="clearfix visible-xs"></div>
             </div>

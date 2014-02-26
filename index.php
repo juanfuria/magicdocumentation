@@ -1,21 +1,26 @@
 <?php
 
-if(!isset($_GET['project'])){
+include_once('framework/php/Framework.php');
+
+$framework = new Framework();
+
+
+if(!isset($framework->sentVars['project'])){
     include('cover.php');
 }
 else{
 
-
-include_once('framework/php/Framework.php');
-
-
-$framework = new Framework();
 
 /** @var $settings Settings */
 $settings = $framework->settings;
 
 /** @var $documentation Documentation */
 //$documentation = $framework->getDocumentation($framework->getSelectedPlatform());
+
+
+
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,6 +48,7 @@ $settings = $framework->settings;
      </style>
 </head>
 <body>
+
 <script>hljs.initHighlightingOnLoad();</script>
     <?php
     $framework->printNavBar();

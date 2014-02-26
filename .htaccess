@@ -6,7 +6,7 @@ SetEnv SESSION_USE_TRANS_SID 0
 Options
 
 AddOutputFilterByType DEFLATE text/plain
-AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/html|
 AddOutputFilterByType DEFLATE text/xml
 AddOutputFilterByType DEFLATE text/css
 AddOutputFilterByType DEFLATE application/xml
@@ -29,11 +29,13 @@ RewriteEngine On
 
 # remove www on main
 
-#RewriteRule ^platform/(.*)/section/(.*)/$ index.php?platform=$1&section=$2 [NE,L]
-RewriteRule ^(.*)/platform/(.*)/$ index.php?project=$1&platform=$2 [NE,L]
-RewriteRule ^platform/(.*)/version/(.*)$ index.php?platform=$1&version=$2 [NE,L]
-RewriteRule ^platform/(.*)/$ index.php?platform=$1 [NE,L]
-RewriteRule ^platform/(.*)$ index.php?platform=$1 [NE,L]
-RewriteRule ^thumb/(.*)_(.*)\.(.*)$ thumb.php?file=$1&size=$2&ext=$3 [L]
-RewriteRule ^thumb/(.*)_(.*)\.(.*)/?$ thumb.php?file=$1&size=$2&ext=$3 [L]
-RewriteRule ^(.*)/$ index.php?project=$1 [NE,L]
+#RewriteRule ^(.*)/$ index.php?platform=$1&section=$2 [NE,L]
+RewriteRule ^ index.php [L]
+
+#RewriteRule ^(.*)/platform/(.*)/$ index.php?project=$1&platform=$2 [NE,L]
+#RewriteRule ^platform/(.*)/version/(.*)$ index.php?platform=$1&version=$2 [NE,L]
+#RewriteRule ^platform/(.*)/$ index.php?platform=$1 [NE,L]
+#RewriteRule ^platform/(.*)$ index.php?platform=$1 [NE,L]
+#RewriteRule ^thumb/(.*)_(.*)\.(.*)$ thumb.php?file=$1&size=$2&ext=$3 [L]
+#RewriteRule ^thumb/(.*)_(.*)\.(.*)/?$ thumb.php?file=$1&size=$2&ext=$3 [L]
+#RewriteRule ^(.*)/$ index.php?project=$1 [NE,L]

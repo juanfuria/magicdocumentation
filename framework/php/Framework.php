@@ -9,6 +9,11 @@ function __autoload($classname) {
 
 class Framework{
 
+    private $POS_PROJECT    = 0;
+    private $POS_PLATFORM   = 1;
+    private $POS_VERSION    = 2;
+
+
     public $sentVars;
     /** @var $settings Settings */
     public $settings;
@@ -20,7 +25,26 @@ class Framework{
     public $edit = false;
 
     function Framework($fetchdoc = true){
-        $this->sentVars     = Utils::getMergedInputArrays();
+        //$this->sentVars     = Utils::getMergedInputArrays();
+        $path_info = Utils::parse_path();
+//        echo '<pre>'.print_r($path_info, true).'</pre>';
+        //TODO clean array
+        if($path_info['call_parts'][0] != ""){
+            foreach($path_info['call_parts'] as $key => $value){
+                switch($key){
+                    case $this->POS_PROJECT:
+                        $this->sentVars['project'] = $value;
+                    break;
+                    case $this->POS_PLATFORM:
+                        $this->sentVars['platform'] = $value;
+                    break;
+                    case $this->POS_VERSION:
+                        $this->sentVars['version'] = $value;
+                    break;
+                }
+            }
+        }
+
         $this->settings     = Settings::Read('settings.conf');
         $this->stylesheets  = Utils::listFiles($this->settings->getCssDir(), "css");
         $this->javascripts  = Utils::listFiles($this->settings->getJsDir(), "js");
@@ -69,6 +93,7 @@ class Framework{
         /** @var  $project Project */
         $project = $this->documentation->getSelectedProject();
 
+        /** @var $platform Platform */
         foreach ($project->platforms as $platform) {
             $entity = new Template("");
             $url = '';

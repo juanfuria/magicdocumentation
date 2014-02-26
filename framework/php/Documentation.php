@@ -103,6 +103,7 @@ class Documentation
                 }
                 $currentPlatform->sections = $sorted;
 
+                rsort($currentPlatform->versions, SORT_STRING);
                 //end order sections
             }
         }
