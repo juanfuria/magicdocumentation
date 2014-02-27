@@ -29,21 +29,23 @@ class Framework{
         $path_info = Utils::parse_path();
 //        echo '<pre>'.print_r($path_info, true).'</pre>';
         //TODO clean array
-        if($path_info['call_parts'][0] != ""){
+//        if($path_info['call_parts'][0] != ""){
             foreach($path_info['call_parts'] as $key => $value){
-                switch($key){
-                    case $this->POS_PROJECT:
-                        $this->sentVars['project'] = $value;
-                    break;
-                    case $this->POS_PLATFORM:
-                        $this->sentVars['platform'] = $value;
-                    break;
-                    case $this->POS_VERSION:
-                        $this->sentVars['version'] = $value;
-                    break;
+                if($value != ""){
+                    switch($key){
+                        case $this->POS_PROJECT:
+                            $this->sentVars['project'] = $value;
+                        break;
+                        case $this->POS_PLATFORM:
+                            $this->sentVars['platform'] = $value;
+                        break;
+                        case $this->POS_VERSION:
+                            $this->sentVars['version'] = $value;
+                        break;
+                    }
                 }
             }
-        }
+//        }
 
         $this->settings     = Settings::Read('settings.conf');
         $this->stylesheets  = Utils::listFiles($this->settings->getCssDir(), "css");
@@ -101,7 +103,7 @@ class Framework{
                 $url = $this->settings->getBaseUrl() . Utils::getStringAfterLast($_SERVER["PHP_SELF"], "/") . '?project=' . $project->name . '&platform=' . $platform->name . '';
             }
             else if ($this->settings->urlStyle == UrlType::URL_READABLE){
-                $url = $this->settings->getBaseUrl() . $project->name . '/platform/' . $platform->name . '/';
+                $url = $this->settings->getBaseUrl() . $project->name . '/' . $platform->name . '/';
             }
             $entity->url      = $url;
             $entity->platform = $platform->name;
@@ -144,14 +146,19 @@ class Framework{
                 /** @var $file File */
                 foreach ($section->files as $file) {
 
-                    $elemName = ($file->ext == 'json') ? $file->json['name'] : $file->name;
+                    $isJson = ($file->ext == 'json');
 
-                    $subSection = new Template("");
-                    $subSection->class = "list-group-subitem";
-                    $subSection->url = '#elem_' . Utils::camelCase($elemName);
-                    $subSection->name = $file->name;
 
-                    $items[] = $subSection;
+                    if(($isJson && (isset($this->sentVars['version']) && Utils::shouldPrintVersion($this->sentVars['version'], $file->json['version']))) || (!isset($this->sentVars['version']))){
+                        $elemName = ($isJson) ? $file->json['name'] : $file->name;
+
+                        $subSection = new Template("");
+                        $subSection->class = "list-group-subitem";
+                        $subSection->url = '#elem_' . Utils::camelCase($elemName);
+                        $subSection->name = $file->name;
+
+                        $items[] = $subSection;
+                    }
                 }
             }
         }

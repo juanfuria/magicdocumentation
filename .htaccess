@@ -30,6 +30,8 @@ RewriteEngine On
 # remove www on main
 
 #RewriteRule ^(.*)/$ index.php?platform=$1&section=$2 [NE,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [L]
 
 #RewriteRule ^(.*)/platform/(.*)/$ index.php?project=$1&platform=$2 [NE,L]

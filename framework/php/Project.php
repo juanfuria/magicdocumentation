@@ -36,15 +36,23 @@ class Project extends Entity
     function printAll($platform){
 
         if(count($platform->versions) > 0){
+            $viewing = (isset($this->framework->sentVars['version'])) ? $this->framework->sentVars['version'] : $platform->versions[0];
             echo '<div class="version-info">
                         <span class="alert alert-info">You are currently viewing the documentation for version
                         <div class="btn-group">
                           <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                            ' . $platform->versions[0] . ' <span class="caret"></span>
+                            ' . $viewing . ' <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu" role="menu">';
                     foreach($platform->versions as $version){
-                        echo '<li><a href="#">' . $version . '</a></li>';
+                        $url = '#';
+                        if($this->framework->settings->urlStyle == UrlType::URL_VARS){
+                            $url = $this->framework->settings->getBaseUrl() . Utils::getStringAfterLast($_SERVER["PHP_SELF"], "/") . '?project=' . $this->name . '&platform=' . $platform->name . '&version=' . $version;
+                        }
+                        else if ($this->framework->settings->urlStyle == UrlType::URL_READABLE){
+                            $url = $this->framework->settings->getBaseUrl() . $this->name . '/' . $platform->name . '/' . $version . '/';
+                        }
+                        echo '<li><a href="' . $url . '">' . $version . '</a></li>';
                     }
 
               echo '        </ul>
@@ -85,6 +93,7 @@ class Project extends Entity
                 $elemName = ($file->ext == 'json') ? $file->json['name'] : $file->name;
                 $content.= '<div class="row escape-navbar" id="elem_' . Utils::camelCase($elemName) . '">';
                 if($file->ext == 'json'){
+                    //TODO check for the appropriate version here. Fix the upper if
                     $type = $file->json['type'];
                     $template = $this->framework->settings->getTemplate($type);
                     $view = new Template($this->framework->settings->getTemplatesDir() . "/" . $template . ".php");
