@@ -24,6 +24,7 @@ class Template
     {
         $oldir = getcwd();
         extract($this->variables);
+        //Utils::debug($this->template);
         chdir(dirname($this->template));
         ob_start();
 

@@ -147,16 +147,41 @@ class Framework{
                 foreach ($section->files as $file) {
 
                     $isJson = ($file->ext == 'json');
+                    $subSection = null;
+
+                    //HTML
+                    if(!$isJson){
+
+                        $elemName           = $file->name;
+                        $subSection         = new Template("");
+                        $subSection->class  = "list-group-subitem";
+                        $subSection->url    = '#elem_' . Utils::camelCase($elemName);
+                        $subSection->name   = $file->name;
+                    }
+                    //JSON
+                    else{
+
+                        $printable = null;
+                        if(isset($version)){
+                            $printable = Utils::getElemFromJson($version, $file->json);
+                        }
+                        else{
+                            $printable = $file->json[0];
+                        }
+
+                        if($printable != null){
+
+                            $elemName = $printable['name'];
+
+                            $subSection = new Template("");
+                            $subSection->class = "list-group-subitem";
+                            $subSection->url = '#elem_' . Utils::camelCase($elemName);
+                            $subSection->name = $file->name;
+                        }
+                    }
 
 
-                    if(($isJson && (isset($this->sentVars['version']) && Utils::shouldPrintVersion($this->sentVars['version'], $file->json['version']))) || (!isset($this->sentVars['version']))){
-                        $elemName = ($isJson) ? $file->json['name'] : $file->name;
-
-                        $subSection = new Template("");
-                        $subSection->class = "list-group-subitem";
-                        $subSection->url = '#elem_' . Utils::camelCase($elemName);
-                        $subSection->name = $file->name;
-
+                    if($subSection != null){
                         $items[] = $subSection;
                     }
                 }

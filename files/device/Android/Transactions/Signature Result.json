@@ -1,0 +1,41 @@
+[{
+    "title": "Signature result",
+    "name": "signatureResult",
+    "version": "3.0.0",
+    "description": "A signatureRequest event is invoked during transaction when signature verification is needed (f.ex when payment is done with a magstripe card). The merchant is required to ask the cardholder for signature and approve (or disapprove) the signature. signatureResult tells the card reader if the signature was approved by passing true in the method. To disapprove then false is passed.",
+    "parameters": [
+        {
+            "name": "accepted",
+            "type": "Boolean",
+            "validation": "Required",
+            "notes": "pass true if merchant accepts customer signature"
+        }
+    ],
+    "descriptionLists": [
+        {
+            "name": "Events invoked",
+            "elements": [
+                {
+                    "name": "currentTransactionStatus",
+                    "description": "Invoked while during transaction with different statuses from card reader"
+                },
+                {
+                    "name": "endOfTransaction",
+                    "description": "Invoked when the card reader finishes processing the transaction"
+                }
+            ]
+        },
+        {
+            "name": "Returns",
+            "elements": [
+                {
+                    "name": "Boolean",
+                    "description": "true if the operation was successfully sent to device"
+                }
+            ]
+        }
+    ],
+    "example": "\/\/Approves signature automatically in signatureRequired event\n@Override\npublic void signatureRequired(SignatureRequest signatureRequest, Device device){\n\tapi.signatureResult(true);\n}",
+    "order": "3",
+    "type": "method"
+}]

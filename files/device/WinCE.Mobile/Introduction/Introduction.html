@@ -1,0 +1,32 @@
+<h2>Welcome Windows Mobile Developers</h2>
+<div class="row-fluid">
+    <div class="col-sm-7">
+        <p>The Handpoint Handpoint platform a.k.a headstart on Windows Mobile/CE provides an application programming interface simplifying the development of your payment solutions considerably.</p>
+        <p>You as a POS application developer can link your C++ based app to our heft.dll for integration with Handpoint on a Windows Mobile/CE platform.</p>
+        <p>The SDK includes:</p>
+        <ul>
+            <li><strong>Sample apps: &nbsp;</strong>A WTL (Windows Template Library) based Windows Mobile/CE sample applications .</li>
+            <li><strong>Sample app source code:</strong>&nbsp;Giving you an indication on how to use our library.</li>
+            <li><strong>Documentation: </strong>Doxygen&nbsp;documentation which can be viewed in browser.</li>
+            <li><strong>Libs</strong>: C++ .lib and .dll files for development.</li>
+            <li><strong>Header/include files:</strong>&nbsp;C++ header files with function prototypes, structs and defines needed for integration.</li>
+        </ul>
+        <p style="border: 1px solid gray; border-radius: 3px; background: #eeeeee; padding: 10px; margin: 15px; width: 40%; float: left;">Heft&nbsp;module is packaged as Dynamic linked library named&nbsp;heft.dll. Its name is an abbreviation of Handpoint Electronic Funds Transfer. It contains pure C++ implementation of EFT (Electronic Funds Transfer) protocol, which is used for communication between Handpoint library and PED device.</p>
+        <p style="border: 1px solid gray; border-radius: 3px; background: #eeeeee; padding: 10px; margin: 15px; width: 40%; float: left;">Central part of Handpoint Windows Mobile/CE solution is the Handpoint&nbsp;Library. This library provides core functionality, including interaction with&nbsp;PED&nbsp;device and communication with payment gateway. Those integrators who wish to integrate Handpoint&nbsp;solution into their C++ based products, will most likely use Handpoint&nbsp;Library directly from their C++ based applications for these purposes.</p>
+    </div>
+    <div class="col-sm-2 downloadSDK">
+        <div style="text-align: center; margin-top: 25px;">
+            <span class="ball ball-windows-phone"></span>
+            <form id="getSDK" action="download.php" method="POST">
+                <input type="hidden" name="url" value="https://www.handpoint.com/downloads/sdk/Handpoint-SDK-Win-CE-Mobile-v1.3.3.zip" />
+                <input type="hidden" name="name" value="Windows Mobile SDK" />
+                <br />
+                <button class="btn btn-primary btn-large">Get the SDK</button>
+            </form>
+            <script>
+                var baseurl = $('meta[name=baseurl]');
+                $('#getSDK').attr('action', baseurl.attr("content") + 'download.php');
+            </script>
+        </div>
+    </div>
+</div>

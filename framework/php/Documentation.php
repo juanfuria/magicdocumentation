@@ -78,11 +78,13 @@ class Documentation
 
                         if($fileObj->ext == 'json'){
                             $fileObj->json = json_decode($fileObj->content, true);
-                            if(array_key_exists('version', $fileObj->json)){
-                                $version = $fileObj->json['version'];
-                                $currentPlatform->addVersion($version);
-                                $entity = $fileObj->json['name'];
-                                $currentPlatform->addEntity(Utils::camelCase($entity));
+                            foreach($fileObj->json as $jsonItem){
+                                if(array_key_exists('version', $jsonItem)){
+                                    $version = $jsonItem['version'];
+                                    $currentPlatform->addVersion($version);
+                                    $entity = $jsonItem['name'];
+                                    $currentPlatform->addEntity(Utils::camelCase($entity));
+                                }
                             }
                         }
                         $pos = count($currentSection->files);

@@ -129,4 +129,16 @@ class Utils {
         return $path;
     }
 
+    public static function debug($thing){
+        echo "<pre>" . print_r($thing, true) . "</pre>";
+    }
+
+    public static function getElemFromJson($version, $jsonArray){
+        foreach($jsonArray as $item){
+            if(Utils::shouldPrintVersion($version, $item['version'])){
+                return $item;
+            }
+        }
+    }
+
 } 

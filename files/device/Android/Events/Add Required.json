@@ -1,0 +1,28 @@
+[{
+    "title": "Add Required Event Handler",
+    "name": "addRequiredEventHandler",
+    "version": "3.1.1",
+    "description": "Adds a listener so necessary information can be retrieved. Such as signature verification, receipts and list of devices.",
+    "parameters": [
+        {
+            "name": "listener",
+            "type": "Required",
+            "validation": "Required",
+            "notes": "An implementation of the Events.Required interface"
+        }
+    ],
+    "descriptionLists": [
+        {
+            "name": "Returns",
+            "elements": [
+                {
+                    "name": "Boolean",
+                    "description": "true if the new listener was added successfully"
+                }
+            ]
+        }
+    ],
+    "example": "//Register a listener for required events\nthis.api.addRequiredEventHandler(this);",
+    "order": "0",
+    "type": "method"
+}]

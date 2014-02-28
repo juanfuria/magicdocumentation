@@ -89,25 +89,48 @@ class Project extends Entity
 
         /** @var $file File */
         foreach ($section->files as $file){
-            if(isset($version) && (($file->ext == 'json' &&  Utils::shouldPrintVersion($version, $file->json['version'])) || ($file->ext != 'json')) || (!isset($version))){
-                $elemName = ($file->ext == 'json') ? $file->json['name'] : $file->name;
-                $content.= '<div class="row escape-navbar" id="elem_' . Utils::camelCase($elemName) . '">';
-                if($file->ext == 'json'){
-                    //TODO check for the appropriate version here. Fix the upper if
-                    $type = $file->json['type'];
-                    $template = $this->framework->settings->getTemplate($type);
-                    $view = new Template($this->framework->settings->getTemplatesDir() . "/" . $template . ".php");
-                    $view->entities = $this->getPlatform($platform_name)->entities;
-                    $view->json = $file->json;
-                    $content.= $view;
-                }
-                else{
-                    $content.= $file->content;
-                }
-                $content.= '</div>';
+
+            //TODO: if json has more than one...
+            $isJson = ($file->ext == 'json');
+
+
+            //HTML
+            if(!$isJson){
+
+                $view = new Template($this->framework->settings->getTemplatesDir() . "/section_item.php");
+                $view->elemName = $file->name;
+                $view->content  = $file->content;
+                $content .= $view;
                 $count++;
 
             }
+            //JSON
+            else{
+
+                $printable = null;
+                if(isset($version)){
+                    $printable = Utils::getElemFromJson($version, $file->json);
+                }
+                else{
+                    $printable = $file->json[0];
+                }
+
+                if($printable != null){
+                    $template_name      = $this->framework->settings->getTemplate($printable['type']);
+                    $subview            = new Template($this->framework->settings->getTemplatesDir() . "/" . $template_name . ".php");
+                    $subview->entities  = $this->getPlatform($platform_name)->entities;
+                    $subview->json      = $printable;
+
+                    $view               = new Template($this->framework->settings->getTemplatesDir() . "/section_item.php");
+                    $view->elemName     = $printable['name'];
+                    $view->content      .= $subview;
+
+                    $content .= $view;
+
+                    $count++;
+                }
+            }
+
         }
 
         $content.= '</section>';
