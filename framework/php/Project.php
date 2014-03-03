@@ -112,7 +112,9 @@ class Project extends Entity
                     $printable = Utils::getElemFromJson($version, $file->json);
                 }
                 else{
-                    $printable = $file->json[0];
+                    if(Utils::itemNotDeprecated($this->getSelectedPlatform()->versions[0], $file->json[0])){
+                        $printable =  $file->json[0];
+                    }
                 }
 
                 if($printable != null){

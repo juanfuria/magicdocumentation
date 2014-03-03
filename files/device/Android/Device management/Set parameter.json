@@ -1,7 +1,7 @@
 [{
     "title": "Set parameter",
     "name": "setParameter",
-    "version": "3.0.0",
+    "version": "3.1.1",
     "description": "Changes values of certain parameters on the card reader.",
     "parameters": [
         {
@@ -40,4 +40,78 @@
     "example": "\/\/Changes the bluetooth name of card reader\napi.setParameter(DeviceParameter.BluetoothName, \"OrangeCardReader\");",
     "order": "5",
     "type": "method"
-}]
+},
+    {
+        "title": "Set parameter",
+        "name": "setParameter",
+        "version": "3.0.0",
+        "description": "Changes values of certain parameters on the card reader.",
+        "parameters": [
+            {
+                "name": "param",
+                "type": "DeviceParameter",
+                "validation": "Required",
+                "notes": "The name of the parameter to change"
+            },
+            {
+                "name": "value",
+                "type": "String",
+                "validation": "Required",
+                "notes": "New value of the parameter"
+            },
+            {
+                "name": "device",
+                "type": "Device",
+                "validation": "Optional",
+                "notes": "This is used if you want to send the operation to a specific device. Recommended if you are using multiple devices"
+            }
+        ],
+        "descriptionLists": [
+            {
+                "name": "Available parameters",
+                "elements": [
+                    {
+                        "name": "",
+                        "description": "BluetoothName"
+                    },
+                    {
+                        "name": "",
+                        "description": "BluetoothPass"
+                    },
+                    {
+                        "name": "",
+                        "description": "SystemTimeout"
+                    },
+                    {
+                        "name": "",
+                        "description": "ScreenTimeout"
+                    },
+                    {
+                        "name": "",
+                        "description": "SignatureTimeout"
+                    }
+                ]
+            },
+            {
+                "name": "Events invoked",
+                "elements": [
+                    {
+                        "name": "None",
+                        "description": "No events are invoked."
+                    }
+                ]
+            },
+            {
+                "name": "Returns",
+                "elements": [
+                    {
+                        "name": "Boolean",
+                        "description": "true if the operation was successfully sent to device"
+                    }
+                ]
+            }
+        ],
+        "example": "\/\/Changes the bluetooth name of card reader\napi.setParameter(DeviceParameter.BluetoothName, \"OrangeCardReader\");",
+        "order": "5",
+        "type": "method"
+    }]

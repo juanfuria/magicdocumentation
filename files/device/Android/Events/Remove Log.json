@@ -1,6 +1,6 @@
 [{
     "title": "Remove Log Event Handler",
-    "name": "removeRLogEventHandler",
+    "name": "removeLogEventHandler",
     "version": "3.1.1",
     "description": "Removes a listener so information is not passed on to that listener any more.",
     "parameters": [

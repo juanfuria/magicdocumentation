@@ -129,6 +129,11 @@ class Framework{
         /** @var  $platform Platform*/
         $platform = $project->getSelectedPlatform();
         $items = array();
+
+        if(isset($this->sentVars['version'])){
+            $version = $this->sentVars['version'];
+        }
+
         /** @var $section Section */
         foreach ($platform->sections as $section) {
             $viewSection = new Template("");
@@ -166,7 +171,9 @@ class Framework{
                             $printable = Utils::getElemFromJson($version, $file->json);
                         }
                         else{
-                            $printable = $file->json[0];
+                            if(Utils::itemNotDeprecated($platform->versions[0], $file->json[0])){
+                                $printable = $file->json[0];
+                            }
                         }
 
                         if($printable != null){

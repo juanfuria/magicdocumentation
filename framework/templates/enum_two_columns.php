@@ -9,15 +9,13 @@
             <!-- if there's a version we display it -->
             <span class="label label-primary">Available since <?=$json['version']?></span>
         <?php endif; ?>
-        <?php if(isset($json['status'])): ?>
-            <?php if($json['status'] == 'deprecated'): ?>
-                <span class="label label-danger"><?=$json['status']?></span>
+        <?php if(isset($json['deprecated'])): ?>
+                <span class="label label-danger">Deprecated since <?=$json['deprecated']?></span>
                 <div class="callout callout-danger">
                     <h4>Warning!</h4>
 
-                    <p>This method has been marked as deprecated. We strongly discourage you to use it.</p>
+                    <p>This enum has been marked as deprecated. We strongly discourage you to use it.</p>
                 </div>
-            <?php endif; ?>
         <?php endif; ?>
         <br/>
         <br/>

@@ -1,0 +1,29 @@
+[{
+    "title": "Remove listener",
+    "name": "removeListener",
+    "version": "3.0.0",
+    "deprecated": "3.1.1",
+    "description": "Unregisters a listener to hapi events.",
+    "parameters": [
+        {
+            "name": "listener",
+            "type": "Log<br/>Required,<br/>Status",
+            "validation": "Required",
+            "notes": ""
+        }
+    ],
+    "descriptionLists": [
+        {
+            "name": "Returns",
+            "elements": [
+                {
+                    "name": "Boolean",
+                    "description": "true if the operation was successfully sent to device"
+                }
+            ]
+        }
+    ],
+    "example": "\/\/unegister a listener for required events\napi.removeListener(this);",
+    "order": "1",
+    "type": "method"
+}]

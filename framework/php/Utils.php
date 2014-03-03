@@ -104,6 +104,9 @@ class Utils {
     public static function shouldPrintVersion($version, $contentVersion) {
         return strcmp($version, $contentVersion) >= 0;
     }
+    public static function itemNotDeprecated($version, $item) {
+        return (!isset($item['deprecated']) || (isset($item['deprecated']) && strcmp($version, $item['deprecated']) < 0));
+    }
 
     public static function parse_path() {
         $path = array();
@@ -135,7 +138,7 @@ class Utils {
 
     public static function getElemFromJson($version, $jsonArray){
         foreach($jsonArray as $item){
-            if(Utils::shouldPrintVersion($version, $item['version'])){
+            if(Utils::shouldPrintVersion($version, $item['version']) && (Utils::itemNotDeprecated($version, $item))){
                 return $item;
             }
         }
