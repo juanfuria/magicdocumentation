@@ -29,9 +29,10 @@ $mimeTypes = array(
 
 
 header('Content-Type: ' . $mimeTypes[$framework->sentVars["ext"]]);
+//print_r($_GET);
 //@require_once('framework/inc/SimpleImage.php');
 $image = new SimpleImage();
-$image->load($settings->getImgDir() . "/" .$framework->sentVars["file"] . "." . $framework->sentVars["ext"]);//http://pickr.me/i/pickr_d672ccf8.jpg');
-$image->resizeToWidth($framework->sentVars["size"]);
+$image->load($settings->getImgDir() . "/" .$_GET["file"] . "." . $_GET["ext"]);//http://pickr.me/i/pickr_d672ccf8.jpg');
+$image->resizeToWidth($_GET["size"]);
 $image->output();
 

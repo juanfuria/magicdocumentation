@@ -4,6 +4,7 @@ include_once('framework/php/Framework.php');
 
 $framework = new Framework();
 
+//if($path_info['call_parts'][0] == "thumb")
 
 if(!isset($framework->sentVars['project'])){
     include('cover.php');
