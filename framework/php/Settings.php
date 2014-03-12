@@ -6,6 +6,7 @@ class Settings extends Entity{
     public $methodTemplate;
     public $objectTemplate;
     public $enumTemplate;
+    public $webmethodTemplate;
 
 
     function Settings(){
@@ -75,6 +76,9 @@ class Settings extends Entity{
                 break;
             case 'enum':
                 return $this->enumTemplate;
+                break;
+            case 'webmethod':
+                return $this->webmethodTemplate;
                 break;
             default:
                 return $this->methodTemplate;

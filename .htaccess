@@ -16,23 +16,11 @@ AddOutputFilterByType DEFLATE application/javascript
 AddOutputFilterByType DEFLATE application/x-javascript
 AddOutputFilterByType DEFLATE application/x-httpd-php
 
-## cache images for 1 month, do not require revalidation
-#<FilesMatch "\.(gif|jpe?g|png|flv|swf|ico|mp3|mp4)$">
-#Header set Cache-Control: "max-age=1296000"
-#</FilesMatch>
-
 Options +FollowSymLinks -MultiViews -Indexes
 RewriteEngine On
 
-#RewriteRule ^(.*)/$ index.php?platform=$1&section=$2 [NE,L]
 RewriteRule ^thumb/(.*)_(.*)\.(.*)$ thumb.php?file=$1&size=$2&ext=$3
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [L]
 
-
-#RewriteRule ^(.*)/platform/(.*)/$ index.php?project=$1&platform=$2 [NE,L]
-#RewriteRule ^platform/(.*)/version/(.*)$ index.php?platform=$1&version=$2 [NE,L]
-#RewriteRule ^platform/(.*)/$ index.php?platform=$1 [NE,L]
-#RewriteRule ^platform/(.*)$ index.php?platform=$1 [NE,L]
-#RewriteRule ^(.*)/$ index.php?project=$1 [NE,L]

@@ -47,6 +47,8 @@ class Framework{
             }
 //        }
 
+//        echo '<pre>'.print_r($this->sentVars, true).'</pre>';
+
         $this->settings     = Settings::Read('settings.conf');
         $this->stylesheets  = Utils::listFiles($this->settings->getCssDir(), "css");
         $this->javascripts  = Utils::listFiles($this->settings->getJsDir(), "js");

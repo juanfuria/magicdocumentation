@@ -109,3 +109,7 @@ p{
 .version-info .btn{
     margin-left: 10px !important;
 }
+pre, code {
+    tab-size: 2;
+    text-overflow: ellipsis;
+}

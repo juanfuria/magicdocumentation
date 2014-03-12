@@ -98,11 +98,25 @@ class Documentation
 
                 //order sections
                 $sorted = array();
+                $unsorted = [];
+
                 foreach($currentPlatform->settings['order'] as $section_name){
                     if(array_key_exists($section_name , $currentPlatform->sections)){
                         $sorted[$section_name] = $currentPlatform->sections[$section_name];
                     }
+                    else{
+                        $unsorted[$section_name] = $currentPlatform->sections[$section_name];
+                    }
                 }
+                foreach($sorted as $name => $sortedSection){
+                    if(array_key_exists($name, $currentPlatform->sections)){
+                        unset($currentPlatform->sections[$name]);
+                    }
+                }
+                foreach($currentPlatform->sections as $name => $newSect){
+                    $sorted[$name] = $newSect;
+                }
+
                 $currentPlatform->sections = $sorted;
 
                 rsort($currentPlatform->versions, SORT_STRING);
@@ -112,8 +126,7 @@ class Documentation
     }
 
     public function getSelectedProjectName(){
-        $settings = $this->framework->settings;
-        return (isset($settings->sentVars["project"])) ? $settings->sentVars["project"] : $this->getListOfProjects()[0];
+        return (isset($this->framework->sentVars["project"])) ? $this->framework->sentVars["project"] : $this->getListOfProjects()[0];
     }
 
     public function getSelectedProject(){
@@ -134,9 +147,9 @@ class Documentation
 
     private function initDefaults()
     {
-        $this->specialFiles[count($this->specialFiles)] = $this->DEFAULT_ABOUT;
-        $this->specialFiles[count($this->specialFiles)] = $this->DEFAULT_INFO;
-        $this->specialFiles[count($this->specialFiles)] = $this->DEFAULT_INTRODUCTION;
-        $this->specialFiles[count($this->specialFiles)] = $this->DEFAULT_GETTING_STARTED;
+        $this->specialFiles[] = $this->DEFAULT_ABOUT;
+        $this->specialFiles[] = $this->DEFAULT_INFO;
+        $this->specialFiles[] = $this->DEFAULT_INTRODUCTION;
+        $this->specialFiles[] = $this->DEFAULT_GETTING_STARTED;
     }
 }
