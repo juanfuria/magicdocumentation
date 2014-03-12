@@ -35,7 +35,7 @@ class Project extends Entity
 
     function printAll($platform){
 
-        if(count($platform->versions) > 0){
+        if(count($platform->versions) > 1){
             $viewing = (isset($this->framework->sentVars['version'])) ? $this->framework->sentVars['version'] : $platform->versions[0];
             echo '<div class="version-info">
                         <span class="alert alert-info">You are currently viewing the documentation for version

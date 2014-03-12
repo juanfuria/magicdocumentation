@@ -112,5 +112,8 @@ p{
 pre, code {
     tab-size: 2;
     text-overflow: ellipsis;
+}
+
+pre{
     color: #d1d1d1;
 }

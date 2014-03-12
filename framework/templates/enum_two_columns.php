@@ -32,7 +32,7 @@
         <?php endif; ?>
     </div>
     <div class="col-sm-6 item-example">
-        <?php if(isset($json['example']) &&  $json['example'] != ''): ?>
+        <?php if(isset($json['example']) &&  $json['example']['code'] != ''): ?>
             <h4>Code example</h4>
             <pre><code class="<?=$json['example']['language']?>"><?=$json['example']['code']?></code></pre>
         <?php endif; ?>

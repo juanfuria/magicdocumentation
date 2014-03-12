@@ -134,7 +134,7 @@
                     <pre><code class="<?=$json['request']['example']['language']?>"><?=$json['request']['example']['code']?></code></pre>
                 <?php else: ?>
                     <pre><?=$json['request']['example']['code']?></pre>
-                    <?php endif; ?>
+                <?php endif; ?>
             <?php endif; ?>
             <?php if(isset($json['response']['example']) &&  count($json['response']['example']) > 0): ?>
                 <h4 class="dl-title">Response example</h4>
