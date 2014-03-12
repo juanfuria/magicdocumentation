@@ -68,7 +68,7 @@
     <div class="col-sm-6 item-example">
         <?php if(isset($json['example']) &&  $json['example'] != ''): ?>
             <h4 class="dl-title">Code example</h4>
-            <pre><code><?=$json['example']?></code></pre>
+            <pre><code class="<?=$json['example']['language']?>"><?=$json['example']['code']?></code></pre>
         <?php endif; ?>
     </div>
 </div>

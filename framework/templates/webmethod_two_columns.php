@@ -130,11 +130,15 @@
         <div class="col-sm-6 item-example">
             <?php if(isset($json['request']['example']) &&  count($json['request']['example']) > 0): ?>
                 <h4 class="dl-title">Request example</h4>
-                <pre><code><?=$json['request']['example']?></code></pre>
+                <?php if(isset($json['request']['example']['language'])): ?>
+                    <pre><code class="<?=$json['request']['example']['language']?>"><?=$json['request']['example']['code']?></code></pre>
+                <?php else: ?>
+                    <pre><?=$json['request']['example']['code']?></pre>
+                    <?php endif; ?>
             <?php endif; ?>
             <?php if(isset($json['response']['example']) &&  count($json['response']['example']) > 0): ?>
                 <h4 class="dl-title">Response example</h4>
-                <pre><code><?=$json['response']['example']?></code></pre>
+                <pre><code class="<?=$json['response']['example']['language']?>"><?=$json['response']['example']['code']?></code></pre>
             <?php endif; ?>
         </div>
 
