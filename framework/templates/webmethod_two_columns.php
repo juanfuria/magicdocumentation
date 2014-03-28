@@ -25,7 +25,8 @@
                 <p>This method has been marked as deprecated. We strongly discourage you to use it.</p>
             </div>
         <?php endif; ?>
-
+        <br><br>
+        <p><?=$json['description']?></p>
         <!-- REQUEST -->
         <?php if(isset($json['request'])){ ?>
             <div class="callout callout-info">
@@ -109,7 +110,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($json['request']['parameters'] as $param): ?>
+                    <?php foreach ($json['response']['parameters'] as $param): ?>
                         <tr>
                             <td><code><?=$param['name']?></code></td>
                             <td><?=$param['validation']?></td>

@@ -114,6 +114,6 @@ pre, code {
     text-overflow: ellipsis;
 }
 
-pre{
+.item-example pre{
     color: #d1d1d1;
 }

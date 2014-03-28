@@ -119,9 +119,8 @@ function base64_decode (data) {
 }
 $(document).ready(function()
 {
-    $('#xcontent').on("dblclick", "#sortable1 input", function(e){
-        updatePlayer($(this).attr('id'), $(this).val());
-    });
+    var baseurl = $('meta[name=baseurl]');
+    $('form').attr('action', baseurl.attr("content") + 'download.php');
 });
 
 

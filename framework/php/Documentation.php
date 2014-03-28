@@ -50,6 +50,9 @@ class Documentation
                     }
                 }
                 $currentPlatform->settings = $settings;
+//                if(isset($settings['title'])){
+//                    $currentPlatform->name = $settings['title'];
+//                }
 
                 //We search for "sections" inside the platform
                 $dirs = Utils::listDirs($platform);
